@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Misere::VERSION
   spec.authors       = ["Masafumi Yokoyama"]
   spec.email         = ["myokoym@gmail.com"]
-  spec.summary       = %q{Misere is a file viewer. CLI launch.}
-  spec.description   = spec.summary
+  spec.summary       = %q{Lightweight file viewer for CLI}
+  spec.description   = %q{Misere is a lightweight file viewer. It can launch from CLI.}
   spec.homepage      = "https://github.com/myokoym/misere"
   spec.license       = "MIT"
 
