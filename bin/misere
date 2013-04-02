@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "misere/command/misere"
+
+Misere::Command::Misere.run(*ARGV)
