@@ -28,6 +28,12 @@ module Misere
           exit(false)
         end
 
+        unless /\.(png|jpe?g|gif)$/i =~ file
+          puts("Error: this file type is not support as yet.")
+          puts("Usage: misere <file path>")
+          exit(false)
+        end
+
         image = Gtk::Image.new(file)
         
         window = Gtk::Window.new
