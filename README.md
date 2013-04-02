@@ -1,6 +1,6 @@
-# Misere
+# Misere - Lightweight File Viewer for CLI
 
-File viewer.
+Misere is a lightweight file viewer. It can launch from CLI. Powered by Ruby/GTK3.
 
 ## Installation
 
