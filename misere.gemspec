@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["myokoym@gmail.com"]
   spec.summary       = %q{Misere is a file viewer. CLI launch.}
   spec.description   = spec.summary
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/myokoym/misere"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
