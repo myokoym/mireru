@@ -35,7 +35,8 @@ module Mireru
           exit(false)
         end
 
-        image = Gtk::Image.new(file)
+        image = Gtk::Image.new
+        image.file = file
         
         window = Gtk::Window.new
 
