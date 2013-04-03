@@ -40,6 +40,12 @@ Error: this file type is not support as yet.
 #{Mireru::Command::Mireru::USAGE}
     EOT
   end
+
+  def test_png_file
+    file = File.join(File.dirname(__FILE__), "fixtures", "nijip.png")
+    valid = @mireru.__send__(:valid?, [file])
+    assert_true(valid)
+  end
 end
 
 class TestMireru < Test::Unit::TestCase
