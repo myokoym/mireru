@@ -3,7 +3,7 @@ require 'gtk3'
 module Mireru
   module Command
     class Mireru
-      USAGE = "Usage: mireru <file path>"
+      USAGE = "Usage: mireru FILE"
 
       class << self
         def run(*arguments)
