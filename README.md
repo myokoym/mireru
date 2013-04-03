@@ -1,12 +1,12 @@
-# Misere - Lightweight File Viewer for CLI
+# Mireru - Lightweight File Viewer for CLI
 
-Misere is a lightweight file viewer. It can launch from CLI. Powered by Ruby/GTK3.
+Mireru is a lightweight file viewer. It can launch from CLI. Powered by Ruby/GTK3.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'misere'
+    gem 'mireru'
 
 And then execute:
 
@@ -14,11 +14,11 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install misere
+    $ gem install mireru
 
 ## Usage
 
-    $ misere <file path>
+    $ mireru <file path>
 
 ## Contributing
 

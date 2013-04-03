@@ -1,8 +1,8 @@
 require 'gtk3'
 
-module Misere
+module Mireru
   module Command
-    class Misere
+    class Mireru
 
       class << self
         def run(*arguments)
@@ -18,19 +18,19 @@ module Misere
 
         unless file
           puts("Error: no argument.")
-          puts("Usage: misere <file path>")
+          puts("Usage: mireru <file path>")
           exit(false)
         end
 
         unless File.file?(file)
           puts("Error: missing file.")
-          puts("Usage: misere <file path>")
+          puts("Usage: mireru <file path>")
           exit(false)
         end
 
         unless /\.(png|jpe?g|gif)$/i =~ file
           puts("Error: this file type is not support as yet.")
-          puts("Usage: misere <file path>")
+          puts("Usage: mireru <file path>")
           exit(false)
         end
 
