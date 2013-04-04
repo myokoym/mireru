@@ -3,7 +3,7 @@ require 'gtk3'
 module Mireru
   module Command
     class Mireru
-      USAGE = "Usage: mireru FILE..."
+      USAGE = "Usage: mireru [FILE...]"
 
       class << self
         def run(*arguments)
@@ -15,9 +15,19 @@ module Mireru
       end
 
       def run(arguments)
-        exit(false) unless valid?(arguments)
+        if arguments.empty?
+          file_container = Dir.glob("*")
+        else
+          file_container = arguments
+        end
 
-        file_container = arguments
+        file_container.select! {|f| support_file?(f) }
+
+        if file_container.empty?
+          puts("Error: no argument.")
+          puts(USAGE)
+          exit(false)
+        end
 
         image = Gtk::Image.new
         image.file = file_container.first
@@ -69,6 +79,22 @@ module Mireru
         unless /\.(png|jpe?g|gif)$/i =~ file
           puts("Error: this file type is not support as yet.")
           puts(USAGE)
+          return false
+        end
+
+        true
+      end
+
+      def support_file?(file)
+        unless file
+          return false
+        end
+
+        unless File.file?(file)
+          return false
+        end
+
+        unless /\.(png|jpe?g|gif)$/i =~ file
           return false
         end
 
