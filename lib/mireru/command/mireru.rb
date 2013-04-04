@@ -34,15 +34,18 @@ module Mireru
         image.file = file_container.shift
 
         window = Gtk::Window.new
+        window.title = File.basename(image.file)
 
         window.signal_connect("key_press_event") do |w, e|
           case e.keyval
           when Gdk::Keyval::GDK_KEY_n
             file_container.push(image.file)
             image.file = file_container.shift
+            window.title = File.basename(image.file)
           when Gdk::Keyval::GDK_KEY_p
             file_container.unshift(image.file)
             image.file = file_container.pop
+            window.title = File.basename(image.file)
           when Gdk::Keyval::GDK_KEY_q
             Gtk.main_quit
           end
