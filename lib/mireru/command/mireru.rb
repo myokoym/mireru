@@ -30,20 +30,18 @@ module Mireru
         end
 
         image = Gtk::Image.new
-        image.file = file_container.first
+        image.file = file_container.shift
 
         window = Gtk::Window.new
 
         window.signal_connect("key_press_event") do |w, e|
           case e.keyval
           when Gdk::Keyval::GDK_KEY_n
-            file = file_container.shift
-            image.file = file
-            file_container.push(file)
+            file_container.push(image.file)
+            image.file = file_container.shift
           when Gdk::Keyval::GDK_KEY_p
-            file = file_container.pop
-            image.file = file
-            file_container.unshift(file)
+            file_container.unshift(image.file)
+            image.file = file_container.pop
           when Gdk::Keyval::GDK_KEY_q
             Gtk.main_quit
           end
