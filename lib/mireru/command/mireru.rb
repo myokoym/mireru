@@ -3,7 +3,7 @@ require 'gtk3'
 module Mireru
   module Command
     class Mireru
-      USAGE = "Usage: mireru FILE"
+      USAGE = "Usage: mireru FILE..."
 
       class << self
         def run(*arguments)
@@ -17,12 +17,27 @@ module Mireru
       def run(arguments)
         exit(false) unless valid?(arguments)
 
-        file = arguments[0]
+        file_container = arguments
 
         image = Gtk::Image.new
-        image.file = file
+        image.file = file_container.first
 
         window = Gtk::Window.new
+
+        window.signal_connect("key_press_event") do |w, e|
+          case e.keyval
+          when Gdk::Keyval::GDK_KEY_n
+            file = file_container.shift
+            image.file = file
+            file_container.push(file)
+          when Gdk::Keyval::GDK_KEY_p
+            file = file_container.pop
+            image.file = file
+            file_container.unshift(file)
+          when Gdk::Keyval::GDK_KEY_q
+            Gtk.main_quit
+          end
+        end
 
         window.signal_connect("destroy") do
           Gtk.main_quit
