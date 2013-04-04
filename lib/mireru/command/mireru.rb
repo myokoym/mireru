@@ -24,8 +24,9 @@ module Mireru
         file_container.select! {|f| support_file?(f) }
 
         if file_container.empty?
-          puts("Error: no argument.")
+          puts("Warning: valid file not found.")
           puts(USAGE)
+          puts("Support file types: png, gif, jpeg(jpg). The others are...yet.")
           exit(false)
         end
 
