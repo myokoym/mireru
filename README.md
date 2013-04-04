@@ -1,24 +1,14 @@
-# Mireru - Lightweight File Viewer for CLI
+# Mireru - Flexible File Viewer
 
-Mireru is a lightweight file viewer. It can launch from CLI. Powered by Ruby/GTK3.
+A file viewer with a focus on flexibility by Ruby/GTK3.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'mireru'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install mireru
 
 ## Usage
 
-    $ mireru <file path>
+    $ mireru FILE
 
 ## Contributing
 
