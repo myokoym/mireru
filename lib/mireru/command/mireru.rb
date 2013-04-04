@@ -51,7 +51,6 @@ module Mireru
           Gtk.main_quit
         end
 
-        window.border_width = 10
         window.add(image)
         window.show_all
 
