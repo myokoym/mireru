@@ -8,7 +8,15 @@ A file viewer with a focus on flexibility by Ruby/GTK3.
 
 ## Usage
 
+### Launch
+
     $ mireru [FILE...]
+
+### Keybind
+
+n: next
+p: prev
+q: quit
 
 ## Contributing
 
