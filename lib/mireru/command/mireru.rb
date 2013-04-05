@@ -17,6 +17,16 @@ module Mireru
       def run(arguments)
         if arguments.empty?
           file_container = Dir.glob("*")
+        elsif /\A(-h|--help)\z/ =~ arguments[0]
+          puts(USAGE)
+          puts <<-EOS
+  If no argument, then search current directory.
+Keybind:
+  n: next
+  p: prev
+  q: quit
+          EOS
+          exit(true)
         else
           file_container = arguments
         end
