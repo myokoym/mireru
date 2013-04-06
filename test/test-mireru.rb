@@ -1,49 +1,24 @@
 require "mireru/command/mireru"
-require "stringio"
 
 module ValidTests
   def test_no_argument
-    s = ""
-    io = StringIO.new(s)
-    $stdout = io
-    valid = @mireru.__send__(:valid?, [])
-    $stdout = STDOUT
+    valid = @mireru.__send__(:support_file?, nil)
     assert_false(valid)
-    assert_equal(<<-EOT, s)
-Error: no argument.
-#{Mireru::Command::Mireru::USAGE}
-    EOT
   end
 
   def test_missing_file
-    s = ""
-    io = StringIO.new(s)
-    $stdout = io
-    valid = @mireru.__send__(:valid?, ["hoge"])
-    $stdout = STDOUT
+    valid = @mireru.__send__(:support_file?, "hoge")
     assert_false(valid)
-    assert_equal(<<-EOT, s)
-Error: missing file.
-#{Mireru::Command::Mireru::USAGE}
-    EOT
   end
 
   def test_not_support_file_type
-    s = ""
-    io = StringIO.new(s)
-    $stdout = io
-    valid = @mireru.__send__(:valid?, [__FILE__])
-    $stdout = STDOUT
+    valid = @mireru.__send__(:support_file?, __FILE__)
     assert_false(valid)
-    assert_equal(<<-EOT, s)
-Error: this file type is not support as yet.
-#{Mireru::Command::Mireru::USAGE}
-    EOT
   end
 
   def test_png_file
     file = File.join(File.dirname(__FILE__), "fixtures", "nijip.png")
-    valid = @mireru.__send__(:valid?, [file])
+    valid = @mireru.__send__(:support_file?, file)
     assert_true(valid)
   end
 end

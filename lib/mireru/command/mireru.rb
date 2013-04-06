@@ -80,30 +80,6 @@ Support file types: png, gif, jpeg(jpg). The others are...yet.
       end
 
       private
-      def valid?(arguments)
-        file = arguments[0]
-
-        unless file
-          puts("Error: no argument.")
-          puts(USAGE)
-          return false
-        end
-
-        unless File.file?(file)
-          puts("Error: missing file.")
-          puts(USAGE)
-          return false
-        end
-
-        unless /\.(png|jpe?g|gif)$/i =~ file
-          puts("Error: this file type is not support as yet.")
-          puts(USAGE)
-          return false
-        end
-
-        true
-      end
-
       def support_file?(file)
         unless file
           return false
