@@ -1,4 +1,5 @@
 require 'gtk3'
+require "mireru/logger"
 
 module Mireru
   module Command
@@ -12,20 +13,22 @@ module Mireru
       end
 
       def initialize
+        @logger = ::Mireru::Logger.new
       end
 
       def run(arguments)
         if arguments.empty?
           file_container = Dir.glob("*")
         elsif /\A(-h|--help)\z/ =~ arguments[0]
-          puts(USAGE)
-          puts <<-EOS
+          message = <<-EOM
+#{USAGE}
   If no argument, then search current directory.
 Keybind:
   n: next
   p: prev
   q: quit
-          EOS
+          EOM
+          @logger.info(message)
           exit(true)
         else
           file_container = arguments
@@ -34,9 +37,12 @@ Keybind:
         file_container.select! {|f| support_file?(f) }
 
         if file_container.empty?
-          puts("Warning: valid file not found.")
-          puts(USAGE)
-          puts("Support file types: png, gif, jpeg(jpg). The others are...yet.")
+          message = <<-EOM
+Warning: valid file not found.
+#{USAGE}
+Support file types: png, gif, jpeg(jpg). The others are...yet.
+          EOM
+          @logger.error(message)
           exit(false)
         end
 
