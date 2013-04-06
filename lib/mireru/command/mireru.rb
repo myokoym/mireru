@@ -64,6 +64,9 @@ Support file types: png, gif, jpeg(jpg). The others are...yet.
             image.file = file_container.pop
             window.title = File.basename(image.file)
             window.resize(1, 1)
+          when Gdk::Keyval::GDK_KEY_r
+            image.file = image.file
+            window.resize(1, 1)
           when Gdk::Keyval::GDK_KEY_q
             Gtk.main_quit
           end
