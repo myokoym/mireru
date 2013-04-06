@@ -1,5 +1,6 @@
 require 'gtk3'
 require "mireru/logger"
+require "mireru/widget"
 
 module Mireru
   module Command
@@ -46,26 +47,37 @@ Support file types: png, gif, jpeg(jpg). The others are...yet.
           exit(false)
         end
 
-        image = Gtk::Image.new
-        image.file = file_container.shift
+        file = file_container.shift
+        widget = ::Mireru::Widget.create(file)
 
         window = Gtk::Window.new
-        window.title = File.basename(image.file)
+        window.title = File.basename(file)
 
         window.signal_connect("key_press_event") do |w, e|
           case e.keyval
           when Gdk::Keyval::GDK_KEY_n
-            file_container.push(image.file)
-            image.file = file_container.shift
-            window.title = File.basename(image.file)
+            window.remove(widget)
+            file_container.push(file)
+            file = file_container.shift
+            widget = ::Mireru::Widget.create(file)
+            window.add(widget)
+            window.show_all
+            window.title = File.basename(file)
             window.resize(1, 1)
           when Gdk::Keyval::GDK_KEY_p
-            file_container.unshift(image.file)
-            image.file = file_container.pop
-            window.title = File.basename(image.file)
+            window.remove(widget)
+            file_container.unshift(file)
+            file = file_container.pop
+            widget = ::Mireru::Widget.create(file)
+            window.add(widget)
+            window.show_all
+            window.title = File.basename(file)
             window.resize(1, 1)
           when Gdk::Keyval::GDK_KEY_r
-            image.file = image.file
+            window.remove(widget)
+            widget = ::Mireru::Widget.create(file)
+            window.add(widget)
+            window.show_all
             window.resize(1, 1)
           when Gdk::Keyval::GDK_KEY_q
             Gtk.main_quit
@@ -76,7 +88,7 @@ Support file types: png, gif, jpeg(jpg). The others are...yet.
           Gtk.main_quit
         end
 
-        window.add(image)
+        window.add(widget)
         window.show_all
 
         Gtk.main
@@ -92,7 +104,7 @@ Support file types: png, gif, jpeg(jpg). The others are...yet.
           return false
         end
 
-        unless /\.(png|jpe?g|gif)$/i =~ file
+        unless /\.(png|jpe?g|gif|txt|rb)$/i =~ file
           return false
         end
 

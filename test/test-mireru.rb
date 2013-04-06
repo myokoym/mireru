@@ -12,12 +12,25 @@ module ValidTests
   end
 
   def test_not_support_file_type
-    valid = @mireru.__send__(:support_file?, __FILE__)
+    file = File.join(File.dirname(__FILE__), "fixtures", "no-extention")
+    valid = @mireru.__send__(:support_file?, file)
     assert_false(valid)
   end
 
   def test_png_file
     file = File.join(File.dirname(__FILE__), "fixtures", "nijip.png")
+    valid = @mireru.__send__(:support_file?, file)
+    assert_true(valid)
+  end
+
+  def test_txt_file
+    file = File.join(File.dirname(__FILE__), "fixtures", "LICENSE.txt")
+    valid = @mireru.__send__(:support_file?, file)
+    assert_true(valid)
+  end
+
+  def test_rb_file
+    file = File.join(File.dirname(__FILE__), "fixtures", "nijip.rb")
     valid = @mireru.__send__(:support_file?, file)
     assert_true(valid)
   end
