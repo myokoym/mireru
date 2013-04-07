@@ -1,6 +1,7 @@
 require 'gtk3'
 require "mireru/logger"
 require "mireru/window"
+require "mireru/container"
 
 module Mireru
   module Command
@@ -19,7 +20,8 @@ module Mireru
 
       def run(arguments)
         if arguments.empty?
-          file_container = Dir.glob("*")
+          files = Dir.glob("*").select! {|f| support_file?(f) }
+          file_container = ::Mireru::Container.new(files)
         elsif /\A(-h|--help)\z/ =~ arguments[0]
           message = <<-EOM
 #{USAGE}
@@ -32,10 +34,9 @@ Keybind:
           @logger.info(message)
           exit(true)
         else
-          file_container = arguments
+          files = arguments.select! {|f| support_file?(f) }
+          file_container = ::Mireru::Container.new(files)
         end
-
-        file_container.select! {|f| support_file?(f) }
 
         if file_container.empty?
           message = <<-EOM
@@ -55,12 +56,10 @@ Support file types: png, gif, jpeg(jpg). The others are...yet.
         window.signal_connect("key_press_event") do |w, e|
           case e.keyval
           when Gdk::Keyval::GDK_KEY_n
-            file_container.push(file)
-            file = file_container.shift
+            file = file_container.shift(file)
             window.add_from_file(file)
           when Gdk::Keyval::GDK_KEY_p
-            file_container.unshift(file)
-            file = file_container.pop
+            file = file_container.pop(file)
             window.add_from_file(file)
           when Gdk::Keyval::GDK_KEY_r
             window.add_from_file(file)
