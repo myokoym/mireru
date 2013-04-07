@@ -16,11 +16,11 @@ module Mireru
         widget = text
       when /\A\.(rb)\z/i
         require 'gtksourceview3'
-        buffer = Gtk::SourceBuffer.new
+        buffer = GtkSource::Buffer.new
         buffer.text = File.open(file).read
-        view = Gtk::SourceView.new(buffer)
+        view = GtkSource::View.new(buffer)
         view.show_line_numbers = true
-        lang = Gtk::SourceLanguageManager.new.get_language('ruby')
+        lang = GtkSource::LanguageManager.new.get_language('ruby')
         view.buffer.language = lang
         view.buffer.highlight_syntax = true
         view.buffer.highlight_matching_brackets = true
