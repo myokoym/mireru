@@ -23,15 +23,7 @@ module Mireru
           files = Dir.glob("*")
           file_container = ::Mireru::Container.new(files)
         elsif /\A(-h|--help)\z/ =~ arguments[0]
-          message = <<-EOM
-#{USAGE}
-  If no argument, then search current directory.
-Keybind:
-  n: next
-  p: prev
-  q: quit
-          EOM
-          @logger.info(message)
+          write_help_message
           exit(true)
         else
           files = arguments
@@ -39,12 +31,7 @@ Keybind:
         end
 
         if file_container.empty?
-          message = <<-EOM
-Warning: valid file not found.
-#{USAGE}
-Support file types: png, gif, jpeg(jpg). The others are...yet.
-          EOM
-          @logger.error(message)
+          write_empty_message
           exit(false)
         end
 
@@ -73,6 +60,28 @@ Support file types: png, gif, jpeg(jpg). The others are...yet.
         end
 
         Gtk.main
+      end
+
+      private
+      def write_help_message
+        message = <<-EOM
+#{USAGE}
+  If no argument, then search current directory.
+Keybind:
+  n: next
+  p: prev
+  q: quit
+        EOM
+        @logger.info(message)
+      end
+
+      def write_empty_message
+        message = <<-EOM
+Warning: valid file not found.
+#{USAGE}
+Support file types: png, gif, jpeg(jpg). The others are...yet.
+        EOM
+        @logger.error(message)
       end
     end
   end
