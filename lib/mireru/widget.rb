@@ -2,7 +2,8 @@ require 'gtk3'
 
 module Mireru
   class Widget
-    def self.create(file)
+    class << self
+    def create(file)
       case File.extname(file)
       when /\A\.(png|jpe?g|gif)\z/i
         image = Gtk::Image.new
@@ -27,10 +28,11 @@ module Mireru
     end
 
     private
-    def self.sorry
+    def sorry
       image = Gtk::Image.new
       image.file = "images/sorry.png"
       image
+    end
     end
   end
 end
