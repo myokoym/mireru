@@ -30,7 +30,10 @@ module Mireru
       private
       def sorry
         image = Gtk::Image.new
-        image.file = "images/sorry.png"
+        base_dir = File.join(File.dirname(__FILE__), "..", "..")
+        images_dir = File.join(base_dir, "images")
+        image_path = File.expand_path(File.join(images_dir, "sorry.png"))
+        image.file = image_path
         image
       end
     end
