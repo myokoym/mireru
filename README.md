@@ -20,6 +20,8 @@ n: next
 
 p: prev
 
+r: reload
+
 q: quit
 
 ## Contributing
