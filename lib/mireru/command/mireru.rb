@@ -1,6 +1,6 @@
 require 'gtk3'
 require "mireru/logger"
-require "mireru/widget"
+require "mireru/window"
 
 module Mireru
   module Command
@@ -48,37 +48,22 @@ Support file types: png, gif, jpeg(jpg). The others are...yet.
         end
 
         file = file_container.shift
-        widget = ::Mireru::Widget.create(file)
 
-        window = Gtk::Window.new
-        window.title = File.basename(file)
+        window = ::Mireru::Window.new
+        window.add_from_file(file)
 
         window.signal_connect("key_press_event") do |w, e|
           case e.keyval
           when Gdk::Keyval::GDK_KEY_n
-            window.remove(widget)
             file_container.push(file)
             file = file_container.shift
-            widget = ::Mireru::Widget.create(file)
-            window.add(widget)
-            window.show_all
-            window.title = File.basename(file)
-            window.resize(1, 1)
+            window.add_from_file(file)
           when Gdk::Keyval::GDK_KEY_p
-            window.remove(widget)
             file_container.unshift(file)
             file = file_container.pop
-            widget = ::Mireru::Widget.create(file)
-            window.add(widget)
-            window.show_all
-            window.title = File.basename(file)
-            window.resize(1, 1)
+            window.add_from_file(file)
           when Gdk::Keyval::GDK_KEY_r
-            window.remove(widget)
-            widget = ::Mireru::Widget.create(file)
-            window.add(widget)
-            window.show_all
-            window.resize(1, 1)
+            window.add_from_file(file)
           when Gdk::Keyval::GDK_KEY_q
             Gtk.main_quit
           end
@@ -87,9 +72,6 @@ Support file types: png, gif, jpeg(jpg). The others are...yet.
         window.signal_connect("destroy") do
           Gtk.main_quit
         end
-
-        window.add(widget)
-        window.show_all
 
         Gtk.main
       end
