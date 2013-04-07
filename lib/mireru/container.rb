@@ -1,7 +1,7 @@
 module Mireru
   class Container
     def initialize(files=[])
-      @files = files.select {|file| support_file?(file) }
+      @files = files.select {|file| file?(file) }
     end
 
     def empty?
@@ -19,16 +19,12 @@ module Mireru
     end
 
     private
-    def support_file?(file)
+    def file?(file)
       unless file
         return false
       end
 
       unless File.file?(file)
-        return false
-      end
-
-      unless /\.(png|jpe?g|gif|txt|rb)$/i =~ file
         return false
       end
 

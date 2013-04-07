@@ -8,16 +8,12 @@ module Mireru
         image = Gtk::Image.new
         image.file = file
         widget = image
-      when /\A\.(txt)\z/i
-        buffer = Gtk::TextBuffer.new
-        buffer.text = File.open(file).read
-        text = Gtk::TextView.new(buffer)
-        text.editable = false
-        widget = text
-      when /\A\.(rb)\z/i
+      else
         require 'gtksourceview3'
+        text = File.open(file).read
+        return sorry unless text.valid_encoding?
         buffer = GtkSource::Buffer.new
-        buffer.text = File.open(file).read
+        buffer.text = text
         view = GtkSource::View.new(buffer)
         view.show_line_numbers = true
         lang = GtkSource::LanguageManager.new.get_language('ruby')
@@ -26,10 +22,15 @@ module Mireru
         view.buffer.highlight_matching_brackets = true
         view.editable = false
         widget = view
-      else
-        raise "coding error: uncheck file type."
       end
       widget
+    end
+
+    private
+    def self.sorry
+      image = Gtk::Image.new
+      image.file = "images/sorry.png"
+      image
     end
   end
 end
