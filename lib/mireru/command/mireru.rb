@@ -20,7 +20,7 @@ module Mireru
 
       def run(arguments)
         if arguments.empty?
-          files = Dir.glob("*").select! {|f| support_file?(f) }
+          files = Dir.glob("*")
           file_container = ::Mireru::Container.new(files)
         elsif /\A(-h|--help)\z/ =~ arguments[0]
           message = <<-EOM
@@ -34,7 +34,7 @@ Keybind:
           @logger.info(message)
           exit(true)
         else
-          files = arguments.select! {|f| support_file?(f) }
+          files = arguments
           file_container = ::Mireru::Container.new(files)
         end
 
@@ -73,23 +73,6 @@ Support file types: png, gif, jpeg(jpg). The others are...yet.
         end
 
         Gtk.main
-      end
-
-      private
-      def support_file?(file)
-        unless file
-          return false
-        end
-
-        unless File.file?(file)
-          return false
-        end
-
-        unless /\.(png|jpe?g|gif|txt|rb)$/i =~ file
-          return false
-        end
-
-        true
       end
     end
   end
