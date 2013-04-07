@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency("gtk3")
+  spec.add_runtime_dependency("gtksourceview3")
 
   spec.add_development_dependency("test-unit")
   spec.add_development_dependency("test-unit-notify")
