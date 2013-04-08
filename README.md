@@ -12,7 +12,7 @@ A file viewer with a focus on flexibility by Ruby/GTK3.
 
     $ mireru [FILE...]
 
-If no argument then search current directory.
+If no argument, then search current directory.
 
 ### Keybind
 

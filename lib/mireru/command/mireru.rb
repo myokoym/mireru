@@ -70,6 +70,7 @@ module Mireru
 Keybind:
   n: next
   p: prev
+  r: reload
   q: quit
         EOM
         @logger.info(message)
