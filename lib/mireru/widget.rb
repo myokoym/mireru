@@ -1,6 +1,10 @@
 require 'gtk3'
+require 'gtksourceview3'
 
 module Mireru
+  class Error < StandardError
+  end
+
   class Widget
     class << self
       def create(file)
@@ -10,12 +14,11 @@ module Mireru
           image.file = file
           widget = image
         else
-          require 'gtksourceview3'
-          text = File.open(file).read
-          return sorry unless text.valid_encoding?
-          text.encode!("utf-8") unless text.encoding == "utf-8"
-          buffer = GtkSource::Buffer.new
-          buffer.text = text
+          begin
+            buffer = buffer_from_file(file)
+          rescue Mireru::Error
+            return sorry
+          end
           view = GtkSource::View.new(buffer)
           view.show_line_numbers = true
           lang = GtkSource::LanguageManager.new.get_language('ruby')
@@ -29,6 +32,19 @@ module Mireru
       end
 
       private
+      def buffer_from_file(file)
+        text = File.open(file).read
+        buffer_from_text(text)
+      end
+
+      def buffer_from_text(text)
+        raise Mireru::Error unless text.valid_encoding?
+        text.encode!("utf-8") unless text.encoding == "utf-8"
+        buffer = GtkSource::Buffer.new
+        buffer.text = text
+        buffer
+      end
+
       def sorry
         image = Gtk::Image.new
         base_dir = File.join(File.dirname(__FILE__), "..", "..")
