@@ -17,19 +17,29 @@ module Mireru
     def add_container(container)
       @container = container
 
-      file = @container.shift
-      self.add_from_file(file)
+      @file = @container.shift
+      self.add_from_file(@file)
 
       self.signal_connect("key_press_event") do |w, e|
         case e.keyval
         when Gdk::Keyval::GDK_KEY_n
-          file = @container.shift(file)
-          self.add_from_file(file)
+          @file = @container.shift(@file)
+          self.add_from_file(@file)
         when Gdk::Keyval::GDK_KEY_p
-          file = @container.pop(file)
-          self.add_from_file(file)
+          @file = @container.pop(@file)
+          self.add_from_file(@file)
         when Gdk::Keyval::GDK_KEY_r
-          self.add_from_file(file)
+          self.add_from_file(@file)
+        when Gdk::Keyval::GDK_KEY_f
+          if Mireru::Widget.image?(@file)
+            pixbuf = Gdk::Pixbuf.new(@file, *self.size)
+            @widget.pixbuf = pixbuf
+          end
+        when Gdk::Keyval::GDK_KEY_o
+          if Mireru::Widget.image?(@file)
+            pixbuf = Gdk::Pixbuf.new(@file)
+            @widget.pixbuf = pixbuf
+          end
         when Gdk::Keyval::GDK_KEY_q
           Gtk.main_quit
         end
@@ -38,7 +48,7 @@ module Mireru
 
     def add_from_file(file)
       @scroll.each {|child| @scroll.remove(child) }
-      @widget = Mireru::Widget.create(file)
+      @widget = Mireru::Widget.create(file, *self.size)
       if @widget.is_a?(Gtk::Scrollable)
         @scroll.add(@widget)
       else

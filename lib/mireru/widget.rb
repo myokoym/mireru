@@ -7,11 +7,11 @@ module Mireru
 
   class Widget
     class << self
-      def create(file)
-        case File.extname(file)
-        when /\A\.(png|jpe?g|gif)\z/i
+      def create(file, width=nil, height=nil)
+        if image?(file)
           image = Gtk::Image.new
-          image.file = file
+          pixbuf = Gdk::Pixbuf.new(file, width, height)
+          image.pixbuf = pixbuf
           widget = image
         else
           begin
@@ -29,6 +29,10 @@ module Mireru
           widget = view
         end
         widget
+      end
+
+      def image?(file)
+        /\.(png|jpe?g|gif)\z/i =~ file
       end
 
       private

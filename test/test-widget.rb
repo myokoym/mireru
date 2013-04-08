@@ -1,6 +1,11 @@
 require "mireru/widget"
 
 class TestWidget < Test::Unit::TestCase
+  def test_image?
+    assert_nil(Mireru::Widget.image?(__FILE__))
+    assert_not_nil(Mireru::Widget.image?("test/fixtures/nijip.png"))
+  end
+
   def test_buffer_from_file_of_text
     widget = Mireru::Widget.__send__(:buffer_from_file, __FILE__)
     assert_equal(GtkSource::Buffer, widget.class)

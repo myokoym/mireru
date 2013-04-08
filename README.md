@@ -24,6 +24,12 @@ r: reload
 
 q: quit
 
+image:
+<br />
+  f: fits window size
+<br />
+  o: original size
+
 ## Contributing
 
 1. Fork it

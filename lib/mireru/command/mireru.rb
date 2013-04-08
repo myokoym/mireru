@@ -51,6 +51,10 @@ Keybind:
   p: prev
   r: reload
   q: quit
+
+  image:
+    f: fits window size
+    o: original size
         EOM
         @logger.info(message)
       end
