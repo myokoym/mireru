@@ -35,29 +35,8 @@ module Mireru
           exit(false)
         end
 
-        file = file_container.shift
-
         window = ::Mireru::Window.new
-        window.add_from_file(file)
-
-        window.signal_connect("key_press_event") do |w, e|
-          case e.keyval
-          when Gdk::Keyval::GDK_KEY_n
-            file = file_container.shift(file)
-            window.add_from_file(file)
-          when Gdk::Keyval::GDK_KEY_p
-            file = file_container.pop(file)
-            window.add_from_file(file)
-          when Gdk::Keyval::GDK_KEY_r
-            window.add_from_file(file)
-          when Gdk::Keyval::GDK_KEY_q
-            Gtk.main_quit
-          end
-        end
-
-        window.signal_connect("destroy") do
-          Gtk.main_quit
-        end
+        window.add_container(file_container)
 
         Gtk.main
       end

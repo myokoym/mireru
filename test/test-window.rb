@@ -5,6 +5,13 @@ class TestWindow < Test::Unit::TestCase
     @window = Mireru::Window.new
   end
 
+  def test_add_container
+    container = %w(a, b, c)
+    mock(container).shift { "a" }
+    mock(@window).add_from_file("a")
+    @window.add_container(container)
+  end
+
   def test_add_from_file_of_scrollable
     file = __FILE__
     mock(Mireru::Widget).create(file) { Gtk::TextView.new }

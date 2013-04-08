@@ -9,6 +9,31 @@ module Mireru
       @scroll.set_policy(:automatic, :automatic)
       self.add(@scroll)
       self.set_default_size(640, 640)
+      self.signal_connect("destroy") do
+        Gtk.main_quit
+      end
+    end
+
+    def add_container(container)
+      @container = container
+
+      file = @container.shift
+      self.add_from_file(file)
+
+      self.signal_connect("key_press_event") do |w, e|
+        case e.keyval
+        when Gdk::Keyval::GDK_KEY_n
+          file = @container.shift(file)
+          self.add_from_file(file)
+        when Gdk::Keyval::GDK_KEY_p
+          file = @container.pop(file)
+          self.add_from_file(file)
+        when Gdk::Keyval::GDK_KEY_r
+          self.add_from_file(file)
+        when Gdk::Keyval::GDK_KEY_q
+          Gtk.main_quit
+        end
+      end
     end
 
     def add_from_file(file)
