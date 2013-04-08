@@ -13,6 +13,7 @@ module Mireru
           require 'gtksourceview3'
           text = File.open(file).read
           return sorry unless text.valid_encoding?
+          text.encode!("utf-8") unless text.encoding == "utf-8"
           buffer = GtkSource::Buffer.new
           buffer.text = text
           view = GtkSource::View.new(buffer)
