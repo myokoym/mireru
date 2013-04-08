@@ -61,9 +61,9 @@ Keybind:
 
       def write_empty_message
         message = <<-EOM
-Warning: valid file not found.
+Warning: file not found.
 #{USAGE}
-Support file types: png, gif, jpeg(jpg). The others are...yet.
+  If no argument, then search current directory.
         EOM
         @logger.error(message)
       end
