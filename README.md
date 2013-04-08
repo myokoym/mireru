@@ -16,6 +16,8 @@ If no argument, then search current directory.
 
 ### Keybind
 
+#### Common
+
 n: next
 
 p: prev
@@ -24,11 +26,11 @@ r: reload
 
 q: quit
 
-image:
-<br />
-  f: fits window size
-<br />
-  o: original size
+#### Image
+
+f: fits window size
+
+o: original size
 
 ## Contributing
 
