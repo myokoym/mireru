@@ -41,6 +41,13 @@ module Mireru
             files.flatten!
           end
           file_container = ::Mireru::Container.new(files)
+        elsif arguments.all? {|v| File.directory?(v) }
+          files = []
+          arguments.each do |f|
+            files << Dir.glob("#{f}/*")
+          end
+          files.flatten!
+          file_container = ::Mireru::Container.new(files)
         else
           files = arguments
           file_container = ::Mireru::Container.new(files)
