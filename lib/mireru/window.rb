@@ -30,6 +30,8 @@ module Mireru
           self.add_from_file(@file)
         when Gdk::Keyval::GDK_KEY_r
           self.add_from_file(@file)
+        when Gdk::Keyval::GDK_KEY_e
+          self.title = File.expand_path(@file)
         when Gdk::Keyval::GDK_KEY_f
           if Mireru::Widget.image?(@file)
             pixbuf = Gdk::Pixbuf.new(@file, *self.size)

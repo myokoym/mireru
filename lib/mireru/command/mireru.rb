@@ -68,6 +68,7 @@ Keybind:
   n: next
   p: prev
   r: reload
+  e: expand path
   q: quit
 
   scroll:

@@ -30,6 +30,8 @@ p: prev
 
 r: reload
 
+e: expand path
+
 q: quit
 
 #### Scroll
