@@ -6,7 +6,7 @@ require "mireru/container"
 module Mireru
   module Command
     class Mireru
-      USAGE = "Usage: mireru [FILE...]"
+      USAGE = "Usage: mireru [OPTION]... [FILE]..."
 
       class << self
         def run(*arguments)

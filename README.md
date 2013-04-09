@@ -12,7 +12,7 @@ A friend of a keyboard.
 
 ### Launch
 
-    $ mireru [FILE...]
+    $ mireru [OPTION]... [FILE]...
 
 If no argument, then search current directory.
 
