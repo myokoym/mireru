@@ -25,6 +25,22 @@ module Mireru
         elsif /\A(-h|--help)\z/ =~ arguments[0]
           write_help_message
           exit(true)
+        elsif /\A(-d|--deep)\z/ =~ arguments[0]
+          arguments.shift
+          if arguments.empty?
+            files = Dir.glob("**/*")
+          else
+            files = []
+            arguments.each do |f|
+              if File.directory?(f)
+                files << Dir.glob("#{f}/**/*")
+              else
+                files << f
+              end
+            end
+            files.flatten!
+          end
+          file_container = ::Mireru::Container.new(files)
         else
           files = arguments
           file_container = ::Mireru::Container.new(files)
@@ -46,6 +62,8 @@ module Mireru
         message = <<-EOM
 #{USAGE}
   If no argument, then search current directory.
+Options:
+  -d, --deep: deep search
 Keybind:
   n: next
   p: prev

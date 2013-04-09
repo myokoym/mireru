@@ -16,6 +16,10 @@ A friend of a keyboard.
 
 If no argument, then search current directory.
 
+### Options
+
+-d, --deep: deep search
+
 ### Keybind
 
 #### Common
