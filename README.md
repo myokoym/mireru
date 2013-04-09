@@ -1,6 +1,8 @@
-# Mireru - Flexible File Viewer
+# Mireru - Flexible File Viewer Keyboard Friend
 
 A file viewer with a focus on flexibility by Ruby/GTK3.
+
+A friend of a keyboard.
 
 ## Installation
 

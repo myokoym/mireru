@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Mireru::VERSION
   spec.authors       = ["Masafumi Yokoyama"]
   spec.email         = ["myokoym@gmail.com"]
-  spec.summary       = %q{Flexible File Viewer}
-  spec.description   = %q{A file viewer with a focus on flexibility by Ruby/GTK3.}
+  spec.summary       = %q{Flexible File Viewer Keyboard Friend}
+  spec.description   = %q{A file viewer with a focus on flexibility by Ruby/GTK3. A friend of a keyboard.}
   spec.homepage      = "https://github.com/myokoym/mireru"
   spec.license       = "MIT"
 
