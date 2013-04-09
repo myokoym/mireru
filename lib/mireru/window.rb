@@ -55,6 +55,8 @@ module Mireru
     end
 
     def add_from_file(file)
+      @scroll.hadjustment.value = 0
+      @scroll.vadjustment.value = 0
       @scroll.each {|child| @scroll.remove(child) }
       @widget = Mireru::Widget.create(file, *self.size)
       if @widget.is_a?(Gtk::Scrollable)
@@ -62,8 +64,6 @@ module Mireru
       else
         @scroll.add_with_viewport(@widget)
       end
-      @scroll.hadjustment.lower
-      @scroll.vadjustment.lower
       self.title = File.basename(file)
       self.show_all
     end
