@@ -21,7 +21,6 @@ module Mireru
       def run(arguments)
         if arguments.empty?
           files = Dir.glob("*")
-          file_container = ::Mireru::Container.new(files)
         elsif /\A(-h|--help)\z/ =~ arguments[0]
           write_help_message
           exit(true)
@@ -40,18 +39,17 @@ module Mireru
             end
             files.flatten!
           end
-          file_container = ::Mireru::Container.new(files)
         elsif arguments.all? {|v| File.directory?(v) }
           files = []
           arguments.each do |f|
             files << Dir.glob("#{f}/*")
           end
           files.flatten!
-          file_container = ::Mireru::Container.new(files)
         else
           files = arguments
-          file_container = ::Mireru::Container.new(files)
         end
+
+        file_container = ::Mireru::Container.new(files)
 
         if file_container.empty?
           write_empty_message
