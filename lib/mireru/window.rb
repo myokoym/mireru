@@ -62,6 +62,8 @@ module Mireru
       else
         @scroll.add_with_viewport(@widget)
       end
+      @scroll.hadjustment.lower
+      @scroll.vadjustment.lower
       self.title = File.basename(file)
       self.show_all
     end
