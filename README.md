@@ -26,6 +26,16 @@ r: reload
 
 q: quit
 
+#### Scroll
+
+h: left
+
+j: down
+
+k: up
+
+l: right
+
 #### Image
 
 f: fits window size

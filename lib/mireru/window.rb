@@ -40,6 +40,14 @@ module Mireru
             pixbuf = Gdk::Pixbuf.new(@file)
             @widget.pixbuf = pixbuf
           end
+        when Gdk::Keyval::GDK_KEY_h
+          @scroll.hadjustment.value -= 17
+        when Gdk::Keyval::GDK_KEY_j
+          @scroll.vadjustment.value += 17
+        when Gdk::Keyval::GDK_KEY_k
+          @scroll.vadjustment.value -= 17
+        when Gdk::Keyval::GDK_KEY_l
+          @scroll.hadjustment.value += 17
         when Gdk::Keyval::GDK_KEY_q
           Gtk.main_quit
         end

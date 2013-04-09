@@ -52,6 +52,12 @@ Keybind:
   r: reload
   q: quit
 
+  scroll:
+    h: left
+    j: down
+    k: up
+    l: right
+
   image:
     f: fits window size
     o: original size
