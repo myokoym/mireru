@@ -111,6 +111,8 @@ Keybind:
 Warning: file not found.
 #{USAGE}
   If no argument, then search current directory.
+Options:
+  -d, --deep: deep search
         EOM
         @logger.error(message)
       end
