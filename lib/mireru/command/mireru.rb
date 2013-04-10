@@ -19,11 +19,29 @@ module Mireru
       end
 
       def run(arguments)
-        if arguments.empty?
-          files = Dir.glob("*")
-        elsif /\A(-h|--help)\z/ =~ arguments[0]
+        if /\A(-h|--help)\z/ =~ arguments[0]
           write_help_message
           exit(true)
+        end
+
+        files = files_from_arguments(arguments)
+        file_container = ::Mireru::Container.new(files)
+
+        if file_container.empty?
+          write_empty_message
+          exit(false)
+        end
+
+        window = ::Mireru::Window.new
+        window.add_container(file_container)
+
+        Gtk.main
+      end
+
+      private
+      def files_from_arguments(arguments)
+        if arguments.empty?
+          files = Dir.glob("*")
         elsif /\A(-d|--deep)\z/ =~ arguments[0]
           arguments.shift
           if arguments.empty?
@@ -48,21 +66,9 @@ module Mireru
         else
           files = arguments
         end
-
-        file_container = ::Mireru::Container.new(files)
-
-        if file_container.empty?
-          write_empty_message
-          exit(false)
-        end
-
-        window = ::Mireru::Window.new
-        window.add_container(file_container)
-
-        Gtk.main
+        files
       end
 
-      private
       def write_help_message
         message = <<-EOM
 #{USAGE}
