@@ -1,6 +1,6 @@
 require "mireru/container"
 
-class TestContainer< Test::Unit::TestCase
+class ContainerTest < Test::Unit::TestCase
   def setup
     @container = Mireru::Container.new
   end

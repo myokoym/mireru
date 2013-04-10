@@ -1,4 +1,4 @@
 require "mireru/command/mireru"
 
-class TestMireru < Test::Unit::TestCase
+class MireruTest < Test::Unit::TestCase
 end

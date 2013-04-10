@@ -1,6 +1,6 @@
 require "mireru/widget"
 
-class TestWidget < Test::Unit::TestCase
+class WidgetTest < Test::Unit::TestCase
   def test_image?
     assert_nil(Mireru::Widget.image?(__FILE__))
     assert_not_nil(Mireru::Widget.image?("test/fixtures/nijip.png"))

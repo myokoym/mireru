@@ -1,6 +1,6 @@
 require "mireru/window"
 
-class TestWindow < Test::Unit::TestCase
+class WindowTest < Test::Unit::TestCase
   def setup
     @window = Mireru::Window.new
   end
