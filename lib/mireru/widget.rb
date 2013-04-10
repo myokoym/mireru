@@ -32,7 +32,7 @@ module Mireru
       end
 
       def image?(file)
-        /\.(png|jpe?g|gif)\z/i =~ file
+        /\.(png|jpe?g|gif|ico|ani|bmp|pnm|ras|tga|tiff|xbm|xpm)\z/i =~ file
       end
 
       private
