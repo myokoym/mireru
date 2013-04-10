@@ -2,6 +2,7 @@ require 'gtk3'
 require "mireru/logger"
 require "mireru/window"
 require "mireru/container"
+require "mireru/version"
 
 module Mireru
   module Command
@@ -21,6 +22,9 @@ module Mireru
       def run(arguments)
         if /\A(-h|--help)\z/ =~ arguments[0]
           write_help_message
+          exit(true)
+        elsif /\A(-v|--version)\z/ =~ arguments[0]
+          write_version_message
           exit(true)
         end
 
@@ -91,6 +95,13 @@ Keybind:
   image:
     f: fits window size
     o: original size
+        EOM
+        @logger.info(message)
+      end
+
+      def write_version_message
+        message = <<-EOM
+#{::Mireru::VERSION}
         EOM
         @logger.info(message)
       end

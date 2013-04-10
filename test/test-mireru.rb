@@ -21,6 +21,14 @@ class MireruTest < Test::Unit::TestCase
     end
   end
 
+  def test_run_version_option
+    arguments = %w(--version)
+    mock(@mireru).write_version_message
+    assert_raise SystemExit do
+      @mireru.run(arguments)
+    end
+  end
+
   def test_files_from_arguments_no_argument
     arguments = %w()
     expected = %w(dir1 file1 dir2)
