@@ -26,6 +26,7 @@ module Mireru
           view.buffer.highlight_syntax = true
           view.buffer.highlight_matching_brackets = true
           view.editable = false
+          view.override_font(Pango::FontDescription.new("Monospace"))
           widget = view
         end
         widget
