@@ -54,6 +54,10 @@ f: fits window size
 
 o: original size
 
+#### Text
+
+f: change font (at random)
+
 ## Contributing
 
 1. Fork it

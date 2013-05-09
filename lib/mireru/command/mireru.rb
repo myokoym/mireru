@@ -111,6 +111,9 @@ Keybind:
   image:
     f: fits window size
     o: original size
+
+  text:
+    f: change font (at random)
         EOM
         @logger.info(message)
       end
