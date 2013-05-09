@@ -21,7 +21,7 @@ If no argument, then search current directory.
 -d, --deep<br />
     deep search as "**/*"
 
--f, --font<br />
+-f, --font NAME<br />
     set font such as "Monospace 16"
 
 ### Keybind

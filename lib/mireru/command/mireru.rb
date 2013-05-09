@@ -93,7 +93,7 @@ module Mireru
 Options:
   -d, --deep
       deep search as "**/*"
-  -f, --font
+  -f, --font NAME
       set font such as "Monospace 16"
 Keybind:
   n: next
@@ -133,7 +133,7 @@ Warning: file not found.
 Options:
   -d, --deep
       deep search as "**/*"
-  -f, --font
+  -f, --font NAME
       set font such as "Monospace 16"
         EOM
         @logger.error(message)
