@@ -18,7 +18,8 @@ If no argument, then search current directory.
 
 ### Options
 
--d, --deep: deep search
+-d, --deep
+    deep search as "**/*"
 
 ### Keybind
 

@@ -87,7 +87,8 @@ module Mireru
 #{USAGE}
   If no argument, then search current directory.
 Options:
-  -d, --deep: deep search
+  -d, --deep
+      deep search as "**/*"
 Keybind:
   n: next
   p: prev
@@ -121,7 +122,8 @@ Warning: file not found.
 #{USAGE}
   If no argument, then search current directory.
 Options:
-  -d, --deep: deep search
+  -d, --deep
+      deep search as "**/*"
         EOM
         @logger.error(message)
       end
