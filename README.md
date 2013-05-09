@@ -18,45 +18,37 @@ If no argument, then search current directory.
 
 ### Options
 
--d, --deep
+-d, --deep<br />
     deep search as "**/*"
 
--f, --font
+-f, --font<br />
     set font such as "Monospace 16"
 
 ### Keybind
 
 #### Common
 
-n: next
-
-p: prev
-
-r: reload
-
-e: expand path
-
-q: quit
+n: next<br />
+p: prev<br />
+r: reload<br />
+e: expand path<br />
+q: quit<br />
 
 #### Scroll
 
-h: left
-
-j: down
-
-k: up
-
-l: right
+h: left<br />
+j: down<br />
+k: up<br />
+l: right<br />
 
 #### Image
 
-f: fits window size
-
-o: original size
+f: fits window size<br />
+o: original size<br />
 
 #### Text
 
-f: change font (at random)
+f: change font (at random)<br />
 
 ## Contributing
 
