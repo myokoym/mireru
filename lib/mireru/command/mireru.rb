@@ -46,8 +46,7 @@ module Mireru
       def files_from_arguments(arguments)
         if arguments.empty?
           files = Dir.glob("*")
-        elsif /\A(-d|--deep)\z/ =~ arguments[0]
-          arguments.shift
+        elsif purge_option(arguments, /\A(-d|--deep)\z/)
           if arguments.empty?
             files = Dir.glob("**/*")
           else
@@ -71,6 +70,16 @@ module Mireru
           files = arguments
         end
         files
+      end
+
+      def purge_option(arguments, regexp, has_value=false)
+        index = arguments.find_index {|arg| regexp =~ arg }
+        return false unless index
+        if has_value
+          [arguments.delete_at(index), arguments.delete_at(index)]
+        else
+          arguments.delete_at(index)
+        end
       end
 
       def write_help_message
