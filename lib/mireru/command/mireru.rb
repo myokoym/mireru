@@ -28,6 +28,8 @@ module Mireru
           exit(true)
         end
 
+        font = purge_option(arguments, /\A(-f|--font)\z/, true)
+
         files = files_from_arguments(arguments)
         file_container = ::Mireru::Container.new(files)
 
@@ -37,6 +39,7 @@ module Mireru
         end
 
         window = ::Mireru::Window.new
+        window.font = font if font
         window.add_container(file_container)
 
         Gtk.main
@@ -90,6 +93,8 @@ module Mireru
 Options:
   -d, --deep
       deep search as "**/*"
+  -f, --font
+      set font such as "Monospace 16"
 Keybind:
   n: next
   p: prev
@@ -125,6 +130,8 @@ Warning: file not found.
 Options:
   -d, --deep
       deep search as "**/*"
+  -f, --font
+      set font such as "Monospace 16"
         EOM
         @logger.error(message)
       end

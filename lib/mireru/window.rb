@@ -3,6 +3,7 @@ require "mireru/widget"
 
 module Mireru
   class Window < Gtk::Window
+    attr_accessor :font
     def initialize
       super
       @scroll = Gtk::ScrolledWindow.new
@@ -73,6 +74,7 @@ module Mireru
       @scroll.vadjustment.value = 0
       @scroll.each {|child| @scroll.remove(child) }
       @widget = Mireru::Widget.create(file, *self.size)
+      @widget.override_font(Pango::FontDescription.new(@font)) if @font
       if @widget.is_a?(Gtk::Scrollable)
         @scroll.add(@widget)
       else
