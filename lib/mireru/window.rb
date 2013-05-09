@@ -36,6 +36,10 @@ module Mireru
           if Mireru::Widget.image?(@file)
             pixbuf = Gdk::Pixbuf.new(@file, *self.size)
             @widget.pixbuf = pixbuf
+          elsif @widget.is_a?(Gtk::TextView)
+            font = @widget.pango_context.families.sample.name
+            @widget.override_font(Pango::FontDescription.new(font))
+            self.title = "#{File.basename(@file)} (#{font})"
           end
         when Gdk::Keyval::GDK_KEY_o
           if Mireru::Widget.image?(@file)
