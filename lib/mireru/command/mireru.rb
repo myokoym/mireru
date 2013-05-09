@@ -76,7 +76,8 @@ module Mireru
         index = arguments.find_index {|arg| regexp =~ arg }
         return false unless index
         if has_value
-          [arguments.delete_at(index), arguments.delete_at(index)]
+          arguments.delete_at(index) # flag
+          arguments.delete_at(index) # value
         else
           arguments.delete_at(index)
         end
