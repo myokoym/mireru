@@ -47,6 +47,26 @@ module Mireru
             pixbuf = Gdk::Pixbuf.new(@file)
             @widget.pixbuf = pixbuf
           end
+        when Gdk::Keyval::GDK_KEY_plus
+          if Mireru::Widget.image?(@file)
+            width  = @widget.pixbuf.width
+            height = @widget.pixbuf.height
+            scale = 1.1
+            pixbuf = Gdk::Pixbuf.new(@file,
+                                     width * scale,
+                                     height * scale)
+            @widget.pixbuf = pixbuf
+          end
+        when Gdk::Keyval::GDK_KEY_minus
+          if Mireru::Widget.image?(@file)
+            width  = @widget.pixbuf.width
+            height = @widget.pixbuf.height
+            scale = 0.9
+            pixbuf = Gdk::Pixbuf.new(@file,
+                                     width * scale,
+                                     height * scale)
+            @widget.pixbuf = pixbuf
+          end
         when Gdk::Keyval::GDK_KEY_h
           @scroll.hadjustment.value -= 17
         when Gdk::Keyval::GDK_KEY_j
