@@ -41,6 +41,11 @@ j: down<br />
 k: up<br />
 l: right<br />
 
+#### Scale
+
++: larger<br />
+-: smaller<br />
+
 #### Image
 
 f: fits window size<br />
