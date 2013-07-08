@@ -108,6 +108,10 @@ Keybind:
     k: up
     l: right
 
+  scale:
+    +: larger
+    -: smaller
+
   image:
     f: fits window size
     o: original size
