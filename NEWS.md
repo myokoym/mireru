@@ -1,6 +1,6 @@
 # NEWS
 
-## mireru 0.1.2: 2013-05-09
+## 0.1.2: 2013-05-09
 
 Improve Font handling.
 
