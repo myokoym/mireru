@@ -56,6 +56,11 @@ module Mireru
                                      width * scale,
                                      height * scale)
             @widget.pixbuf = pixbuf
+          elsif @widget.is_a?(Gtk::TextView)
+            font = @widget.pango_context.font_description.to_s
+            font_size = font.scan(/\d+\z/).first.to_i
+            font = font.sub(/\d+\z/, (font_size + 1).to_s)
+            @widget.override_font(Pango::FontDescription.new(font))
           end
         when Gdk::Keyval::GDK_KEY_minus
           if Mireru::Widget.image?(@file)
@@ -66,6 +71,11 @@ module Mireru
                                      width * scale,
                                      height * scale)
             @widget.pixbuf = pixbuf
+          elsif @widget.is_a?(Gtk::TextView)
+            font = @widget.pango_context.font_description.to_s
+            font_size = font.scan(/\d+\z/).first.to_i
+            font = font.sub(/\d+\z/, (font_size - 1).to_s)
+            @widget.override_font(Pango::FontDescription.new(font))
           end
         when Gdk::Keyval::GDK_KEY_h
           @scroll.hadjustment.value -= 17
