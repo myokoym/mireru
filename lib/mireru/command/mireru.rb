@@ -49,7 +49,7 @@ module Mireru
       def files_from_arguments(arguments)
         if arguments.empty?
           files = Dir.glob("*")
-        elsif purge_option(arguments, /\A(-d|--deep)\z/)
+        elsif purge_option(arguments, /\A(-R|--recursive|-d|--deep)\z/)
           if arguments.empty?
             files = Dir.glob("**/*")
           else
@@ -91,8 +91,8 @@ module Mireru
 #{USAGE}
   If no argument, then search current directory.
 Options:
-  -d, --deep
-      deep search as "**/*"
+  -R, --recursive
+      recursive search as "**/*"
   -f, --font NAME
       set font such as "Monospace 16"
 Keybind:
@@ -135,8 +135,8 @@ Warning: file not found.
 #{USAGE}
   If no argument, then search current directory.
 Options:
-  -d, --deep
-      deep search as "**/*"
+  -R, --recursive
+      recursive search as "**/*"
   -f, --font NAME
       set font such as "Monospace 16"
         EOM

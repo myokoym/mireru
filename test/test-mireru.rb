@@ -49,7 +49,7 @@ class MireruTest < Test::Unit::TestCase
   end
 
   def test_files_from_arguments_deep_option_only
-    arguments = %w(--deep)
+    arguments = %w(-R)
     expected = %w(dir1 file1 dir2 dir1/file1 dir1/file2 dir2/file1)
     mock(Dir).glob("**/*") { expected }
     files = @mireru.__send__(:files_from_arguments, arguments)
@@ -57,7 +57,7 @@ class MireruTest < Test::Unit::TestCase
   end
 
   def test_files_from_arguments_deep_option_and_dir
-    arguments = %w(--deep dir1 file1 dir2)
+    arguments = %w(-R dir1 file1 dir2)
     expected_dir1 = %w(dir1/file1 dir1/file2)
     expected_dir2 = %w(dir2/file1)
     expected = [expected_dir1, "file1", expected_dir2].flatten
@@ -90,8 +90,8 @@ class MireruTest < Test::Unit::TestCase
   end
 
   def test_purge_option
-    arguments = %w(--deep -f ubuntu dir1 file1 dir2)
-    flag = @mireru.__send__(:purge_option, arguments, /\A(-d|--deep)\z/)
+    arguments = %w(-R -f ubuntu dir1 file1 dir2)
+    flag = @mireru.__send__(:purge_option, arguments, /\A(-R|--recursive)\z/)
     assert_not_nil(flag)
     assert_equal(%w(-f ubuntu dir1 file1 dir2), arguments)
     value = @mireru.__send__(:purge_option, arguments, /\A-f\z/, true)
