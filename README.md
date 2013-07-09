@@ -18,8 +18,8 @@ If no argument, then search current directory.
 
 ### Options
 
--d, --deep<br />
-    deep search as "**/*"
+-R, --recursive<br />
+    recursive search as "**/*"
 
 -f, --font NAME<br />
     set font such as "Monospace 16"
