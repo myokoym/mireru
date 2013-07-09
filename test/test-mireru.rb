@@ -48,7 +48,7 @@ class MireruTest < Test::Unit::TestCase
     assert_equal(files, expected)
   end
 
-  def test_files_from_arguments_deep_option_only
+  def test_files_from_arguments_recursive_option_only
     arguments = %w(-R)
     expected = %w(dir1 file1 dir2 dir1/file1 dir1/file2 dir2/file1)
     mock(Dir).glob("**/*") { expected }
@@ -56,7 +56,7 @@ class MireruTest < Test::Unit::TestCase
     assert_equal(files, expected)
   end
 
-  def test_files_from_arguments_deep_option_and_dir
+  def test_files_from_arguments_recursive_option_and_dir
     arguments = %w(-R dir1 file1 dir2)
     expected_dir1 = %w(dir1/file1 dir1/file2)
     expected_dir2 = %w(dir2/file1)
