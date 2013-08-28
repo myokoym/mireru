@@ -1,4 +1,4 @@
-require 'gtk3'
+require "gtk3"
 require "mireru/logger"
 require "mireru/window"
 require "mireru/container"

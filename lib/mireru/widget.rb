@@ -1,5 +1,5 @@
-require 'gtk3'
-require 'gtksourceview3'
+require "gtk3"
+require "gtksourceview3"
 
 module Mireru
   class Error < StandardError
@@ -24,7 +24,7 @@ module Mireru
           end
           view = GtkSource::View.new(buffer)
           view.show_line_numbers = true
-          lang = GtkSource::LanguageManager.new.get_language('ruby')
+          lang = GtkSource::LanguageManager.new.get_language("ruby")
           view.buffer.language = lang
           view.buffer.highlight_syntax = true
           view.buffer.highlight_matching_brackets = true
