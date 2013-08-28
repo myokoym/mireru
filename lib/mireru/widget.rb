@@ -7,10 +7,13 @@ module Mireru
 
   class Widget
     class << self
-      def create(file, width=nil, height=nil)
+      def create(file, width=10000, height=10000)
         if image?(file)
           image = Gtk::Image.new
+          pixbuf = Gdk::Pixbuf.new(file)
+          if pixbuf.width > width || pixbuf.height > height
           pixbuf = Gdk::Pixbuf.new(file, width, height)
+          end
           image.pixbuf = pixbuf
           widget = image
         else
