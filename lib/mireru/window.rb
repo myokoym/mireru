@@ -1,5 +1,6 @@
 require "gtk3"
 require "mireru/widget"
+require "mireru/thumbnail"
 
 module Mireru
   class Window < Gtk::Window
@@ -47,6 +48,9 @@ module Mireru
             pixbuf = Gdk::Pixbuf.new(@file)
             @widget.pixbuf = pixbuf
           end
+        when Gdk::Keyval::GDK_KEY_T
+          files = @container.instance_variable_get(:@files)
+          self.add_from_file(files)
         when Gdk::Keyval::GDK_KEY_plus
           if Mireru::Widget.image?(@file)
             width  = @widget.pixbuf.width
@@ -103,14 +107,19 @@ module Mireru
       @scroll.hadjustment.value = 0
       @scroll.vadjustment.value = 0
       @scroll.each {|child| @scroll.remove(child) }
+      if file.is_a?(Enumerable)
+        @widget = Mireru::Thumbnail.create(file, *self.size)
+        self.title = "Thumbnails: #{file.size} / #{file.size}"
+      else
       @widget = Mireru::Widget.create(file, *self.size)
+      self.title = File.basename(file)
+      end
       @widget.override_font(Pango::FontDescription.new(@font)) if @font
       if @widget.is_a?(Gtk::Scrollable)
         @scroll.add(@widget)
       else
         @scroll.add_with_viewport(@widget)
       end
-      self.title = File.basename(file)
       self.show_all
     end
   end
