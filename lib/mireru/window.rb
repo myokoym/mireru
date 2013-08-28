@@ -111,8 +111,8 @@ module Mireru
         @widget = Mireru::Thumbnail.create(file, *self.size)
         self.title = "Thumbnails: #{file.size} / #{file.size}"
       else
-      @widget = Mireru::Widget.create(file, *self.size)
-      self.title = File.basename(file)
+        @widget = Mireru::Widget.create(file, *self.size)
+        self.title = File.basename(file)
       end
       @widget.override_font(Pango::FontDescription.new(@font)) if @font
       if @widget.is_a?(Gtk::Scrollable)
