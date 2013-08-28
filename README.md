@@ -46,6 +46,10 @@ l: right<br />
 +: larger<br />
 -: smaller<br />
 
+#### Special
+
+T: thumbnail
+
 #### Image
 
 f: fits window size<br />
