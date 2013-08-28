@@ -1,5 +1,13 @@
 # NEWS
 
+## 0.1.5: 2013-08-29
+
+### Changes
+
+  * Improvements
+    * Use original-size as default if it is smaller than window-size.
+    * Supported thumbnail view.
+
 ## 0.1.4: 2013-07-09
 
 ### Changes
