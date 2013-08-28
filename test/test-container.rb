@@ -5,6 +5,15 @@ class ContainerTest < Test::Unit::TestCase
     @container = Mireru::Container.new
   end
 
+  def test_size
+    assert_equal(0, @container.size)
+    files = @container.instance_variable_get(:@files)
+    files << __FILE__
+    assert_equal(1, @container.size)
+    files << __FILE__
+    assert_equal(2, @container.size)
+  end
+
   def test_no_argument
     valid = @container.__send__(:file?, nil)
     assert_false(valid)

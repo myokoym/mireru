@@ -8,6 +8,10 @@ module Mireru
       @files.empty?
     end
 
+    def size
+      @files.size
+    end
+
     def pop(complement_file=nil)
       @files.unshift(complement_file) if complement_file
       @files.pop
