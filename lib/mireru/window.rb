@@ -106,7 +106,7 @@ module Mireru
     def add_from_file(file)
       @scroll.hadjustment.value = 0
       @scroll.vadjustment.value = 0
-      @scroll.each {|child| @scroll.remove(child) }
+      @scroll.each {|child| child.destroy }
       if file.is_a?(Enumerable)
         @widget = Mireru::Thumbnail.create(file, *self.size)
         self.title = "Thumbnails: #{file.size} / #{file.size}"

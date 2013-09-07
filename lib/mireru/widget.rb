@@ -1,5 +1,6 @@
 require "gtk3"
 require "gtksourceview3"
+require "mireru/video"
 
 module Mireru
   class Error < StandardError
@@ -16,6 +17,8 @@ module Mireru
           end
           image.pixbuf = pixbuf
           widget = image
+        elsif video?(file)
+          widget = Mireru::Video.create(file)
         else
           begin
             buffer = buffer_from_file(file)
@@ -37,6 +40,10 @@ module Mireru
 
       def image?(file)
         /\.(png|jpe?g|gif|ico|ani|bmp|pnm|ras|tga|tiff|xbm|xpm)\z/i =~ file
+      end
+
+      def video?(file)
+        /\.(ogm|mp4|flv|mpe?g2?|ts|mov|avi|divx|mkv|wmv|asf|wmx)\z/i =~ file
       end
 
       private
