@@ -4,6 +4,11 @@ A file viewer with a focus on flexibility by Ruby/GTK3.
 
 A friend of a keyboard.
 
+## Requirements
+
+* Ruby/GTK3, Ruby/GtkSourceView3, Ruby/ClutterGTK, Ruby/ClutterGStreamer in
+  [Ruby-GNOME2](http://ruby-gnome2.sourceforge.jp/)
+
 ## Installation
 
     $ gem install mireru
