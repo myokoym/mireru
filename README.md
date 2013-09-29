@@ -64,6 +64,10 @@ o: original size<br />
 
 f: change font (at random)<br />
 
+#### Video
+
+space: play/pause<br />
+
 ## Contributing
 
 1. Fork it

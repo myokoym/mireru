@@ -118,6 +118,9 @@ Keybind:
 
   text:
     f: change font (at random)
+
+  video:
+    space: play/pause
         EOM
         @logger.info(message)
       end
