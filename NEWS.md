@@ -1,5 +1,14 @@
 # NEWS
 
+## 0.1.6: 2013-09-29
+
+Video support release!
+
+### Changes
+
+  * Improvements
+    * Supported video file.
+
 ## 0.1.5: 2013-08-29
 
 ### Changes
