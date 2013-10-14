@@ -1,0 +1,69 @@
+<h2><%= t(:Usage) %></h2>
+
+<h3><%= t(:Launch) %></h3>
+
+<pre>    $ mireru [OPTION]... [FILE]...</pre>
+<%= t(:if_no_argument) %>
+
+<h3><%= t(:Options) %></h3>
+
+<pre>-R, --recursive
+<%= t(:recursive_search) %></pre>
+<pre>-f, --font NAME
+<%= t(:set_font) %></pre>
+
+<h3><%= t(:Keybind) %></h3>
+
+<p>
+  <%= t(:Common) %>
+  <ul>
+    <li>n: <%= t(:next) %></li>
+    <li>p: <%= t(:prev) %></li>
+    <li>r: <%= t(:reload) %></li>
+    <li>e: <%= t(:expand_path) %></li>
+    <li>q: <%= t(:quit) %></li>
+  </ul>
+</p>
+
+<p>
+  <%= t(:Scroll) %>
+  <ul>
+    <li>h: <%= t(:left) %></li>
+    <li>j: <%= t(:down) %></li>
+    <li>k: <%= t(:up) %></li>
+    <li>l: <%= t(:right) %></li>
+  </ul>
+</p>
+
+<p>
+  <%= t(:Scale) %>
+  <ul>
+    <li>+: <%= t(:larger) %></li>
+    <li>-: <%= t(:smaller) %></li>
+  </ul>
+</p>
+
+<p><%= t(:Special) %>
+  <ul>
+    <li>T: <%= t(:thumbnail) %></li>
+  </ul>
+</p>
+
+<p><%= t(:Image) %>
+  <ul>
+    <li>f: <%= t(:fits_window) %></li>
+    <li>o: <%= t(:original_size) %></li>
+  </ul>
+</p>
+
+<p><%= t(:Text) %>
+  <ul>
+    <li>f: <%= t(:change_font) %></li>
+  </ul>
+</p>
+
+<p><%= t(:Video) %>
+  <ul>
+    <li>space: <%= t(:play_pause) %></li>
+  </ul>
+</p>
