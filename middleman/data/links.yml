@@ -1,0 +1,5 @@
+---
+- uri: https://github.com/myokoym/mireru
+  name: GitHub
+- uri: https://rubygems.org/gems/mireru
+  name: RubyGems

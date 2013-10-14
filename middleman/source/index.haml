@@ -1,0 +1,15 @@
+---
+title: mireru
+---
+
+%h1 mireru
+
+%ul
+  - data.links.each_with_index do |website, i|
+    - id = "link-#{i}"
+    %li
+      %a{href: website.uri, id: id}
+        %label(for="#{id}")= website.name
+
+%footer
+  %p (c) 2013 Masafumi Yokoyama
