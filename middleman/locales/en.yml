@@ -4,7 +4,7 @@ en:
   Launch: "Launch"
   if_no_argument: "If no argument, then search current directory."
   Options: "Options"
-  recursive_search: "recursive search as “*/”"
+  recursive_search: "recursive search as “**/*”"
   set_font: "set font such as “Monospace 16”"
   Keybind: "Keybind"
   Common: "Common"

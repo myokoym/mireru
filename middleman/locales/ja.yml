@@ -4,7 +4,7 @@ ja:
   Launch: "起動"
   if_no_argument: "引数が指定されなかった場合、カレントディレクトリを検索します。"
   Options: "オプション"
-  recursive_search: "“*/”のように、再帰的に検索します。"
+  recursive_search: "“**/*”のように、再帰的に検索します。"
   set_font: "例えば、“Monospace 16”のように指定します。"
   Keybind: "キーバインド"
   Common: "共通"
