@@ -5,11 +5,11 @@ title: mireru
 %h1 mireru
 
 %ul
-  - data.links.each_with_index do |website, i|
+  - data.links.each_with_index do |link, i|
     - id = "link-#{i}"
     %li
-      %a{href: website.uri, id: id}
-        %label(for="#{id}")= website.name
+      %a{href: link.uri, id: id}
+        %label(for="#{id}")= link.name
 
 %footer
   %p (c) 2013 Masafumi Yokoyama
