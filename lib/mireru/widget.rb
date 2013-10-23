@@ -1,6 +1,7 @@
 require "gtk3"
 require "gtksourceview3"
 require "mireru/video"
+require "mireru/binary"
 
 module Mireru
   class Error < StandardError
@@ -23,7 +24,7 @@ module Mireru
           begin
             buffer = buffer_from_file(file)
           rescue Mireru::Error
-            return sorry
+            return Mireru::Binary.create(file)
           end
           view = GtkSource::View.new(buffer)
           view.show_line_numbers = true
@@ -53,6 +54,7 @@ module Mireru
       end
 
       def buffer_from_text(text)
+        # TODO: at times the error don't occurred by tar file
         raise Mireru::Error unless text.valid_encoding?
         text.encode!("utf-8") unless text.encoding == "utf-8"
         buffer = GtkSource::Buffer.new
@@ -60,6 +62,7 @@ module Mireru
         buffer
       end
 
+      # unused
       def sorry
         image = Gtk::Image.new
         base_dir = File.join(File.dirname(__FILE__), "..", "..")
