@@ -8,6 +8,7 @@ A friend of a keyboard.
 
 * Ruby/GTK3, Ruby/GtkSourceView3, Ruby/ClutterGTK, Ruby/ClutterGStreamer in
   [Ruby-GNOME2](http://ruby-gnome2.sourceforge.jp/)
+* [hexdump](https://github.com/postmodern/hexdump)
 
 ## Installation
 
