@@ -1,5 +1,14 @@
 # NEWS
 
+## 0.1.7: 2013-10-29
+
+Binary (hexdump) support release!
+
+### Changes
+
+  * Improvements
+    * Supported binary file (hexdump).
+
 ## 0.1.6: 2013-09-29
 
 Video support release!
