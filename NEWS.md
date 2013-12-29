@@ -1,5 +1,14 @@
 # NEWS
 
+## 0.1.8: 2013-12-29
+
+Ruby 2.1.0 supported release!
+
+### Changes
+
+  * Improvements
+    * Fixed Ruby-GNOME2 packages version to 2.1.0.
+
 ## 0.1.7: 2013-10-29
 
 Binary (hexdump) support release!
