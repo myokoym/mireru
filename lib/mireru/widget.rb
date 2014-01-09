@@ -1,5 +1,6 @@
 require "gtk3"
 require "gtksourceview3"
+require "mireru/widget/image"
 require "mireru/widget/video"
 require "mireru/widget/binary"
 
@@ -11,13 +12,7 @@ module Mireru
     class << self
       def create(file, width=10000, height=10000)
         if image?(file)
-          image = Gtk::Image.new
-          pixbuf = Gdk::Pixbuf.new(file)
-          if pixbuf.width > width || pixbuf.height > height
-            pixbuf = Gdk::Pixbuf.new(file, width, height)
-          end
-          image.pixbuf = pixbuf
-          widget = image
+          widget = Mireru::Image.create(file)
         elsif video?(file)
           widget = Mireru::Video.create(file)
         else
