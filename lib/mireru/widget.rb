@@ -5,8 +5,8 @@ require "mireru/widget/video"
 require "mireru/widget/binary"
 
 module Mireru
-  class Widget
-    class << self
+  module Widget
+    module_function
       def create(file, width=10000, height=10000)
         if image?(file)
           widget = Mireru::Image.create(file)
@@ -31,6 +31,5 @@ module Mireru
       def text?(file)
         File.read(file).valid_encoding?
       end
-    end
   end
 end

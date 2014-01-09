@@ -1,4 +1,5 @@
 module Mireru
+  module Widget
   class Text
     class << self
       def create(file)
@@ -26,5 +27,6 @@ module Mireru
         buffer
       end
     end
+  end
   end
 end

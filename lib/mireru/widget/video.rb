@@ -3,6 +3,7 @@ require "clutter-gst"
 require "mireru/widget"
 
 module Mireru
+  module Widget
   class Video
     class << self
       def create(file)
@@ -43,5 +44,6 @@ module Mireru
         end
       end
     end
+  end
   end
 end

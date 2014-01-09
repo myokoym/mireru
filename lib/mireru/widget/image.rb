@@ -1,4 +1,5 @@
 module Mireru
+  module Widget
   class Image
     class << self
       def create(file)
@@ -11,5 +12,6 @@ module Mireru
         widget = image
       end
     end
+  end
   end
 end

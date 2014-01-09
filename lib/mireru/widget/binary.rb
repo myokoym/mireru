@@ -2,6 +2,7 @@ require "stringio"
 require "hexdump"
 
 module Mireru
+  module Widget
   class Binary
     class << self
       def create(file)
@@ -26,5 +27,6 @@ module Mireru
         view
       end
     end
+  end
   end
 end

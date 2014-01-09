@@ -2,6 +2,7 @@ require "gtk3"
 require "mireru/widget"
 
 module Mireru
+  module Widget
   class Thumbnail
     class << self
       def create(files, width, height)
@@ -40,5 +41,6 @@ module Mireru
         label
       end
     end
+  end
   end
 end
