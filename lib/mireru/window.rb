@@ -1,6 +1,6 @@
 require "gtk3"
 require "mireru/widget"
-require "mireru/thumbnail"
+require "mireru/widget/thumbnail"
 
 module Mireru
   class Window < Gtk::Window

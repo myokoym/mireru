@@ -1,7 +1,7 @@
 require "gtk3"
 require "gtksourceview3"
-require "mireru/video"
-require "mireru/binary"
+require "mireru/widget/video"
+require "mireru/widget/binary"
 
 module Mireru
   class Error < StandardError
