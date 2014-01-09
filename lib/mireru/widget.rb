@@ -10,7 +10,7 @@ module Mireru
     module_function
     def create(file, width=10000, height=10000)
       if image?(file)
-        widget = Mireru::Widget::Image.create(file)
+        widget = Mireru::Widget::Image.create(file, width, height)
       elsif video?(file)
         widget = Mireru::Widget::Video.create(file)
       elsif text?(file)
