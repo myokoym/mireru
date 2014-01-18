@@ -20,7 +20,9 @@
 set -e
 set -u
 
-sudo apt-get install -qq -y \
+sudo \
+    add-apt-repository ppa:gstreamer-developers \
+    apt-get install -qq -y \
     libgirepository1.0-dev \
     libgstreamer1.0-dev \
     gir1.2-clutter-1.0 \
