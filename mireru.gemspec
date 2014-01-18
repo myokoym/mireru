@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Flexible File Viewer Keyboard Friend}
   spec.description   = %q{A file viewer with a focus on flexibility by Ruby/GTK3. A friend of a keyboard.}
   spec.homepage      = "https://github.com/myokoym/mireru"
-  spec.license       = "MIT"
+  spec.license       = "LGPLv2.1 or later"
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency("gtksourceview3", "= 2.1.0")
   spec.add_runtime_dependency("clutter-gtk", "= 2.1.0")
   spec.add_runtime_dependency("clutter-gstreamer", "= 2.1.0")
+  spec.add_runtime_dependency("poppler", "= 2.1.0")
   spec.add_runtime_dependency("hexdump")
 
   spec.add_development_dependency("test-unit")
