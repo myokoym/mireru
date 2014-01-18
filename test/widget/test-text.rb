@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require "mireru/widget/text"
 
 class TextTest < Test::Unit::TestCase
