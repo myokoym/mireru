@@ -1,4 +1,4 @@
-# Mireru - Flexible File Viewer Keyboard Friend
+# Mireru [![Build Status](https://secure.travis-ci.org/myokoym/mireru.png?branch=master)](http://travis-ci.org/myokoym/mireru)
 
 A file viewer with a focus on flexibility by Ruby/GTK3.
 
