@@ -2,6 +2,7 @@ require "gtk3"
 require "gtksourceview3"
 require "mireru/widget/image"
 require "mireru/widget/video"
+require "mireru/widget/pdf"
 require "mireru/widget/text"
 require "mireru/widget/binary"
 
@@ -13,6 +14,8 @@ module Mireru
         widget = Mireru::Widget::Image.create(file, width, height)
       elsif video?(file)
         widget = Mireru::Widget::Video.create(file)
+      elsif pdf?(file)
+        widget = Mireru::Widget::PDF.create(file)
       elsif text?(file)
         widget = Mireru::Widget::Text.create(file)
       else
@@ -27,6 +30,10 @@ module Mireru
 
     def video?(file)
       /\.(ogm|mp4|flv|mpe?g2?|ts|mov|avi|divx|mkv|wmv|asf|wmx)\z/i =~ file
+    end
+
+    def pdf?(file)
+      /\.pdf\z/i =~ file
     end
 
     def text?(file)
