@@ -74,9 +74,9 @@ space: play/pause<br />
 
 Copyright (c) 2013-2014 Masafumi Yokoyama <myokoym@gmail.com>
 
-LGPLv2.1 or later.
+GPLv2 or later.
 
-See 'license/lgpl-2.1.txt' or 'http://www.gnu.org/licenses/lgpl-2.1' for details.
+See 'license/gpl-2.0.txt' or 'http://www.gnu.org/licenses/gpl-2.0' for details.
 
 ## Contributing
 

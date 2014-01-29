@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Flexible File Viewer Keyboard Friend}
   spec.description   = %q{A file viewer with a focus on flexibility by Ruby/GTK3. A friend of a keyboard.}
   spec.homepage      = "https://github.com/myokoym/mireru"
-  spec.license       = "LGPLv2.1 or later"
+  spec.license       = "GPLv2 or later"
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
