@@ -1,5 +1,17 @@
 # NEWS
 
+## 0.1.9: 2014-01-29
+
+PDF support release!
+
+### Changes
+
+  * Improvements
+    * Supported to PDF file.
+
+  * Fixes
+    * Use LGPLv2.1 or later to license.
+
 ## 0.1.8: 2013-12-29
 
 Ruby 2.1.0 supported release!
