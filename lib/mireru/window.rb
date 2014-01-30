@@ -108,7 +108,7 @@ module Mireru
       @scroll.vadjustment.value = 0
       @scroll.each {|child| child.destroy }
       if file.is_a?(Enumerable)
-        @widget = Mireru::Thumbnail.create(file, *self.size)
+        @widget = Mireru::Widget::Thumbnail.create(file, *self.size)
         self.title = "Thumbnails: #{file.size} / #{file.size}"
       else
         @widget = Mireru::Widget.create(file, *self.size)
