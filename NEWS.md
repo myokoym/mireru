@@ -1,5 +1,16 @@
 # NEWS
 
+## 0.2.0: 2014-03-10
+
+### Changes
+
+  * Improvements
+    * Updated dependencies.
+    * Use GPLv2.1 or later to license.
+
+  * Fixes
+    * Fixed a bug that thumbnail command fails.
+
 ## 0.1.9: 2014-01-29
 
 PDF support release!
