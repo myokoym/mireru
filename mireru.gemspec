@@ -18,16 +18,16 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency("gtk3", "= 2.1.0")
-  spec.add_runtime_dependency("gtksourceview3", "= 2.1.0")
-  spec.add_runtime_dependency("clutter-gtk", "= 2.1.0")
-  spec.add_runtime_dependency("clutter-gstreamer", "= 2.1.0")
-  spec.add_runtime_dependency("poppler", "= 2.1.0")
+  spec.add_runtime_dependency("gtk3", "= 2.2.0")
+  spec.add_runtime_dependency("gtksourceview3", "= 2.2.0")
+  spec.add_runtime_dependency("clutter-gtk", "= 2.2.0")
+  spec.add_runtime_dependency("clutter-gstreamer", "= 2.2.0")
+  spec.add_runtime_dependency("poppler", "= 2.2.0")
   spec.add_runtime_dependency("hexdump")
 
   spec.add_development_dependency("test-unit")
   spec.add_development_dependency("test-unit-notify")
   spec.add_development_dependency("test-unit-rr")
-  spec.add_development_dependency("bundler", "~> 1.3")
+  spec.add_development_dependency("bundler", "~> 1.5")
   spec.add_development_dependency("rake")
 end
