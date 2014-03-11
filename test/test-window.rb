@@ -12,6 +12,7 @@ class WindowTest < Test::Unit::TestCase
     @window.add_container(container)
   end
 
+  class AddFromFileTest
   def test_add_from_file_of_scrollable
     file = __FILE__
     mock(Mireru::Widget).create(file, *@window.size) do
@@ -33,5 +34,6 @@ class WindowTest < Test::Unit::TestCase
     assert_equal(Gtk::ScrolledWindow, @window.child.class)
     assert_equal(Gtk::Viewport, @window.child.child.class)
     assert_equal(Gtk::Image, @window.child.child.child.class)
+  end
   end
 end
