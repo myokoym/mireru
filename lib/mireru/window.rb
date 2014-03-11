@@ -9,9 +9,9 @@ module Mireru
       super
       @scroll = Gtk::ScrolledWindow.new
       @scroll.set_policy(:automatic, :automatic)
-      self.add(@scroll)
-      self.set_default_size(640, 640)
-      self.signal_connect("destroy") do
+      add(@scroll)
+      set_default_size(640, 640)
+      signal_connect("destroy") do
         Gtk.main_quit
       end
     end
@@ -20,18 +20,18 @@ module Mireru
       @container = container
 
       @file = @container.shift
-      self.add_from_file(@file)
+      add_from_file(@file)
 
-      self.signal_connect("key-press-event") do |widget, event|
+      signal_connect("key-press-event") do |widget, event|
         case event.keyval
         when Gdk::Keyval::GDK_KEY_n
           @file = @container.shift(@file)
-          self.add_from_file(@file)
+          add_from_file(@file)
         when Gdk::Keyval::GDK_KEY_p
           @file = @container.pop(@file)
-          self.add_from_file(@file)
+          add_from_file(@file)
         when Gdk::Keyval::GDK_KEY_r
-          self.add_from_file(@file)
+          add_from_file(@file)
         when Gdk::Keyval::GDK_KEY_e
           self.title = File.expand_path(@file)
         when Gdk::Keyval::GDK_KEY_f
@@ -50,7 +50,7 @@ module Mireru
           end
         when Gdk::Keyval::GDK_KEY_T
           files = @container.instance_variable_get(:@files)
-          self.add_from_file(files)
+          add_from_file(files)
         when Gdk::Keyval::GDK_KEY_plus
           if Mireru::Widget.image?(@file)
             pixbuf = @widget.pixbuf
@@ -92,7 +92,7 @@ module Mireru
         when Gdk::Keyval::GDK_KEY_L
           @scroll.hadjustment.value += 1000000
         when Gdk::Keyval::GDK_KEY_q
-          self.destroy
+          destroy
         end
       end
     end
@@ -113,7 +113,7 @@ module Mireru
       else
         @scroll.add_with_viewport(@widget)
       end
-      self.show_all
+      show_all
     end
   end
 end
