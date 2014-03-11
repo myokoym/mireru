@@ -1,3 +1,5 @@
+require "gtksourceview3"
+
 module Mireru
   module Widget
     class Text
