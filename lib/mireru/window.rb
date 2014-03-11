@@ -22,7 +22,7 @@ module Mireru
       @file = @container.shift
       self.add_from_file(@file)
 
-      self.signal_connect("key_press_event") do |w, e|
+      self.signal_connect("key-press-event") do |w, e|
         case e.keyval
         when Gdk::Keyval::GDK_KEY_n
           @file = @container.shift(@file)
