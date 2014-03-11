@@ -3,6 +3,7 @@ require "mireru/widget/video"
 require "mireru/widget/pdf"
 require "mireru/widget/text"
 require "mireru/widget/binary"
+require "mireru/widget/thumbnail"
 
 module Mireru
   module Widget
@@ -16,6 +17,8 @@ module Mireru
         widget = Mireru::Widget::PDF.create(file)
       elsif text?(file)
         widget = Mireru::Widget::Text.create(file)
+      elsif file.is_a?(Enumerable)
+        widget = Mireru::Widget::Thumbnail.create(file, width, height)
       else
         widget = Mireru::Widget::Binary.create(file)
       end

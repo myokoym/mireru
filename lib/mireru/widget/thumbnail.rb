@@ -1,5 +1,3 @@
-require "mireru/widget"
-
 module Mireru
   module Widget
     class Thumbnail

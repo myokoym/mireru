@@ -107,11 +107,10 @@ module Mireru
       @scroll.hadjustment.value = 0
       @scroll.vadjustment.value = 0
       @scroll.each {|child| child.destroy }
-      if file.is_a?(Enumerable)
-        @widget = Mireru::Widget::Thumbnail.create(file, *self.size)
+      @widget = Mireru::Widget.create(file, *self.size)
+      if @widget.is_a?(Mireru::Widget::Thumbnail)
         self.title = "Thumbnails: #{file.size} / #{file.size}"
       else
-        @widget = Mireru::Widget.create(file, *self.size)
         self.title = File.basename(file)
       end
       @widget.override_font(Pango::FontDescription.new(@font)) if @font
