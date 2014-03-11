@@ -53,13 +53,10 @@ module Mireru
           self.add_from_file(files)
         when Gdk::Keyval::GDK_KEY_plus
           if Mireru::Widget.image?(@file)
-            width  = @widget.pixbuf.width
-            height = @widget.pixbuf.height
+            pixbuf = @widget.pixbuf
             scale = 1.1
-            pixbuf = Gdk::Pixbuf.new(@file,
-                                     width * scale,
-                                     height * scale)
-            @widget.pixbuf = pixbuf
+            @widget.pixbuf = pixbuf.scale(pixbuf.width  * scale,
+                                          pixbuf.height * scale)
           elsif @widget.is_a?(Gtk::TextView)
             font = @widget.pango_context.font_description.to_s
             font_size = font.scan(/\d+\z/).first.to_i
@@ -68,13 +65,10 @@ module Mireru
           end
         when Gdk::Keyval::GDK_KEY_minus
           if Mireru::Widget.image?(@file)
-            width  = @widget.pixbuf.width
-            height = @widget.pixbuf.height
+            pixbuf = @widget.pixbuf
             scale = 0.9
-            pixbuf = Gdk::Pixbuf.new(@file,
-                                     width * scale,
-                                     height * scale)
-            @widget.pixbuf = pixbuf
+            @widget.pixbuf = pixbuf.scale(pixbuf.width  * scale,
+                                          pixbuf.height * scale)
           elsif @widget.is_a?(Gtk::TextView)
             font = @widget.pango_context.font_description.to_s
             font_size = font.scan(/\d+\z/).first.to_i
