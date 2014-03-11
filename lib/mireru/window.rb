@@ -22,8 +22,8 @@ module Mireru
       @file = @container.shift
       self.add_from_file(@file)
 
-      self.signal_connect("key-press-event") do |w, e|
-        case e.keyval
+      self.signal_connect("key-press-event") do |widget, event|
+        case event.keyval
         when Gdk::Keyval::GDK_KEY_n
           @file = @container.shift(@file)
           self.add_from_file(@file)
