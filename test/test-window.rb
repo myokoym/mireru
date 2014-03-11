@@ -13,7 +13,7 @@ class WindowTest < Test::Unit::TestCase
   end
 
   class AddFromFileTest
-    def test_add_from_file_of_scrollable
+    def test_scrollable
       file = __FILE__
       mock(Mireru::Widget).create(file, *@window.size) do
         Gtk::TextView.new
@@ -24,7 +24,7 @@ class WindowTest < Test::Unit::TestCase
       assert_equal(Gtk::TextView, @window.child.child.class)
     end
 
-    def test_add_from_file_of_no_scrollable
+    def test_no_scrollable
       file = "fixtures/nijip.png"
       mock(Mireru::Widget).create(file, *@window.size) do
         Gtk::Image.new
