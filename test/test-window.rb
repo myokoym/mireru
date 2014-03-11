@@ -35,5 +35,11 @@ class WindowTest < Test::Unit::TestCase
       assert_equal(Gtk::Viewport, @window.child.child.class)
       assert_equal(Gtk::Image, @window.child.child.child.class)
     end
+
+    def test_enumable
+      file = [__FILE__]
+      @window.add_from_file(file)
+      assert_equal(Mireru::Widget::Thumbnail, @window.child.child.class)
+    end
   end
 end
