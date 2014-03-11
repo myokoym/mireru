@@ -1,11 +1,3 @@
-# TODO: workaround for Ruby/Poppler 2.1.0 or earlier.
-module Kernel
-  alias :__require__ :require
-  def require(feature)
-    return if feature == "gtk2"
-    __require__(feature)
-  end
-end
 require "poppler"
 
 module Mireru
