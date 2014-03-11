@@ -1,5 +1,3 @@
-require "gtk3"
-require "gtksourceview3"
 require "mireru/widget/image"
 require "mireru/widget/video"
 require "mireru/widget/pdf"

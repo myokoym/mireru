@@ -1,6 +1,5 @@
 require "clutter-gtk"
 require "clutter-gst"
-require "mireru/widget"
 
 module Mireru
   module Widget
