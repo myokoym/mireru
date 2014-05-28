@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
 
 base_dir = File.expand_path(File.join(File.dirname(__FILE__), ".."))
-$LOAD_PATH.unshift(File.join(base_dir, "lib"))
-$LOAD_PATH.unshift(File.join(base_dir, "test"))
+lib_dir  = File.join(base_dir, "lib")
+test_dir = File.join(base_dir, "test")
+$LOAD_PATH.unshift(lib_dir)
+$LOAD_PATH.unshift(test_dir)
 
 require "mireru-test-utils"
 
