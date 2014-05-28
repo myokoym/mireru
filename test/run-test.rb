@@ -10,4 +10,4 @@ require "mireru-test-utils"
 
 require "clutter-test-utils"
 
-exit Test::Unit::AutoRunner.run(true)
+exit Test::Unit::AutoRunner.run(true, test_dir)
