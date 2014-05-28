@@ -12,7 +12,7 @@ class ThumbnailTest < Test::Unit::TestCase
 
   def test_label_from_fil
     widget = Mireru::Widget::Thumbnail.__send__(:label_from_file,
-                                        __FILE__)
+                                                __FILE__)
     assert_equal(Gtk::Label, widget.class)
   end
 end
