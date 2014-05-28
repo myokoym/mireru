@@ -1,5 +1,12 @@
 # NEWS
 
+## 0.2.1: 2014-05-29
+
+### Changes
+
+  * Improvements
+    * Supported SVG file.
+
 ## 0.2.0: 2014-03-10
 
 ### Changes
