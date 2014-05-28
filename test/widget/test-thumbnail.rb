@@ -1,9 +1,12 @@
 require "mireru/widget/thumbnail"
 
 class ThumbnailTest < Test::Unit::TestCase
+  include MireruTestUtils
+
   def test_image_from_file
     widget = Mireru::Widget::Thumbnail.__send__(:image_from_file,
-                                        "test/fixtures/nijip.png")
+                                                File.join(fixtures_dir,
+                                                          "nijip.png"))
     assert_equal(Gtk::Image, widget.class)
   end
 

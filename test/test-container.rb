@@ -1,6 +1,8 @@
 require "mireru/container"
 
 class ContainerTest < Test::Unit::TestCase
+  include MireruTestUtils
+
   def setup
     @container = Mireru::Container.new
   end
@@ -25,25 +27,25 @@ class ContainerTest < Test::Unit::TestCase
   end
 
   def test_no_extention_file_type
-    file = File.join(File.dirname(__FILE__), "fixtures", "no-extention")
+    file = File.join(fixtures_dir, "no-extention")
     valid = @container.__send__(:file?, file)
     assert_true(valid)
   end
 
   def test_png_file
-    file = File.join(File.dirname(__FILE__), "fixtures", "nijip.png")
+    file = File.join(fixtures_dir, "nijip.png")
     valid = @container.__send__(:file?, file)
     assert_true(valid)
   end
 
   def test_txt_file
-    file = File.join(File.dirname(__FILE__), "fixtures", "LICENSE.txt")
+    file = File.join(fixtures_dir, "LICENSE.txt")
     valid = @container.__send__(:file?, file)
     assert_true(valid)
   end
 
   def test_rb_file
-    file = File.join(File.dirname(__FILE__), "fixtures", "nijip.rb")
+    file = File.join(fixtures_dir, "nijip.rb")
     valid = @container.__send__(:file?, file)
     assert_true(valid)
   end

@@ -2,6 +2,8 @@ require "mireru/logger"
 require "stringio"
 
 class LoggerTest < Test::Unit::TestCase
+  include MireruTestUtils
+
   def setup
     @logger = Mireru::Logger.new
   end

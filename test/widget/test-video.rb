@@ -2,6 +2,7 @@ require "mireru/widget/video"
 require "clutter-gtk"
 
 class VideoTest < Test::Unit::TestCase
+  include MireruTestUtils
   include ClutterTestUtils
 
   def test_create

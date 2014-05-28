@@ -1,6 +1,8 @@
 require "mireru/window"
 
 class WindowTest < Test::Unit::TestCase
+  include MireruTestUtils
+
   def setup
     @window = Mireru::Window.new
   end
@@ -25,7 +27,7 @@ class WindowTest < Test::Unit::TestCase
     end
 
     def test_no_scrollable
-      file = "fixtures/nijip.png"
+      file = File.join(fixtures_dir, "nijip.png")
       mock(Mireru::Widget).create(file, *@window.size) do
         Gtk::Image.new
       end

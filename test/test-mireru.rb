@@ -2,6 +2,8 @@ require "mireru/command/mireru"
 require "mireru/container"
 
 class MireruTest < Test::Unit::TestCase
+  include MireruTestUtils
+
   def setup
     @mireru = Mireru::Command::Mireru.new
   end

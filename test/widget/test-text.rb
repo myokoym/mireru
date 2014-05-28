@@ -2,6 +2,8 @@
 require "mireru/widget/text"
 
 class TextTest < Test::Unit::TestCase
+  include MireruTestUtils
+
   def test_buffer_from_file_of_text
     widget = Mireru::Widget::Text.__send__(:buffer_from_file, __FILE__)
     assert_equal(GtkSource::Buffer, widget.class)
