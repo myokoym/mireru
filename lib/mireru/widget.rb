@@ -1,6 +1,7 @@
 require "mireru/widget/image"
 require "mireru/widget/video"
 require "mireru/widget/pdf"
+require "mireru/widget/svg"
 require "mireru/widget/text"
 require "mireru/widget/binary"
 require "mireru/widget/thumbnail"
@@ -15,6 +16,8 @@ module Mireru
         widget = Mireru::Widget::Video.create(file)
       elsif pdf?(file)
         widget = Mireru::Widget::PDF.create(file)
+      elsif svg?(file)
+        widget = Mireru::Widget::SVG.create(file)
       elsif text?(file)
         widget = Mireru::Widget::Text.create(file)
       elsif file.is_a?(Enumerable)
@@ -35,6 +38,10 @@ module Mireru
 
     def pdf?(file)
       /\.pdf\z/i =~ file
+    end
+
+    def svg?(file)
+      /\.svg\z/i =~ file
     end
 
     def text?(file)
