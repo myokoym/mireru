@@ -6,8 +6,8 @@ A friend of a keyboard.
 
 ## Requirements
 
-* Ruby/GTK3, Ruby/GtkSourceView3, Ruby/ClutterGTK, Ruby/ClutterGStreamer
-  , Ruby/Poppler and Ruby/RSVG2 in
+* Ruby/GTK3, Ruby/GtkSourceView3, Ruby/ClutterGTK, Ruby/ClutterGStreamer,
+  Ruby/Poppler and Ruby/RSVG2 in
   [Ruby-GNOME2](http://ruby-gnome2.sourceforge.jp/)
 * [hexdump](https://github.com/postmodern/hexdump)
 
