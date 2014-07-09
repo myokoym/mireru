@@ -1,3 +1,6 @@
+require "gtk3"
+require "mireru/widget"
+
 module Mireru
   module Widget
     class Thumbnail < Gtk::Box

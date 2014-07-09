@@ -1,3 +1,5 @@
+require "gtk3"
+
 module Mireru
   module Widget
     class Image < Gtk::Image

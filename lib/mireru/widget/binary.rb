@@ -1,3 +1,4 @@
+require "gtk3"
 require "stringio"
 require "hexdump"
 

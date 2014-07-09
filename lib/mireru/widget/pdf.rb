@@ -1,3 +1,4 @@
+require "gtk3"
 require "poppler"
 
 module Mireru
