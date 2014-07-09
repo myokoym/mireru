@@ -1,18 +1,20 @@
-require "mireru/widget/thumbnail"
+require "mireru/widget"
 
 class ThumbnailTest < Test::Unit::TestCase
   include MireruTestUtils
 
+  def setup
+    @thumbnail = Mireru::Widget::Thumbnail.new(["nijip.png"], 100, 100)
+  end
+
   def test_image_from_file
-    widget = Mireru::Widget::Thumbnail.__send__(:image_from_file,
-                                                File.join(fixtures_dir,
-                                                          "nijip.png"))
-    assert_equal(Gtk::Image, widget.class)
+    widget = @thumbnail.__send__(:image_from_file,
+                                 File.join(fixtures_dir, "nijip.png"))
+    assert_kind_of(Gtk::Image, widget)
   end
 
   def test_label_from_fil
-    widget = Mireru::Widget::Thumbnail.__send__(:label_from_file,
-                                                __FILE__)
-    assert_equal(Gtk::Label, widget.class)
+    widget = @thumbnail.__send__(:label_from_file, __FILE__)
+    assert_kind_of(Gtk::Label, widget)
   end
 end
