@@ -23,6 +23,7 @@ module Mireru
         video_texture.playing = true
         define_events(stage, video_texture)
         signal_connect("destroy") do
+          next if video_texture.destroyed?
           video_texture.playing = false
         end
       end
