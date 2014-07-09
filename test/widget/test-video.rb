@@ -11,7 +11,7 @@ class VideoTest < Test::Unit::TestCase
     filename = "XXX.ogm"
     widget = Mireru::Widget::Video.create(filename)
     assert_not_nil(widget)
-    assert_equal(ClutterGtk::Embed, widget.class)
+    assert_kind_of(ClutterGtk::Embed, widget)
     widget.destroy
   end
 end
