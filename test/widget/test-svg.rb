@@ -7,7 +7,7 @@ class SVGTest < Test::Unit::TestCase
     file = File.join(File.dirname(__FILE__), "..", "fixtures", "sample.svg")
     widget = Mireru::Widget::SVG.create(file)
     assert_not_nil(widget)
-    assert_equal(Gtk::DrawingArea, widget.class)
+    assert_kind_of(Gtk::DrawingArea, widget)
     widget.destroy
   end
 end
