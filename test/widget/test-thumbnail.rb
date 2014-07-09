@@ -4,7 +4,9 @@ class ThumbnailTest < Test::Unit::TestCase
   include MireruTestUtils
 
   def setup
-    @thumbnail = Mireru::Widget::Thumbnail.new(["nijip.png"], 100, 100)
+    files = []
+    files << File.join(fixtures_dir, "nijip.png")
+    @thumbnail = Mireru::Widget::Thumbnail.new(files, 100, 100)
   end
 
   def test_image_from_file
