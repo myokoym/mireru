@@ -7,7 +7,7 @@ class PDFTest < Test::Unit::TestCase
     file = File.join(fixtures_dir, "sample.pdf")
     widget = Mireru::Widget::PDF.create(file)
     assert_not_nil(widget)
-    assert_equal(Gtk::DrawingArea, widget.class)
+    assert_kind_of(Gtk::DrawingArea, widget)
     widget.destroy
   end
 end

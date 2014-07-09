@@ -2,16 +2,14 @@ require "poppler"
 
 module Mireru
   module Widget
-    class PDF
-      class << self
-        def create(file)
-          drawing_area = Gtk::DrawingArea.new
-
+    class PDF < Gtk::DrawingArea
+      def initialize(file)
+        super()
           document = Poppler::Document.new(file)
           width, height = document.first.size
-          drawing_area.set_size_request(width, height * document.size)
+          set_size_request(width, height * document.size)
 
-          drawing_area.signal_connect("draw") do |widget, event|
+          signal_connect("draw") do |widget, event|
             context = widget.window.create_cairo_context
             document.each_with_index do |page, i|
               context.save do
@@ -22,8 +20,11 @@ module Mireru
             context.show_page
             true
           end
+      end
 
-          drawing_area
+      class << self
+        def create(file)
+          new(file)
         end
       end
     end
