@@ -3,29 +3,28 @@ require "hexdump"
 
 module Mireru
   module Widget
-    class Binary
+    class Binary < Gtk::TextView
       class << self
         def create(file)
-          dump = hexdump(file).string
-          create_text_view(dump)
+          new(file)
         end
+      end
 
-        private
-        def hexdump(file)
-          io = StringIO.new
-          bytes = File.open(file, "rb").read(20 * 1024)
-          Hexdump.dump(bytes, :output => io)
-          io
-        end
+      def initialize(file)
+        text = hexdump(file).string
+        buffer = Gtk::TextBuffer.new
+        buffer.text = text
+        super(buffer)
+        editable = false
+        override_font(Pango::FontDescription.new("Monospace"))
+      end
 
-        def create_text_view(text)
-          buffer = Gtk::TextBuffer.new
-          buffer.text = text
-          view = Gtk::TextView.new(buffer)
-          view.editable = false
-          view.override_font(Pango::FontDescription.new("Monospace"))
-          view
-        end
+      private
+      def hexdump(file)
+        io = StringIO.new
+        bytes = File.open(file, "rb").read(20 * 1024)
+        Hexdump.dump(bytes, :output => io)
+        io
       end
     end
   end

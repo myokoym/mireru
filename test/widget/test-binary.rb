@@ -7,7 +7,7 @@ class BinaryTest < Test::Unit::TestCase
     file = File.join(fixtures_dir, "Gemfile.gz")
     widget = Mireru::Widget::Binary.create(file)
     assert_not_nil(widget)
-    assert_equal(Gtk::TextView, widget.class)
+    assert_kind_of(Gtk::TextView, widget)
     widget.destroy
   end
 end
