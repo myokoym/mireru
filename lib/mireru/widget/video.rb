@@ -4,12 +4,6 @@ require "clutter-gst"
 module Mireru
   module Widget
     class Video < ClutterGtk::Embed
-      class << self
-        def create(file)
-          new(file)
-        end
-      end
-
       def initialize(file)
         super()
         stage.background_color = Clutter::Color.new(:black)

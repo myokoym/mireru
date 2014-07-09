@@ -21,12 +21,6 @@ module Mireru
           true
         end
       end
-
-      class << self
-        def create(file)
-          new(file)
-        end
-      end
     end
   end
 end

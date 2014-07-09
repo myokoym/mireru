@@ -9,12 +9,6 @@ module Mireru
         end
         self.pixbuf = pixbuf
       end
-
-      class << self
-        def create(file, width, height)
-          new(file, width, height)
-        end
-      end
     end
   end
 end

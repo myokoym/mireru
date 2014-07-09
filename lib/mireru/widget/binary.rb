@@ -4,12 +4,6 @@ require "hexdump"
 module Mireru
   module Widget
     class Binary < Gtk::TextView
-      class << self
-        def create(file)
-          new(file)
-        end
-      end
-
       def initialize(file)
         text = hexdump(file).string
         buffer = Gtk::TextBuffer.new

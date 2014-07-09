@@ -3,12 +3,6 @@ require "gtksourceview3"
 module Mireru
   module Widget
     class Text < GtkSource::View
-      class << self
-        def create(file)
-          new(file)
-        end
-      end
-
       def initialize(file)
         buffer = buffer_from_file(file)
         super(buffer)

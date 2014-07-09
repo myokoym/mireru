@@ -1,12 +1,6 @@
 module Mireru
   module Widget
     class Thumbnail < Gtk::Box
-      class << self
-        def create(files, width, height)
-          new(files, width, height)
-        end
-      end
-
       def initialize(files, width, height)
         super(:vertical)
         nums_in_a_row = Math.sqrt(files.size)

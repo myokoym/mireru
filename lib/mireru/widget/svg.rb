@@ -3,12 +3,6 @@ require "rsvg2"
 module Mireru
   module Widget
     class SVG < Gtk::DrawingArea
-      class << self
-        def create(file)
-          new(file)
-        end
-      end
-
       def initialize(file)
         super()
         handle = RSVG::Handle.new_from_file(file)
