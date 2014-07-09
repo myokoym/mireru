@@ -10,7 +10,9 @@ module Mireru
   module Widget
     module_function
     def create(file, width=10000, height=10000)
-      if image?(file)
+      if file.is_a?(Enumerable)
+        widget = Mireru::Widget::Thumbnail.create(file, width, height)
+      elsif image?(file)
         widget = Mireru::Widget::Image.create(file, width, height)
       elsif video?(file)
         widget = Mireru::Widget::Video.create(file)
@@ -20,8 +22,6 @@ module Mireru
         widget = Mireru::Widget::SVG.create(file)
       elsif text?(file)
         widget = Mireru::Widget::Text.create(file)
-      elsif file.is_a?(Enumerable)
-        widget = Mireru::Widget::Thumbnail.create(file, width, height)
       else
         widget = Mireru::Widget::Binary.create(file)
       end
