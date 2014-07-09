@@ -1,4 +1,5 @@
 require "mireru/logger"
+require "mireru/command/mireru"
 require "stringio"
 
 class LoggerTest < Test::Unit::TestCase
