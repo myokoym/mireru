@@ -1,4 +1,5 @@
 require "gtk3"
+require "pathname"
 
 module Mireru
   class Navigator < Gtk::ScrolledWindow
@@ -62,11 +63,10 @@ module Mireru
       load_files(model, base_dir)
 
       column = Gtk::TreeViewColumn.new
-      column.title = base_dir
+      column.title = File.dirname(base_dir)
       tree_view.append_column(column)
 
       renderer = Gtk::CellRendererPixbuf.new
-      renderer.width = 0
       column.pack_start(renderer, :expand => false)
       column.add_attribute(renderer, :pixbuf, ICON_COLUMN)
 
@@ -94,48 +94,74 @@ module Mireru
       tree_view
     end
 
-    def load_files(model, dir=nil, parent=nil)
-      if @files.all? {|file| File.directory?(file) }
-        @files.each do |dir|
-          load_files(model, dir, parent)
-        end
-        return
-      elsif dir.nil?
-        dir = Dir.pwd
-      end
-
+    def load_files(model, base_dir)
       icon_width, icon_height = Gtk::IconSize.lookup(:menu)
       dir_icon = self.render_icon_pixbuf(Gtk::Stock::DIRECTORY, :menu)
       file_icon = self.render_icon_pixbuf(Gtk::Stock::FILE, :menu)
 
-      return unless include_target_file?(dir)
-      parent_iter = model.append(parent)
-      parent_iter.set_value(PATH_COLUMN, dir)
-      parent_iter.set_value(FILENAME_COLUMN, File.basename(dir))
-      parent_iter.set_value(ICON_COLUMN, dir_icon)
+      base_iter = model.append(parent)
+      base_iter.set_value(PATH_COLUMN, base_dir)
+      base_iter.set_value(FILENAME_COLUMN, File.basename(base_dir))
+      base_iter.set_value(ICON_COLUMN, dir_icon)
 
-      Dir.glob("#{dir}/*").each do |path|
-        if File.directory?(path)
-          load_files(model, path, parent_iter)
-        elsif include_target_file?(path)
-          iter = model.append(parent_iter)
-          iter.set_value(PATH_COLUMN, path)
-          iter.set_value(FILENAME_COLUMN, File.basename(path))
-          begin
-            pixbuf = Gdk::Pixbuf.new(path, icon_width, icon_height)
-          rescue Gdk::PixbufError
-            pixbuf = file_icon
-          end
-          iter.set_value(ICON_COLUMN, pixbuf)
+      parents = {}
+      parents[base_dir] = base_iter
+
+      target_files(base_dir).each do |file|
+        parent_iter = parents[File.dirname(file)] || parent_iter
+        iter = model.append(parent_iter)
+        iter.set_value(PATH_COLUMN, file)
+        iter.set_value(FILENAME_COLUMN, File.basename(file))
+        if File.directory?(file)
+          parents[file] = iter
+          iter.set_value(ICON_COLUMN, dir_icon)
+        else
+          iter.set_value(ICON_COLUMN, file_icon)
+          # TODO: too slow...
+          #begin
+          #  pixbuf = Gdk::Pixbuf.new(file, icon_width, icon_height)
+          #rescue Gdk::PixbufError
+          #  pixbuf = file_icon
+          #end
+          #iter.set_value(ICON_COLUMN, pixbuf)
         end
       end
     end
 
-    def include_target_file?(path)
+    def target_files(base_dir)
+      return @target_files if @target_files
+      @target_files = []
       @files.each do |file|
-        return true if File.expand_path(file).include?(path)
+        search_target_pathes(file, base_dir).each do |file|
+          @target_files << file
+        end
       end
-      false
+      @target_files.sort!
+      @target_files.uniq!
+      @target_files
+    end
+
+    def search_target_pathes(target_file, base_dir)
+      target_pathes = []
+      parent_directories(target_file, base_dir).each do |parent|
+        target_pathes << parent
+      end
+      target_pathes << File.expand_path(target_file)
+      target_pathes
+    end
+
+    def parent_directories(path, base_dir)
+      directories = []
+      pathname = Pathname.new(path).expand_path
+      loop do
+        break if pathname.root?
+        break if pathname.parent.to_s == base_dir
+        parent = pathname.parent
+        directories << parent.to_s
+        pathname = parent
+      end
+      directories.sort!
+      directories
     end
   end
 end
