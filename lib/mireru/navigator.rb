@@ -67,6 +67,7 @@ module Mireru
       tree_view.append_column(column)
 
       renderer = Gtk::CellRendererPixbuf.new
+      renderer.set_fixed_size(*Gtk::IconSize.lookup(:menu))
       column.pack_start(renderer, :expand => false)
       column.add_attribute(renderer, :pixbuf, ICON_COLUMN)
 
