@@ -33,7 +33,7 @@ module Mireru
         if event.state.control_mask?
           action_from_keyval_with_control_mask(event.keyval)
         else
-        action_from_keyval(event.keyval)
+          action_from_keyval(event.keyval)
         end
       end
     end
