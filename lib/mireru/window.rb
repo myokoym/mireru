@@ -30,8 +30,11 @@ module Mireru
 
     def define_keybind
       signal_connect("key-press-event") do |widget, event|
-        next if event.state.control_mask?
+        if event.state.control_mask?
+          action_from_keyval_with_control_mask(event.keyval)
+        else
         action_from_keyval(event.keyval)
+        end
       end
     end
 
@@ -105,6 +108,17 @@ module Mireru
         @scroll.hadjustment.value += 1000000
       when Gdk::Keyval::GDK_KEY_q
         destroy
+      end
+    end
+
+    def action_from_keyval_with_control_mask(keyval)
+      case keyval
+      when Gdk::Keyval::GDK_KEY_e
+        @navigator.expand_toggle(true)
+      when Gdk::Keyval::GDK_KEY_h
+        @paned.position -= 2
+      when Gdk::Keyval::GDK_KEY_l
+        @paned.position += 2
       end
     end
 
