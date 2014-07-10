@@ -36,76 +36,76 @@ module Mireru
     end
 
     def action_from_keyval(keyval)
-        case keyval
-        when Gdk::Keyval::GDK_KEY_n
-          @navigator.next
-        when Gdk::Keyval::GDK_KEY_p
-          @navigator.prev
-        when Gdk::Keyval::GDK_KEY_r
-          # TODO: reload
-        when Gdk::Keyval::GDK_KEY_e
-          @navigator.expand_toggle
-        when Gdk::Keyval::GDK_KEY_f
-          if Mireru::Widget.image?(@file)
-            allocation = @scroll.allocation
-            pixbuf = Gdk::Pixbuf.new(@file,
-                                     allocation.width,
-                                     allocation.height)
-            @widget.pixbuf = pixbuf
-          elsif @widget.is_a?(Gtk::TextView)
-            font = @widget.pango_context.families.sample.name
-            @widget.override_font(Pango::FontDescription.new(font))
-          end
-        when Gdk::Keyval::GDK_KEY_o
-          if Mireru::Widget.image?(@file)
-            pixbuf = Gdk::Pixbuf.new(@file)
-            @widget.pixbuf = pixbuf
-          end
-        when Gdk::Keyval::GDK_KEY_T
-          # TODO: thumbnail
-        when Gdk::Keyval::GDK_KEY_plus
-          if Mireru::Widget.image?(@file)
-            pixbuf = @widget.pixbuf
-            scale = 1.1
-            @widget.pixbuf = pixbuf.scale(pixbuf.width  * scale,
-                                          pixbuf.height * scale)
-          elsif @widget.is_a?(Gtk::TextView)
-            font = @widget.pango_context.font_description.to_s
-            font_size = font.scan(/\d+\z/).first.to_i
-            font = font.sub(/\d+\z/, (font_size + 1).to_s)
-            @widget.override_font(Pango::FontDescription.new(font))
-          end
-        when Gdk::Keyval::GDK_KEY_minus
-          if Mireru::Widget.image?(@file)
-            pixbuf = @widget.pixbuf
-            scale = 0.9
-            @widget.pixbuf = pixbuf.scale(pixbuf.width  * scale,
-                                          pixbuf.height * scale)
-          elsif @widget.is_a?(Gtk::TextView)
-            font = @widget.pango_context.font_description.to_s
-            font_size = font.scan(/\d+\z/).first.to_i
-            font = font.sub(/\d+\z/, (font_size - 1).to_s)
-            @widget.override_font(Pango::FontDescription.new(font))
-          end
-        when Gdk::Keyval::GDK_KEY_h
-          @scroll.hadjustment.value -= 17
-        when Gdk::Keyval::GDK_KEY_j
-          @scroll.vadjustment.value += 17
-        when Gdk::Keyval::GDK_KEY_k
-          @scroll.vadjustment.value -= 17
-        when Gdk::Keyval::GDK_KEY_l
-          @scroll.hadjustment.value += 17
-        when Gdk::Keyval::GDK_KEY_H
-          @scroll.hadjustment.value -= 1000000
-        when Gdk::Keyval::GDK_KEY_J, Gdk::Keyval::GDK_KEY_G
-          @scroll.vadjustment.value += 1000000
-        when Gdk::Keyval::GDK_KEY_K
-          @scroll.vadjustment.value -= 1000000
-        when Gdk::Keyval::GDK_KEY_L
-          @scroll.hadjustment.value += 1000000
-        when Gdk::Keyval::GDK_KEY_q
-          destroy
+      case keyval
+      when Gdk::Keyval::GDK_KEY_n
+        @navigator.next
+      when Gdk::Keyval::GDK_KEY_p
+        @navigator.prev
+      when Gdk::Keyval::GDK_KEY_r
+        # TODO: reload
+      when Gdk::Keyval::GDK_KEY_e
+        @navigator.expand_toggle
+      when Gdk::Keyval::GDK_KEY_f
+        if Mireru::Widget.image?(@file)
+          allocation = @scroll.allocation
+          pixbuf = Gdk::Pixbuf.new(@file,
+                                   allocation.width,
+                                   allocation.height)
+          @widget.pixbuf = pixbuf
+        elsif @widget.is_a?(Gtk::TextView)
+          font = @widget.pango_context.families.sample.name
+          @widget.override_font(Pango::FontDescription.new(font))
         end
+      when Gdk::Keyval::GDK_KEY_o
+        if Mireru::Widget.image?(@file)
+          pixbuf = Gdk::Pixbuf.new(@file)
+          @widget.pixbuf = pixbuf
+        end
+      when Gdk::Keyval::GDK_KEY_T
+        # TODO: thumbnail
+      when Gdk::Keyval::GDK_KEY_plus
+        if Mireru::Widget.image?(@file)
+          pixbuf = @widget.pixbuf
+          scale = 1.1
+          @widget.pixbuf = pixbuf.scale(pixbuf.width  * scale,
+                                        pixbuf.height * scale)
+        elsif @widget.is_a?(Gtk::TextView)
+          font = @widget.pango_context.font_description.to_s
+          font_size = font.scan(/\d+\z/).first.to_i
+          font = font.sub(/\d+\z/, (font_size + 1).to_s)
+          @widget.override_font(Pango::FontDescription.new(font))
+        end
+      when Gdk::Keyval::GDK_KEY_minus
+        if Mireru::Widget.image?(@file)
+          pixbuf = @widget.pixbuf
+          scale = 0.9
+          @widget.pixbuf = pixbuf.scale(pixbuf.width  * scale,
+                                        pixbuf.height * scale)
+        elsif @widget.is_a?(Gtk::TextView)
+          font = @widget.pango_context.font_description.to_s
+          font_size = font.scan(/\d+\z/).first.to_i
+          font = font.sub(/\d+\z/, (font_size - 1).to_s)
+          @widget.override_font(Pango::FontDescription.new(font))
+        end
+      when Gdk::Keyval::GDK_KEY_h
+        @scroll.hadjustment.value -= 17
+      when Gdk::Keyval::GDK_KEY_j
+        @scroll.vadjustment.value += 17
+      when Gdk::Keyval::GDK_KEY_k
+        @scroll.vadjustment.value -= 17
+      when Gdk::Keyval::GDK_KEY_l
+        @scroll.hadjustment.value += 17
+      when Gdk::Keyval::GDK_KEY_H
+        @scroll.hadjustment.value -= 1000000
+      when Gdk::Keyval::GDK_KEY_J, Gdk::Keyval::GDK_KEY_G
+        @scroll.vadjustment.value += 1000000
+      when Gdk::Keyval::GDK_KEY_K
+        @scroll.vadjustment.value -= 1000000
+      when Gdk::Keyval::GDK_KEY_L
+        @scroll.hadjustment.value += 1000000
+      when Gdk::Keyval::GDK_KEY_q
+        destroy
+      end
     end
 
     def add_from_file(file)
