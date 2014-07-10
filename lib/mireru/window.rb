@@ -31,8 +31,12 @@ module Mireru
     def define_keybind
       signal_connect("key-press-event") do |widget, event|
         next if event.state.control_mask?
+        action_from_keyval(event.keyval)
+      end
+    end
 
-        case event.keyval
+    def action_from_keyval(keyval)
+        case keyval
         when Gdk::Keyval::GDK_KEY_n
           @navigator.next
         when Gdk::Keyval::GDK_KEY_p
@@ -102,7 +106,6 @@ module Mireru
         when Gdk::Keyval::GDK_KEY_q
           destroy
         end
-      end
     end
 
     def add_from_file(file)
