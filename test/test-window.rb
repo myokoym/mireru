@@ -4,14 +4,7 @@ class WindowTest < Test::Unit::TestCase
   include MireruTestUtils
 
   def setup
-    @window = Mireru::Window.new
-  end
-
-  def test_add_container
-    container = %w(a, b, c)
-    mock(container).shift { "a" }
-    mock(@window).add_from_file("a")
-    @window.add_container(container)
+    @window = Mireru::Window.new([])
   end
 
   class AddFromFileTest

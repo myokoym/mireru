@@ -1,7 +1,6 @@
 require "gtk3"
 require "mireru/logger"
 require "mireru/window"
-require "mireru/container"
 require "mireru/version"
 
 module Mireru
@@ -31,17 +30,16 @@ module Mireru
         font = purge_option(arguments, /\A(-f|--font)\z/, true)
 
         files = files_from_arguments(arguments)
-        file_container = ::Mireru::Container.new(files)
 
-        if file_container.empty?
+        if files.empty?
           write_empty_message
           exit(false)
         end
 
-        window = ::Mireru::Window.new
+        window = ::Mireru::Window.new(files)
         window.font = font if font
-        window.add_container(file_container)
 
+        window.show_all
         Gtk.main
       end
 

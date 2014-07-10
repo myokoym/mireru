@@ -1,5 +1,4 @@
 require "mireru/command/mireru"
-require "mireru/container"
 
 class MireruTest < Test::Unit::TestCase
   include MireruTestUtils
@@ -33,13 +32,7 @@ class MireruTest < Test::Unit::TestCase
   end
 
   def test_run_empty
-    arguments = %w(hoge)
-    stub(@mireru).files_from_arguments { arguments }
-    mock.instance_of(Mireru::Container).empty? { true }
-    mock(@mireru).write_empty_message
-    assert_raise SystemExit do
-      @mireru.run(arguments)
-    end
+    # TODO
   end
 
   def test_files_from_arguments_no_argument

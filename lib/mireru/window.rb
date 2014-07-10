@@ -1,46 +1,56 @@
 require "gtk3"
 require "mireru/widget"
+require "mireru/navigator"
 
 module Mireru
   class Window < Gtk::Window
     attr_accessor :font
-    def initialize
-      super
+    attr_accessor :file
+    def initialize(files)
+      super()
+      @files = files
+
+      @paned = Gtk::Paned.new(:horizontal)
+      add(@paned)
+
+      @navigator = Navigator.new(self, files)
+      @paned.add(@navigator)
+
       @scroll = Gtk::ScrolledWindow.new
       @scroll.set_policy(:automatic, :automatic)
-      add(@scroll)
-      set_default_size(640, 640)
+      @paned.add(@scroll)
+
+      set_default_size(800, 600)
       signal_connect("destroy") do
         Gtk.main_quit
       end
+
+      define_keybind
     end
 
-    def add_container(container)
-      @container = container
-
-      @file = @container.shift
-      add_from_file(@file)
-
+    def define_keybind
       signal_connect("key-press-event") do |widget, event|
+        next if event.state.control_mask?
+
         case event.keyval
         when Gdk::Keyval::GDK_KEY_n
-          @file = @container.shift(@file)
-          add_from_file(@file)
+          @navigator.next
         when Gdk::Keyval::GDK_KEY_p
-          @file = @container.pop(@file)
-          add_from_file(@file)
+          @navigator.prev
         when Gdk::Keyval::GDK_KEY_r
-          add_from_file(@file)
+          # TODO: reload
         when Gdk::Keyval::GDK_KEY_e
-          self.title = File.expand_path(@file)
+          @navigator.expand_toggle
         when Gdk::Keyval::GDK_KEY_f
           if Mireru::Widget.image?(@file)
-            pixbuf = Gdk::Pixbuf.new(@file, *self.size)
+            allocation = @scroll.allocation
+            pixbuf = Gdk::Pixbuf.new(@file,
+                                     allocation.width,
+                                     allocation.height)
             @widget.pixbuf = pixbuf
           elsif @widget.is_a?(Gtk::TextView)
             font = @widget.pango_context.families.sample.name
             @widget.override_font(Pango::FontDescription.new(font))
-            self.title = "#{File.basename(@file)} (#{font})"
           end
         when Gdk::Keyval::GDK_KEY_o
           if Mireru::Widget.image?(@file)
@@ -48,8 +58,7 @@ module Mireru
             @widget.pixbuf = pixbuf
           end
         when Gdk::Keyval::GDK_KEY_T
-          files = @container.instance_variable_get(:@files)
-          add_from_file(files)
+          # TODO: thumbnail
         when Gdk::Keyval::GDK_KEY_plus
           if Mireru::Widget.image?(@file)
             pixbuf = @widget.pixbuf
@@ -101,11 +110,6 @@ module Mireru
       @scroll.vadjustment.value = 0
       @scroll.each {|child| child.destroy }
       @widget = Mireru::Widget.create(file, *self.size)
-      if @widget.is_a?(Mireru::Widget::Thumbnail)
-        self.title = "Thumbnails: #{file.size} / #{file.size}"
-      else
-        self.title = File.basename(file)
-      end
       @widget.override_font(Pango::FontDescription.new(@font)) if @font
       if @widget.is_a?(Gtk::Scrollable)
         @scroll.add(@widget)
