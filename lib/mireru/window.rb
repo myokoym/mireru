@@ -113,6 +113,10 @@ module Mireru
 
     def action_from_keyval_with_control_mask(keyval)
       case keyval
+      when Gdk::Keyval::GDK_KEY_n
+        10.times { @navigator.next }
+      when Gdk::Keyval::GDK_KEY_p
+        10.times { @navigator.prev }
       when Gdk::Keyval::GDK_KEY_e
         @navigator.expand_toggle(true)
       when Gdk::Keyval::GDK_KEY_h
