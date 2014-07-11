@@ -129,7 +129,10 @@ module Mireru
     def add_from_file(file)
       @scroll.hadjustment.value = 0
       @scroll.vadjustment.value = 0
-      @scroll.each {|child| child.destroy }
+      @scroll.each do |child|
+        @scroll.remove(child)
+        child.destroy
+      end
       @widget = Mireru::Widget.create(file, *self.size)
       @widget.override_font(Pango::FontDescription.new(@font)) if @font
       if @widget.is_a?(Gtk::Scrollable)
