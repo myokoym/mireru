@@ -14,7 +14,7 @@ module Mireru
         widget = Mireru::Widget::Thumbnail.new(file, width, height)
       elsif image?(file)
         widget = Mireru::Widget::Image.new(file, width, height)
-      elsif video?(file)
+      elsif video?(file) or music?(file)
         widget = Mireru::Widget::Video.new(file)
       elsif pdf?(file)
         widget = Mireru::Widget::PDF.new(file)
@@ -30,6 +30,10 @@ module Mireru
 
     def image?(file)
       /\.(png|jpe?g|gif|ico|ani|bmp|pnm|ras|tga|tiff|xbm|xpm)\z/i =~ file
+    end
+
+    def music?(file)
+      /\.(og[ag]|wav|acc|mp3|m4a|wma|flac|tta|aiff|ape|tak)\z/i =~ file
     end
 
     def video?(file)
