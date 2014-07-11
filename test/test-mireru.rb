@@ -31,64 +31,22 @@ class MireruTest < Test::Unit::TestCase
     end
   end
 
-  def test_run_empty
-    # TODO
-  end
-
   def test_files_from_arguments_no_argument
     arguments = %w()
-    expected = %w(dir1 file1 dir2)
-    mock(Dir).glob("*") { expected }
+    expected = [Dir.pwd]
     files = @mireru.__send__(:files_from_arguments, arguments)
     assert_equal(files, expected)
   end
 
-  def test_files_from_arguments_recursive_option_only
-    arguments = %w(-R)
-    expected = %w(dir1 file1 dir2 dir1/file1 dir1/file2 dir2/file1)
-    mock(Dir).glob("**/*") { expected }
-    files = @mireru.__send__(:files_from_arguments, arguments)
-    assert_equal(files, expected)
-  end
-
-  def test_files_from_arguments_recursive_option_and_dir
-    arguments = %w(-R dir1 file1 dir2)
-    expected_dir1 = %w(dir1/file1 dir1/file2)
-    expected_dir2 = %w(dir2/file1)
-    expected = [expected_dir1, "file1", expected_dir2].flatten
-    mock(File).directory?("dir1") { true }
-    mock(File).directory?("file1") { false }
-    mock(File).directory?("dir2") { true }
-    mock(Dir).glob("dir1/**/*") { expected_dir1 }
-    mock(Dir).glob("dir2/**/*") { expected_dir2 }
-    files = @mireru.__send__(:files_from_arguments, arguments)
-    assert_equal(files, expected)
-  end
-
-  def test_files_from_arguments_all_dir
+  def test_files_from_arguments
     arguments = %w(dir1 dir2)
-    expected_dir1 = %w(dir1/file1 dir1/file2)
-    expected_dir2 = %w(dir2/file1)
-    expected = [expected_dir1, expected_dir2].flatten
-    mock(File).directory?("dir1") { true }
-    mock(File).directory?("dir2") { true }
-    mock(Dir).glob("dir1/*") { expected_dir1 }
-    mock(Dir).glob("dir2/*") { expected_dir2 }
+    expected = %w(dir1 dir2)
     files = @mireru.__send__(:files_from_arguments, arguments)
     assert_equal(files, expected)
-  end
-
-  def test_files_from_arguments_else
-    arguments = %w(dir1 file1 dir2)
-    files = @mireru.__send__(:files_from_arguments, arguments)
-    assert_equal(files, arguments)
   end
 
   def test_purge_option
-    arguments = %w(-R -f ubuntu dir1 file1 dir2)
-    flag = @mireru.__send__(:purge_option, arguments, /\A(-R|--recursive)\z/)
-    assert_not_nil(flag)
-    assert_equal(%w(-f ubuntu dir1 file1 dir2), arguments)
+    arguments = %w(-f ubuntu dir1 file1 dir2)
     value = @mireru.__send__(:purge_option, arguments, /\A-f\z/, true)
     assert_equal("ubuntu", value)
     assert_equal(%w(dir1 file1 dir2), arguments)
