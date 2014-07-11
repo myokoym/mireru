@@ -1,5 +1,4 @@
 require "gtk3"
-require "pathname"
 
 module Mireru
   class Navigator < Gtk::ScrolledWindow
