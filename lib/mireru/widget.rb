@@ -8,7 +8,7 @@ require "mireru/widget/binary"
 module Mireru
   module Widget
     module_function
-    def create(file, width=10000, height=10000)
+    def create(file, width, height)
       if image?(file)
         widget = Mireru::Widget::Image.new(file, width, height)
       elsif video?(file) or music?(file)
