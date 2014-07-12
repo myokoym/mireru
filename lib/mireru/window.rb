@@ -95,9 +95,17 @@ module Mireru
       when Gdk::Keyval::GDK_KEY_h
         @scroll.hadjustment.value -= 17
       when Gdk::Keyval::GDK_KEY_j
+        if @widget.is_a?(Widget::PDF)
+          @widget.next
+        else
         @scroll.vadjustment.value += 17
+        end
       when Gdk::Keyval::GDK_KEY_k
+        if @widget.is_a?(Widget::PDF)
+          @widget.prev
+        else
         @scroll.vadjustment.value -= 17
+        end
       when Gdk::Keyval::GDK_KEY_l
         @scroll.hadjustment.value += 17
       when Gdk::Keyval::GDK_KEY_H
