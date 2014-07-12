@@ -12,12 +12,7 @@ module Mireru
 
         signal_connect("draw") do |widget, event|
           context = widget.window.create_cairo_context
-          document.each_with_index do |page, i|
-            context.save do
-              context.translate(0, height * i)
-              context.render_poppler_page(document[i])
-            end
-          end
+          context.render_poppler_page(document[0])
           context.show_page
           true
         end
