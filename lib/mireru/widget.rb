@@ -4,15 +4,12 @@ require "mireru/widget/pdf"
 require "mireru/widget/svg"
 require "mireru/widget/text"
 require "mireru/widget/binary"
-require "mireru/widget/thumbnail"
 
 module Mireru
   module Widget
     module_function
     def create(file, width=10000, height=10000)
-      if file.is_a?(Enumerable)
-        widget = Mireru::Widget::Thumbnail.new(file, width, height)
-      elsif image?(file)
+      if image?(file)
         widget = Mireru::Widget::Image.new(file, width, height)
       elsif video?(file) or music?(file)
         widget = Mireru::Widget::Video.new(file)

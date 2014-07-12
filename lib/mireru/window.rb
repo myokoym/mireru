@@ -74,8 +74,6 @@ module Mireru
           pixbuf = Gdk::Pixbuf.new(@file)
           @widget.pixbuf = pixbuf
         end
-      when Gdk::Keyval::GDK_KEY_T
-        # TODO: thumbnail
       when Gdk::Keyval::GDK_KEY_plus
         if Mireru::Widget.image?(@file)
           pixbuf = @widget.pixbuf
