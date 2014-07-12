@@ -40,13 +40,15 @@ module Mireru
 
     def action_from_keyval(keyval)
       case keyval
-      when Gdk::Keyval::GDK_KEY_n
+      when Gdk::Keyval::GDK_KEY_n, Gdk::Keyval::GDK_KEY_space
         @navigator.next
       when Gdk::Keyval::GDK_KEY_p
         @navigator.prev
       when Gdk::Keyval::GDK_KEY_r
         # TODO: reload
       when Gdk::Keyval::GDK_KEY_e
+        @navigator.expand_toggle
+      when Gdk::Keyval::GDK_KEY_Return
         @navigator.expand_toggle
       when Gdk::Keyval::GDK_KEY_f
         if Mireru::Widget.image?(@file)
