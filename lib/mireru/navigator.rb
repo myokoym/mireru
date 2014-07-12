@@ -69,7 +69,7 @@ module Mireru
       if @files.size == 1
         column.title = File.dirname(@files.first)
       else
-        column.title = "Specified Files"
+        column.title = "Selected Files"
       end
       tree_view.append_column(column)
 
