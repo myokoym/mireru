@@ -60,10 +60,9 @@ module Mireru
         end
       when Gdk::Keyval::GDK_KEY_f
         if Mireru::Widget.image?(@file)
-          allocation = @scroll.allocation
-          pixbuf = Gdk::Pixbuf.new(@file,
-                                   allocation.width,
-                                   allocation.height)
+          width = @scroll.allocated_width - 10
+          height = @scroll.allocated_height - 10
+          pixbuf = Gdk::Pixbuf.new(@file, width, height)
           @widget.pixbuf = pixbuf
         elsif @widget.is_a?(Gtk::TextView)
           font = @widget.pango_context.families.sample.name
@@ -155,7 +154,9 @@ module Mireru
         @scroll.remove(child)
         child.destroy
       end
-      @widget = Mireru::Widget.create(file, *self.size)
+      width = @scroll.allocated_width - 10
+      height = @scroll.allocated_height - 10
+      @widget = Mireru::Widget.create(file, width, height)
       @widget.override_font(Pango::FontDescription.new(@font)) if @font
       if @widget.is_a?(Gtk::Scrollable)
         @scroll.add(@widget)
