@@ -92,6 +92,10 @@ Keybind:
 
   video:
     space: play/pause
+
+  PDF:
+    j: next page
+    k: prev page
         EOM
         @logger.info(message)
       end
