@@ -26,12 +26,16 @@ module Mireru
 
     def expand_toggle(open_all=false)
       path = selected_path
-      if @tree_view.row_expanded?(path)
+      iter = @model.get_iter(path)
+      file_path = iter.get_value(PATH_COLUMN)
+      if open_all and File.file?(file_path)
+        parent = iter.parent
+        path = @model.get_path(parent)
+        @tree_view.collapse_row(path)
+      elsif @tree_view.row_expanded?(path)
         @tree_view.collapse_row(path)
       else
         if open_all
-          iter = @model.get_iter(path)
-          file_path = iter.get_value(PATH_COLUMN)
           return unless File.directory?(file_path)
           Dir.glob("#{file_path}/*") do |dir|
             next unless File.directory?(dir)
