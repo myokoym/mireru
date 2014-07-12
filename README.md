@@ -34,8 +34,8 @@ If no argument, then open the current directory.
 
 n: next<br />
 p: prev<br />
-r: reload<br />
 e: expand/collpse<br />
+r: reload<br />
 q: quit<br />
 
 #### Control key mask

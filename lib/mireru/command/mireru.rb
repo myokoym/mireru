@@ -69,8 +69,8 @@ Options:
 Keybind:
   n: next
   p: prev
-  r: reload
   e: expand/collpse
+  r: reload
   q: quit
 
   Control key mask:
