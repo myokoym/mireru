@@ -50,6 +50,10 @@ module Mireru
         @navigator.expand_toggle
       when Gdk::Keyval::GDK_KEY_Return
         @navigator.expand_toggle
+      when Gdk::Keyval::GDK_KEY_space
+        if @widget.is_a?(Widget::Video)
+          @widget.pause_or_play
+        end
       when Gdk::Keyval::GDK_KEY_f
         if Mireru::Widget.image?(@file)
           allocation = @scroll.allocation
