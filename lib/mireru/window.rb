@@ -40,7 +40,7 @@ module Mireru
 
     def action_from_keyval(keyval)
       case keyval
-      when Gdk::Keyval::GDK_KEY_n, Gdk::Keyval::GDK_KEY_space
+      when Gdk::Keyval::GDK_KEY_n
         @navigator.next
       when Gdk::Keyval::GDK_KEY_p
         @navigator.prev
