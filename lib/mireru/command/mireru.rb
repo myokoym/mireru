@@ -86,6 +86,13 @@ Keybind:
     k: up
     l: right
 
+    Shift+h: 100 times left
+    Shift+j: 100 times down
+    Shift+k: 100 times up
+    Shift+l: 100 times right
+
+    Shift+g: down to bottom
+
   scale:
     +: larger
     -: smaller

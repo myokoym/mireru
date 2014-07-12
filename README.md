@@ -53,6 +53,13 @@ j: down<br />
 k: up<br />
 l: right<br />
 
+Shift+h: 100 times left<br />
+Shift+j: 100 times down<br />
+Shift+k: 100 times up<br />
+Shift+l: 100 times right<br />
+
+Shift+g: down to bottom<br />
+
 #### Scale
 
 +: larger<br />

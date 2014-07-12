@@ -114,13 +114,15 @@ module Mireru
       when Gdk::Keyval::GDK_KEY_l
         @scroll.hadjustment.value += 17
       when Gdk::Keyval::GDK_KEY_H
-        @scroll.hadjustment.value -= 1000000
-      when Gdk::Keyval::GDK_KEY_J, Gdk::Keyval::GDK_KEY_G
-        @scroll.vadjustment.value += 1000000
+        @scroll.hadjustment.value -= 17 * 100
+      when Gdk::Keyval::GDK_KEY_J
+        @scroll.vadjustment.value += 17 * 100
+      when Gdk::Keyval::GDK_KEY_G
+        @scroll.vadjustment.value = @scroll.vadjustment.upper
       when Gdk::Keyval::GDK_KEY_K
-        @scroll.vadjustment.value -= 1000000
+        @scroll.vadjustment.value -= 17 * 100
       when Gdk::Keyval::GDK_KEY_L
-        @scroll.hadjustment.value += 1000000
+        @scroll.hadjustment.value += 17 * 100
       when Gdk::Keyval::GDK_KEY_q
         destroy
       else
