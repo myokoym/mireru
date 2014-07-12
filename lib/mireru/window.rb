@@ -49,7 +49,7 @@ module Mireru
       when Gdk::Keyval::GDK_KEY_p
         @navigator.prev
       when Gdk::Keyval::GDK_KEY_r
-        # TODO: reload
+        add_from_file(@file)  # reload
       when Gdk::Keyval::GDK_KEY_e
         @navigator.expand_toggle
       when Gdk::Keyval::GDK_KEY_Return
