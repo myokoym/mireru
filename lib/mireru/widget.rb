@@ -46,7 +46,12 @@ module Mireru
     end
 
     def text?(file)
+      return false if binary?(file)
       File.read(file).valid_encoding?
+    end
+
+    def binary?(file)
+      /\.(la|lo|o|so|a|dll|exe|msi|tar|gz|zip|7z|lzh|rar|iso)\z/i =~ file
     end
   end
 end
