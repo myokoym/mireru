@@ -70,8 +70,15 @@ Keybind:
   n: next
   p: prev
   r: reload
-  e: expand
+  e: expand/collpse
   q: quit
+
+  Control key mask:
+    Ctrl+n: 10 tiles next
+    Ctrl+p: 10 tiles prev
+    Ctrl+e: expand all / collpse even if cursor on file
+    Ctrl+l: move position of partition to left
+    Ctrl+l: move position of partition to right
 
   scroll:
     h: left

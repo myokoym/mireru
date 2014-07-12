@@ -35,8 +35,16 @@ If no argument, then open the current directory.
 n: next<br />
 p: prev<br />
 r: reload<br />
-e: expand<br />
+e: expand/collpse<br />
 q: quit<br />
+
+#### Control key mask
+
+Ctrl+n: 10 tiles next<br />
+Ctrl+p: 10 tiles prev<br />
+Ctrl+e: expand all/collpse even if cursor on file<br />
+Ctrl+l: move position of partition to left<br />
+Ctrl+l: move position of partition to right<br />
 
 #### Scroll
 
