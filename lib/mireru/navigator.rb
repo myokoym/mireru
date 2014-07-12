@@ -138,7 +138,7 @@ module Mireru
         iter.set_value(ICON_COLUMN, dir_icon)
         load_dir(model, file, iter, recursive) if recursive
       else
-        file_icon = self.render_icon_pixbuf(Gtk::Stock::FILE, :menu)
+        file_icon = select_icon(file)
         iter.set_value(ICON_COLUMN, file_icon)
       end
       # TODO: too slow...
@@ -149,6 +149,14 @@ module Mireru
       #  pixbuf = file_icon
       #end
       #iter.set_value(ICON_COLUMN, pixbuf)
+    end
+
+    def select_icon(file)
+      if Widget.video?(file) or Widget.music?(file)
+        self.render_icon_pixbuf(Gtk::Stock::CDROM, :menu)
+      else
+        self.render_icon_pixbuf(Gtk::Stock::FILE, :menu)
+      end
     end
   end
 end
