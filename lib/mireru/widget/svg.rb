@@ -12,9 +12,7 @@ module Mireru
 
         signal_connect("draw") do |widget, event|
           context = widget.window.create_cairo_context
-          context.save do
             context.render_rsvg_handle(handle)
-          end
           true
         end
       end
