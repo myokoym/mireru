@@ -43,7 +43,7 @@ q: quit<br />
 Ctrl+n: 10 tiles next<br />
 Ctrl+p: 10 tiles prev<br />
 Ctrl+e: expand all/collpse even if cursor on file<br />
-Ctrl+l: move position of partition to left<br />
+Ctrl+h: move position of partition to left<br />
 Ctrl+l: move position of partition to right<br />
 
 #### Scroll
