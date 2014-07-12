@@ -63,6 +63,11 @@ f: change font (at random)<br />
 
 space: play/pause<br />
 
+#### PDF
+
+j: next page<br />
+k: prev page<br />
+
 ## License
 
 Copyright (c) 2013-2014 Masafumi Yokoyama <myokoym@gmail.com>
