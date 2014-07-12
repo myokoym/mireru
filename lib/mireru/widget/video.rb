@@ -48,7 +48,6 @@ module Mireru
 
           case event.type
           when Clutter::EventType::KEY_PRESS
-            animation = nil
             case event.key_symbol
             when Clutter::Keys::KEY_space
               state = video_texture.playing?
