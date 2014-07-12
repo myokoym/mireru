@@ -37,7 +37,7 @@ module Mireru
     end
 
     def video?(file)
-      /\.(ogm|mp4|flv|mpe?g2?|ts|mov|avi|divx|mkv|wmv|asf|wmx)\z/i =~ file
+      /\.(ogm|mp4|m4v|flv|mpe?g2?|ts|mov|avi|divx|mkv|wmv|asf|wmx)\z/i =~ file
     end
 
     def pdf?(file)
