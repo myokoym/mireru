@@ -21,7 +21,7 @@ A friend of a keyboard.
 
     $ mireru [OPTION]... [FILE]...
 
-If no argument, then search current directory.
+If no argument, then open the current directory.
 
 ### Options
 
@@ -35,7 +35,7 @@ If no argument, then search current directory.
 n: next<br />
 p: prev<br />
 r: reload<br />
-e: expand path<br />
+e: expand<br />
 q: quit<br />
 
 #### Scroll

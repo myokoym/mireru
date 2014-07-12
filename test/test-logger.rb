@@ -15,7 +15,7 @@ class LoggerTest < Test::Unit::TestCase
     $stdout = io
     message = <<-EOM
 #{Mireru::Command::Mireru::USAGE}
-  If no argument, then search current directory.
+  If no argument, then open the current directory.
 Keybind:
   n: next
   p: prev

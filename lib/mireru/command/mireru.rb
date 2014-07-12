@@ -62,7 +62,7 @@ module Mireru
       def write_help_message
         message = <<-EOM
 #{USAGE}
-  If no argument, then search current directory.
+  If no argument, then open the current directory.
 Options:
   -f, --font NAME
       set font such as "Monospace 16"
@@ -70,7 +70,7 @@ Keybind:
   n: next
   p: prev
   r: reload
-  e: expand path
+  e: expand
   q: quit
 
   scroll:
@@ -101,18 +101,6 @@ Keybind:
 #{::Mireru::VERSION}
         EOM
         @logger.info(message)
-      end
-
-      def write_empty_message
-        message = <<-EOM
-Warning: file not found.
-#{USAGE}
-  If no argument, then search current directory.
-Options:
-  -f, --font NAME
-      set font such as "Monospace 16"
-        EOM
-        @logger.error(message)
       end
     end
   end
