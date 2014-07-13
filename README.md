@@ -25,6 +25,9 @@ If no argument, then open the current directory.
 
 ### Options
 
+-h, --help<br />
+    show this help message
+
 -f, --font NAME<br />
     set a font such as "Monospace 16"
 

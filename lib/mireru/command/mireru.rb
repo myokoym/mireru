@@ -63,6 +63,9 @@ module Mireru
   If no argument, then open the current directory.
 
 Options:
+  -h, --help
+      show this help message
+
   -f, --font NAME
       set a font such as "Monospace 16"
 
