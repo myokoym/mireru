@@ -8,8 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Mireru::VERSION
   spec.authors       = ["Masafumi Yokoyama"]
   spec.email         = ["myokoym@gmail.com"]
-  spec.summary       = %q{Flexible File Viewer Keyboard Friend}
-  spec.description   = %q{A file viewer with a focus on flexibility by Ruby/GTK3. A friend of a keyboard.}
+  spec.summary       = %q{Keyboard friendly multitype file viewer by Ruby/GTK3.}
+  spec.description   = %q{Mireru is a keyboard friendly file viewer by Ruby/GTK3. It can handle a variety of file types (Picture, Text, PDF, Video and etc.).}
+
   spec.homepage      = "https://github.com/myokoym/mireru"
   spec.license       = "GPLv2 or later"
 
