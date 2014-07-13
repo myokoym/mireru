@@ -1,5 +1,24 @@
 # NEWS
 
+## 0.9.0: 2014-07-13
+
+### Changes
+
+  * Improvements
+    * Improve scrolling movements.
+    * Save CPU and memory for distinction between text and binary.
+    * Improve help messages.
+    * Remove thumbnail function.
+    * pdf: Support multiple pages.
+    * Fit a parent widget (PDF, SVG and Video).
+    * Support music files.
+    * Add key bindings.
+    * Introduce Navigator as Gtk::TreeView.
+
+  * Fixes
+    * image: Enable animation for image files such as animated GIF.
+    * video: Fix a bug that destroyed object is called.
+
 ## 0.2.1: 2014-05-29
 
 ### Changes
