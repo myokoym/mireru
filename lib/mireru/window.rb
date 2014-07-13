@@ -47,6 +47,11 @@ module Mireru
       show_all
     end
 
+    def run
+      show_all
+      Gtk.main
+    end
+
     private
     def define_keybind
       signal_connect("key-press-event") do |widget, event|

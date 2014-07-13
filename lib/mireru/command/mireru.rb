@@ -1,4 +1,3 @@
-require "gtk3"
 require "mireru/logger"
 require "mireru/window"
 require "mireru/version"
@@ -34,8 +33,7 @@ module Mireru
         window = ::Mireru::Window.new(files)
         window.font = font if font
 
-        window.show_all
-        Gtk.main
+        window.run
       end
 
       private
