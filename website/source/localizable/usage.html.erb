@@ -2,13 +2,13 @@
 
 <h3><%= t(:Launch) %></h3>
 
-<pre>    $ mireru [OPTION]... [FILE]...</pre>
+<pre>    $ mireru [OPTION]... [FILE_OR_DIRECTORY]...</pre>
 <%= t(:if_no_argument) %>
 
 <h3><%= t(:Options) %></h3>
 
-<pre>-R, --recursive
-<%= t(:recursive_search) %></pre>
+<pre>-h, --help
+<%= t(:show_help_message) %></pre>
 <pre>-f, --font NAME
 <%= t(:set_font) %></pre>
 
@@ -19,8 +19,8 @@
   <ul>
     <li>n: <%= t(:next) %></li>
     <li>p: <%= t(:prev) %></li>
-    <li>r: <%= t(:reload) %></li>
     <li>e: <%= t(:expand_path) %></li>
+    <li>r: <%= t(:reload) %></li>
     <li>q: <%= t(:quit) %></li>
   </ul>
 </p>
@@ -43,12 +43,6 @@
   </ul>
 </p>
 
-<p><%= t(:Special) %>
-  <ul>
-    <li>T: <%= t(:thumbnail) %></li>
-  </ul>
-</p>
-
 <p><%= t(:Image) %>
   <ul>
     <li>f: <%= t(:fits_window) %></li>
@@ -65,5 +59,12 @@
 <p><%= t(:Video) %>
   <ul>
     <li>space: <%= t(:play_pause) %></li>
+  </ul>
+</p>
+
+<p><%= t(:PDF) %>
+  <ul>
+    <li>j: <%= t(:pdf_next) %></li>
+    <li>k: <%= t(:pdf_prev) %></li>
   </ul>
 </p>
