@@ -2,6 +2,8 @@
 
 ## 0.9.0: 2014-07-13
 
+Now we have TreeView, and many problems are resolved.
+
 ### Changes
 
   * Improvements
