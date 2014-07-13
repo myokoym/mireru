@@ -4,7 +4,7 @@ Mireru is a keyboard friendly file viewer by Ruby/GTK3.
 
 It can handle a variety of file types (Picture, Text, PDF, Video and etc.).
 
-## Requirements
+## Dependencies
 
 * Ruby/GTK3, Ruby/GtkSourceView3, Ruby/ClutterGTK, Ruby/ClutterGStreamer,
   Ruby/Poppler and Ruby/RSVG2 in
