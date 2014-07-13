@@ -28,6 +28,26 @@ module Mireru
       define_keybind
     end
 
+    def add_from_file(file)
+      @scroll.hadjustment.value = 0
+      @scroll.vadjustment.value = 0
+      @scroll.each do |child|
+        @scroll.remove(child)
+        child.destroy
+      end
+      width = @scroll.allocated_width - 10
+      height = @scroll.allocated_height - 10
+      @widget = Mireru::Widget.create(file, width, height)
+      @widget.override_font(Pango::FontDescription.new(@font)) if @font
+      if @widget.is_a?(Gtk::Scrollable)
+        @scroll.add(@widget)
+      else
+        @scroll.add_with_viewport(@widget)
+      end
+      show_all
+    end
+
+    private
     def define_keybind
       signal_connect("key-press-event") do |widget, event|
         handled = false
@@ -147,25 +167,6 @@ module Mireru
         return false
       end
       true
-    end
-
-    def add_from_file(file)
-      @scroll.hadjustment.value = 0
-      @scroll.vadjustment.value = 0
-      @scroll.each do |child|
-        @scroll.remove(child)
-        child.destroy
-      end
-      width = @scroll.allocated_width - 10
-      height = @scroll.allocated_height - 10
-      @widget = Mireru::Widget.create(file, width, height)
-      @widget.override_font(Pango::FontDescription.new(@font)) if @font
-      if @widget.is_a?(Gtk::Scrollable)
-        @scroll.add(@widget)
-      else
-        @scroll.add_with_viewport(@widget)
-      end
-      show_all
     end
   end
 end
