@@ -101,8 +101,8 @@ Key bindings:
     -: smaller
 
   image:
-    f: fits window size
-    o: original size
+    f: fit window size
+    o: scale to the original size
 
   text:
     f: change font (at random)

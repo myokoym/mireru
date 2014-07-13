@@ -70,8 +70,8 @@ Shift+g: down to bottom<br />
 
 #### Image
 
-f: fits window size<br />
-o: original size<br />
+f: fit window size<br />
+o: scale to the original size<br />
 
 #### Text
 
