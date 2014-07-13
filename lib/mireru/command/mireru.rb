@@ -5,7 +5,7 @@ require "mireru/version"
 module Mireru
   module Command
     class Mireru
-      USAGE = "Usage: mireru [OPTION]... [FILE]..."
+      USAGE = "Usage: mireru [OPTION]... [FILE_OR_DIRECTORY]..."
 
       class << self
         def run(*arguments)
@@ -61,10 +61,12 @@ module Mireru
         message = <<-EOM
 #{USAGE}
   If no argument, then open the current directory.
+
 Options:
   -f, --font NAME
-      set font such as "Monospace 16"
-Keybind:
+      set a font such as "Monospace 16"
+
+Key bindings:
   n: next
   p: prev
   e: expand/collpse

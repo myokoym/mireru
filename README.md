@@ -19,16 +19,16 @@ A friend of a keyboard.
 
 ### Launch
 
-    $ mireru [OPTION]... [FILE]...
+    $ mireru [OPTION]... [FILE_OR_DIRECTORY]...
 
 If no argument, then open the current directory.
 
 ### Options
 
 -f, --font NAME<br />
-    set font such as "Monospace 16"
+    set a font such as "Monospace 16"
 
-### Keybind
+### Key bindings
 
 #### Common
 
