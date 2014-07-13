@@ -1,0 +1,37 @@
+/* line 3, /home/myokoym/work/github/mireru/website/source/stylesheets/index.scss */
+body {
+  padding: 10px;
+  background: #eeeeee; }
+
+/* line 8, /home/myokoym/work/github/mireru/website/source/stylesheets/index.scss */
+footer {
+  margin: 0;
+  padding: 5px;
+  color: gray;
+  text-align: right; }
+
+/* line 16, /home/myokoym/work/github/mireru/website/source/stylesheets/index.scss */
+ul li {
+  float: none;
+  list-style: none;
+  position: relative;
+  padding: 3px; }
+  /* line 22, /home/myokoym/work/github/mireru/website/source/stylesheets/index.scss */
+  ul li a {
+    text-decoration: none; }
+  /* line 26, /home/myokoym/work/github/mireru/website/source/stylesheets/index.scss */
+  ul li label {
+    display: block;
+    padding: 10px 20px;
+    border-radius: 20px 20px 20px 20px;
+    font-weight: normal;
+    color: black;
+    background: rgba(192, 192, 192, 0.2);
+    cursor: pointer;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out; }
+    /* line 39, /home/myokoym/work/github/mireru/website/source/stylesheets/index.scss */
+    ul li label:hover {
+      background: rgba(128, 128, 128, 0.5); }
