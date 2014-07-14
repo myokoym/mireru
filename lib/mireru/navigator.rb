@@ -162,11 +162,11 @@ module Mireru
       if icon_path
         Gdk::Pixbuf.new(icon_path)
       else
-      if Widget.video?(file) or Widget.music?(file)
-        self.render_icon_pixbuf(Gtk::Stock::CDROM, :menu)
-      else
-        self.render_icon_pixbuf(Gtk::Stock::FILE, :menu)
-      end
+        if Widget.video?(file) or Widget.music?(file)
+          self.render_icon_pixbuf(Gtk::Stock::CDROM, :menu)
+        else
+          self.render_icon_pixbuf(Gtk::Stock::FILE, :menu)
+        end
       end
     end
 
