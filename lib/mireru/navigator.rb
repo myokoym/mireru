@@ -146,14 +146,6 @@ module Mireru
         file_icon = select_icon(file)
         iter.set_value(ICON_COLUMN, file_icon)
       end
-      # TODO: too slow...
-      #icon_width, icon_height = Gtk::IconSize.lookup(:menu)
-      #begin
-      #  pixbuf = Gdk::Pixbuf.new(file_path, icon_width, icon_height)
-      #rescue Gdk::PixbufError
-      #  pixbuf = file_icon
-      #end
-      #iter.set_value(ICON_COLUMN, pixbuf)
     end
 
     def select_icon(file)
