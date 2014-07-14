@@ -82,6 +82,7 @@ Key bindings:
     Ctrl+e: expand all / collpse even if cursor on file
     Ctrl+h: move position of partition to left
     Ctrl+l: move position of partition to right
+    Ctrl+Enter: run selected file (only supports Windows and OS X)
 
   scroll:
     h: left

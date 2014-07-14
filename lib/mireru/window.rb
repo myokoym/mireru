@@ -168,10 +168,33 @@ module Mireru
         @paned.position -= 2
       when Gdk::Keyval::GDK_KEY_l
         @paned.position += 2
+      when Gdk::Keyval::GDK_KEY_Return
+        execute_selected_file
       else
         return false
       end
       true
+    end
+
+    def execute_selected_file
+      command = nil
+
+      case RUBY_PLATFORM
+      when /mswin|mingw|bccwin/
+        command = "start"
+      when /darwin/
+        command = "open"
+      else
+        $stderr.puts(<<-END_OF_MESSAGE)
+Ctrl+Enter is not supported in this platform (#{RUBY_PLATFORM}).
+Only supports Windows (use `start` command) and OS X (use `open` command).
+        END_OF_MESSAGE
+        return
+      end
+
+      Thread.new do
+        system(command, @file.encode("locale"))
+      end
     end
   end
 end

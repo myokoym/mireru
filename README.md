@@ -48,6 +48,7 @@ Ctrl+p: 10 tiles prev<br />
 Ctrl+e: expand all/collpse even if cursor on file<br />
 Ctrl+h: move position of partition to left<br />
 Ctrl+l: move position of partition to right<br />
+Ctrl+Enter: run selected file (only supports Windows and OS X)<br />
 
 #### Scroll
 
