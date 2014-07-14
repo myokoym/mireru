@@ -1,4 +1,5 @@
 require "gtk3"
+require "gio2"
 
 module Mireru
   class Navigator < Gtk::ScrolledWindow
@@ -156,10 +157,33 @@ module Mireru
     end
 
     def select_icon(file)
+      icon_path = lookup_icon_path(file)
+
+      if icon_path
+        Gdk::Pixbuf.new(icon_path)
+      else
       if Widget.video?(file) or Widget.music?(file)
         self.render_icon_pixbuf(Gtk::Stock::CDROM, :menu)
       else
         self.render_icon_pixbuf(Gtk::Stock::FILE, :menu)
+      end
+      end
+    end
+
+    def lookup_icon_path(file)
+      mime_type, uncertain = Gio::ContentType.guess(file)
+      content_type = Gio::ContentType.new(mime_type)
+      icon = content_type.icon
+
+      icon_theme = Gtk::IconTheme.new
+      icon_info = icon_theme.lookup_icon(icon,
+                                         16,
+                                         Gtk::IconTheme::LookupFlags::GENERIC_FALLBACK)
+
+      if icon_info
+        icon_info.filename
+      else
+        nil
       end
     end
   end
