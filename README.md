@@ -102,7 +102,3 @@ See 'license/gpl-2.0.txt' or 'http://www.gnu.org/licenses/gpl-2.0' for details.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/myokoym/mireru/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
