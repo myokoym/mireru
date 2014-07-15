@@ -2,6 +2,7 @@ require "mireru/widget/image"
 require "mireru/widget/video"
 require "mireru/widget/pdf"
 require "mireru/widget/svg"
+require "mireru/widget/document"
 require "mireru/widget/text"
 require "mireru/widget/binary"
 
@@ -17,6 +18,8 @@ module Mireru
         widget = Mireru::Widget::PDF.new(file)
       elsif svg?(file)
         widget = Mireru::Widget::SVG.new(file)
+      elsif document?(file)
+        widget = Mireru::Widget::Document.new(file)
       elsif text?(file)
         widget = Mireru::Widget::Text.new(file)
       else
@@ -43,6 +46,10 @@ module Mireru
 
     def svg?(file)
       /\.svg\z/i =~ file
+    end
+
+    def document?(file)
+      /\.(odt|ods|odp|doc|xls|ppt|docx|xlsx|pptx)\z/i =~ file
     end
 
     def text?(file)

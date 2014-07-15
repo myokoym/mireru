@@ -26,6 +26,9 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency("poppler", "= 2.2.0")
   spec.add_runtime_dependency("rsvg2", "= 2.2.0")
   spec.add_runtime_dependency("hexdump")
+  spec.add_runtime_dependency("chupa-text")
+  spec.add_runtime_dependency("chupa-text-decomposer-pdf")
+  spec.add_runtime_dependency("chupa-text-decomposer-libreoffice")
 
   spec.add_development_dependency("test-unit")
   spec.add_development_dependency("test-unit-notify")
