@@ -15,6 +15,7 @@ module Mireru
       @model = Gtk::TreeStore.new(String, String, Gdk::Pixbuf)
       @tree_view = create_tree(@model)
       add(@tree_view)
+      @icons = {}
     end
 
     def next
@@ -149,15 +150,20 @@ module Mireru
     end
 
     def select_icon(file)
+      extname = File.extname(file)
+      return @icons[extname] if @icons[extname]
       icon_path = lookup_icon_path(file)
 
       if icon_path
-        Gdk::Pixbuf.new(icon_path)
+        @icons[extname] = Gdk::Pixbuf.new(icon_path)
+        @icons[extname]
       else
         if Widget.video?(file) or Widget.music?(file)
-          self.render_icon_pixbuf(Gtk::Stock::CDROM, :menu)
+          @icons[extname] = self.render_icon_pixbuf(Gtk::Stock::CDROM, :menu)
+          @icons[extname]
         else
-          self.render_icon_pixbuf(Gtk::Stock::FILE, :menu)
+          @icons[extname] = self.render_icon_pixbuf(Gtk::Stock::FILE, :menu)
+          @icons[extname]
         end
       end
     end
