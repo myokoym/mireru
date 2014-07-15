@@ -1,3 +1,4 @@
+require "gio2"
 require "mireru/widget/image"
 require "mireru/widget/video"
 require "mireru/widget/pdf"
@@ -54,6 +55,8 @@ module Mireru
 
     def text?(file)
       return false if binary?(file)
+      content_type, uncertain = Gio::ContentType.guess(file)
+      return false if !uncertain && /\Atext\// !~ content_type
       File.read(file).valid_encoding?
     end
 
