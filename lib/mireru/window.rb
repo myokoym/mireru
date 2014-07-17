@@ -87,8 +87,7 @@ module Mireru
         if Mireru::Widget.image?(@file)
           width = @scroll.allocated_width - 10
           height = @scroll.allocated_height - 10
-          pixbuf = Gdk::Pixbuf.new(@file, width, height)
-          @widget.pixbuf = pixbuf
+          @widget.scale_preserving_aspect_ratio(width, height)
         elsif @widget.is_a?(Gtk::TextView)
           font = @widget.pango_context.families.sample.name
           @widget.override_font(Pango::FontDescription.new(font))
