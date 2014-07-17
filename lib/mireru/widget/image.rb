@@ -18,6 +18,9 @@ module Mireru
       end
 
       def scale_preserving_aspect_ratio(width, height)
+        if @pixbuf.is_a?(Gdk::PixbufAnimation)
+          @pixbuf = @pixbuf.static_image
+        end
         x_ratio = width.to_f / @pixbuf.width
         y_ratio = height.to_f / @pixbuf.height
         ratio = [x_ratio, y_ratio].min
