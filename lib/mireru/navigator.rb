@@ -169,7 +169,7 @@ module Mireru
     end
 
     def lookup_icon_path(file)
-      mime_type, uncertain = Gio::ContentType.guess(file)
+      mime_type = guess_content_type(file)
       content_type = Gio::ContentType.new(mime_type)
       icon = content_type.icon
 
@@ -183,6 +183,11 @@ module Mireru
       else
         nil
       end
+    end
+
+    def guess_content_type(file)
+      content_type, _uncertain = Gio::ContentType.guess(file)
+      content_type
     end
   end
 end
