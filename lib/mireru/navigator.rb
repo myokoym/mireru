@@ -10,12 +10,12 @@ module Mireru
       @window = window
       @files = files
       @dir_iters = {}
+      @icons = {}
       set_policy(:automatic, :automatic)
       set_size_request(200, -1)
       @model = Gtk::TreeStore.new(String, String, Gdk::Pixbuf)
       @tree_view = create_tree(@model)
       add(@tree_view)
-      @icons = {}
     end
 
     def next
