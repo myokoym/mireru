@@ -150,26 +150,23 @@ module Mireru
     end
 
     def select_icon(file)
-      extname = File.extname(file)
-      return @icons[extname] if @icons[extname]
-      icon_path = lookup_icon_path(file)
+      content_type = guess_content_type(file)
+      return @icons[content_type] if @icons[content_type]
+      icon_path = lookup_icon_path(content_type)
 
       if icon_path
-        @icons[extname] = Gdk::Pixbuf.new(icon_path)
-        @icons[extname]
+        @icons[content_type] = Gdk::Pixbuf.new(icon_path)
       else
         if Widget.video?(file) or Widget.music?(file)
-          @icons[extname] = self.render_icon_pixbuf(Gtk::Stock::CDROM, :menu)
-          @icons[extname]
+          @icons[content_type] = self.render_icon_pixbuf(Gtk::Stock::CDROM, :menu)
         else
-          @icons[extname] = self.render_icon_pixbuf(Gtk::Stock::FILE, :menu)
-          @icons[extname]
+          @icons[content_type] = self.render_icon_pixbuf(Gtk::Stock::FILE, :menu)
         end
       end
+      @icons[content_type]
     end
 
-    def lookup_icon_path(file)
-      mime_type = guess_content_type(file)
+    def lookup_icon_path(mime_type)
       content_type = Gio::ContentType.new(mime_type)
       icon = content_type.icon
 
