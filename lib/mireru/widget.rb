@@ -1,4 +1,3 @@
-require "gio2"
 require "mireru/widget/image"
 require "mireru/widget/video"
 require "mireru/widget/pdf"
@@ -55,13 +54,24 @@ module Mireru
 
     def text?(file)
       return false if binary?(file)
-      content_type, uncertain = Gio::ContentType.guess(file)
-      return false if !uncertain && /\Atext\// !~ content_type
-      File.read(file).valid_encoding?
+      true
     end
 
     def binary?(file)
-      /\.(la|lo|o|so|a|dll|exe|msi|tar|gz|zip|7z|lzh|rar|iso)\z/i =~ file
+      if /\.(la|lo|o|so|a|dll|exe|msi|tar|gz|zip|7z|lzh|rar|iso)\z/i =~ file
+        true
+      else
+        bytes = File.read(file, 512)
+        return false if utf16?(bytes)
+        bytes.count("\x00-\x07\x0b\x0e-\x1a\x1c-\x1f") > (bytes.size / 10)
+      end
+    end
+
+    def utf16?(bytes)
+      # TODO: simplify
+      (bytes.start_with?("\xff\xfe".force_encoding("ASCII-8BIT")) or
+         bytes.start_with?("\xfe\xff".force_encoding("ASCII-8BIT"))) and
+        bytes.count("\x01-\x07\x0b\x0e-\x1a\x1c-\x1f") < (bytes.size / 20)
     end
   end
 end

@@ -22,10 +22,29 @@ module Mireru
       end
 
       def buffer_from_text(text)
-        text.encode!("utf-8") unless text.encoding == "utf-8"
+        to = Encoding::UTF_8
+        from = guess_encoding(text)
+        if to != from
+          text.encode!(to,
+                       from,
+                       {
+                         :invalid => :replace,
+                         :undef   => :replace,
+                       })
+        end
         buffer = GtkSource::Buffer.new
         buffer.text = text
         buffer
+      end
+
+      def guess_encoding(text)
+        return Encoding::UTF_8 if utf8?(text)
+        require "nkf"
+        NKF.guess(text)
+      end
+
+      def utf8?(text)
+        text.dup.force_encoding(Encoding::UTF_8).valid_encoding?
       end
     end
   end
