@@ -46,6 +46,7 @@ If no argument, then open the current directory.
 * `r`: reload
 * `q`: quit
 
+---
 
 * `E`: extract text using ChupaText
 
@@ -65,12 +66,14 @@ If no argument, then open the current directory.
 * `k`: up
 * `l`: right
 
+---
 
 * `H`: 100 times left
 * `J`: 100 times down
 * `K`: 100 times up
 * `L`: 100 times right
 
+---
 
 * `G`: down to bottom
 
