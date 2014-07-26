@@ -29,73 +29,73 @@ If no argument, then open the current directory.
 
 ### Options
 
--h, --help<br />
-    show this help message
+* `-h`, `--help`
+  * show this help message
 
--f, --font NAME<br />
-    set a font such as "Monospace 16"
+* `-f`, `--font NAME`
+  * set a font such as "Monospace 16"
 
 ### Key bindings
 
 #### Common
 
-n: next<br />
-p: prev<br />
-e: expand/collpse<br />
-r: reload<br />
-q: quit<br />
+* `n`: next
+* `p`: prev
+* `e`: expand/collpse
+* `r`: reload
+* `q`: quit
 
-Shift+e: extract text using ChupaText<br />
+* Shift+`e`: extract text using ChupaText
 
 #### Control key mask
 
-Ctrl+n: 10 tiles next<br />
-Ctrl+p: 10 tiles prev<br />
-Ctrl+e: expand all/collpse even if cursor on file<br />
-Ctrl+h: move position of partition to left<br />
-Ctrl+l: move position of partition to right<br />
-Ctrl+Enter: run selected file (only supports Windows and OS X)<br />
+* Ctrl+`n`: 10 tiles next
+* Ctrl+`p`: 10 tiles prev
+* Ctrl+`e`: expand all/collpse even if cursor on file
+* Ctrl+`h`: move position of partition to left
+* Ctrl+`l`: move position of partition to right
+* Ctrl+Enter: run selected file (only supports Windows and OS X)
 
 #### Scroll
 
-h: left<br />
-j: down<br />
-k: up<br />
-l: right<br />
+* `h`: left
+* `j`: down
+* `k`: up
+* `l`: right
 
-Shift+h: 100 times left<br />
-Shift+j: 100 times down<br />
-Shift+k: 100 times up<br />
-Shift+l: 100 times right<br />
+* Shift+`h`: 100 times left
+* Shift+`j`: 100 times down
+* Shift+`k`: 100 times up
+* Shift+`l`: 100 times right
 
-Shift+g: down to bottom<br />
+* Shift+`g`: down to bottom
 
 #### Scale
 
-+: larger<br />
--: smaller<br />
+* `+`: larger
+* `-`: smaller
 
 #### Image
 
-f: fit window size<br />
-o: scale to the original size<br />
+* `f`: fit window size
+* `o`: scale to the original size
 
 #### Text
 
-f: change font (at random)<br />
+* `f`: change font (at random)
 
 #### Video
 
-space: play/pause<br />
+* space: play/pause
 
 #### PDF
 
-j: next page<br />
-k: prev page<br />
+* `j`: next page
+* `k`: prev page
 
 ## License
 
-Copyright (c) 2013-2014 Masafumi Yokoyama <myokoym@gmail.com>
+Copyright (c) 2013-2014 Masafumi Yokoyama `<myokoym@gmail.com>`
 
 GPLv2 or later.
 
