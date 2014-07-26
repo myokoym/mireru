@@ -62,6 +62,7 @@ module Mireru
         true
       else
         bytes = File.read(file, 512)
+        return false if bytes.nil?
         return false if utf16?(bytes)
         bytes.count("\x00-\x07\x0b\x0e-\x1a\x1c-\x1f") > (bytes.size / 10)
       end
