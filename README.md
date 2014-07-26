@@ -45,7 +45,7 @@ If no argument, then open the current directory.
 * `r`: reload
 * `q`: quit
 
-* Shift+`e`: extract text using ChupaText
+* `E`: extract text using ChupaText
 
 #### Control key mask
 
@@ -63,12 +63,12 @@ If no argument, then open the current directory.
 * `k`: up
 * `l`: right
 
-* Shift+`h`: 100 times left
-* Shift+`j`: 100 times down
-* Shift+`k`: 100 times up
-* Shift+`l`: 100 times right
+* `H`: 100 times left
+* `J`: 100 times down
+* `K`: 100 times up
+* `L`: 100 times right
 
-* Shift+`g`: down to bottom
+* `G`: down to bottom
 
 #### Scale
 
