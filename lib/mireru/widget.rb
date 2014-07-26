@@ -11,19 +11,19 @@ module Mireru
     module_function
     def create(file, width, height)
       if image?(file)
-        widget = Mireru::Widget::Image.new(file, width, height)
+        widget = Widget::Image.new(file, width, height)
       elsif video?(file) or music?(file)
-        widget = Mireru::Widget::Video.new(file)
+        widget = Widget::Video.new(file)
       elsif pdf?(file)
-        widget = Mireru::Widget::PDF.new(file)
+        widget = Widget::PDF.new(file)
       elsif svg?(file)
-        widget = Mireru::Widget::SVG.new(file)
+        widget = Widget::SVG.new(file)
       elsif document?(file)
-        widget = Mireru::Widget::Document.new(file)
+        widget = Widget::Document.new(file)
       elsif text?(file)
-        widget = Mireru::Widget::Text.new(file)
+        widget = Widget::Text.new(file)
       else
-        widget = Mireru::Widget::Binary.new(file)
+        widget = Widget::Binary.new(file)
       end
       widget
     end
