@@ -121,7 +121,7 @@ module Mireru
           font = font.sub(/\d+\z/, (font_size - 1).to_s)
           @widget.override_font(Pango::FontDescription.new(font))
         end
-      when Gdk::Keyval::GDK_KEY_C
+      when Gdk::Keyval::GDK_KEY_E
         add_from_file(@file, true)
       when Gdk::Keyval::GDK_KEY_h
         @scroll.hadjustment.value -= 17
