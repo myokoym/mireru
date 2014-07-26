@@ -1,5 +1,6 @@
 require "gtk3"
 require "chupa-text"
+gem "chupa-text-decomposer-html"
 gem "chupa-text-decomposer-pdf"
 gem "chupa-text-decomposer-libreoffice"
 
