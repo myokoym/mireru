@@ -2,7 +2,7 @@ require "mireru/widget/image"
 require "mireru/widget/video"
 require "mireru/widget/pdf"
 require "mireru/widget/svg"
-require "mireru/widget/document"
+require "mireru/widget/extracted_text"
 require "mireru/widget/text"
 require "mireru/widget/binary"
 
@@ -11,7 +11,7 @@ module Mireru
     module_function
     def create(file, width, height, chupa=false)
       if chupa
-        widget = Widget::Document.new(file)
+        widget = Widget::ExtractedText.new(file)
       elsif image?(file)
         widget = Widget::Image.new(file, width, height)
       elsif video?(file) or music?(file)

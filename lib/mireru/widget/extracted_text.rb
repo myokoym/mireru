@@ -22,7 +22,7 @@ end
 
 module Mireru
   module Widget
-    class Document < Gtk::TextView
+    class ExtractedText < Gtk::TextView
       def initialize(file)
         buffer = buffer_from_file(file)
         super(buffer)
