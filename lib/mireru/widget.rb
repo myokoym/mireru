@@ -9,8 +9,10 @@ require "mireru/widget/binary"
 module Mireru
   module Widget
     module_function
-    def create(file, width, height)
-      if image?(file)
+    def create(file, width, height, chupa=false)
+      if chupa
+        widget = Widget::Document.new(file)
+      elsif image?(file)
         widget = Widget::Image.new(file, width, height)
       elsif video?(file) or music?(file)
         widget = Widget::Video.new(file)
@@ -18,8 +20,6 @@ module Mireru
         widget = Widget::PDF.new(file)
       elsif svg?(file)
         widget = Widget::SVG.new(file)
-      elsif document?(file)
-        widget = Widget::Document.new(file)
       elsif text?(file)
         widget = Widget::Text.new(file)
       else

@@ -28,7 +28,7 @@ module Mireru
       define_keybind
     end
 
-    def add_from_file(file)
+    def add_from_file(file, chupa=false)
       @scroll.hadjustment.value = 0
       @scroll.vadjustment.value = 0
       @scroll.each do |child|
@@ -37,7 +37,7 @@ module Mireru
       end
       width = @scroll.allocated_width - 10
       height = @scroll.allocated_height - 10
-      @widget = Mireru::Widget.create(file, width, height)
+      @widget = Mireru::Widget.create(file, width, height, chupa)
       @widget.override_font(Pango::FontDescription.new(@font)) if @font
       if @widget.is_a?(Gtk::Scrollable)
         @scroll.add(@widget)
@@ -121,6 +121,8 @@ module Mireru
           font = font.sub(/\d+\z/, (font_size - 1).to_s)
           @widget.override_font(Pango::FontDescription.new(font))
         end
+      when Gdk::Keyval::GDK_KEY_C
+        add_from_file(@file, true)
       when Gdk::Keyval::GDK_KEY_h
         @scroll.hadjustment.value -= 17
       when Gdk::Keyval::GDK_KEY_j
