@@ -11,9 +11,9 @@ It can handle a variety of file types (Picture, Text, PDF, Video and etc.).
   [Ruby-GNOME2](http://ruby-gnome2.sourceforge.jp/)
 * [hexdump](https://github.com/postmodern/hexdump)
 * [ChupaText](https://github.com/ranguba/chupa-text)
-* [chupa-text-decomposer-pdf](https://github.com/ranguba/chupa-text-decomposer-pdf)
-* [chupa-text-decomposer-libreoffice](https://github.com/ranguba/chupa-text-decomposer-libreoffice)
-  * [LibreOffice](https://www.libreoffice.org/)
+  * [chupa-text-decomposer-pdf](https://github.com/ranguba/chupa-text-decomposer-pdf)
+  * [chupa-text-decomposer-libreoffice](https://github.com/ranguba/chupa-text-decomposer-libreoffice)
+    * [LibreOffice](https://www.libreoffice.org/)
 
 ## Installation
 
