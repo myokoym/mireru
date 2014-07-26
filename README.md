@@ -45,6 +45,8 @@ e: expand/collpse<br />
 r: reload<br />
 q: quit<br />
 
+Shift+e: extract text using ChupaText<br />
+
 #### Control key mask
 
 Ctrl+n: 10 tiles next<br />

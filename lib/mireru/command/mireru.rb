@@ -76,6 +76,8 @@ Key bindings:
   r: reload
   q: quit
 
+  Shift+e: extract text using ChupaText
+
   Control key mask:
     Ctrl+n: 10 tiles next
     Ctrl+p: 10 tiles prev
