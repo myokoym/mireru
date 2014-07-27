@@ -1,5 +1,22 @@
 # NEWS
 
+## 0.9.1: 2014-07-29
+
+Introduce ChupaText!
+
+### Changes
+
+  * Improvements
+    * Add license header
+    * Introduce ChupaText
+    * Cache icons
+    * Add a key binding to run selected file (Windows and OS X)
+    * Show icons associated with MIME type
+
+  * Fixes
+    * Suppress an error from an empty file
+    * text: Support a multibyte encoding such as Shift_JIS
+
 ## 0.9.0: 2014-07-13
 
 Now we have TreeView, and many problems are resolved.
