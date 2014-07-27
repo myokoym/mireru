@@ -13,6 +13,7 @@ ja:
   reload: "再読み込み"
   expand_path: "ツリービューを展開/収縮"
   quit: "終了"
+  extract_text: "テキストを抽出（ChupaTextを使用）"
   Scroll: "スクロール"
   left: "左"
   down: "下"
