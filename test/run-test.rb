@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+#
 # Copyright (C) 2013-2014 Masafumi Yokoyama <myokoym@gmail.com>
 #
 # This program is free software; you can redistribute it and/or modify
