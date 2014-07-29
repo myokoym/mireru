@@ -88,7 +88,7 @@ Options:
 Key bindings:
   n: next
   p: prev
-  e: expand/collpse
+  e: expand/collapse
   r: reload
   q: quit
 
@@ -97,7 +97,7 @@ Key bindings:
   Control key mask:
     Ctrl+n: 10 tiles next
     Ctrl+p: 10 tiles prev
-    Ctrl+e: expand all / collpse even if cursor on file
+    Ctrl+e: expand all / collapse even if cursor on file
     Ctrl+h: move position of partition to left
     Ctrl+l: move position of partition to right
     Ctrl+Enter: run selected file (only supports Windows and OS X)

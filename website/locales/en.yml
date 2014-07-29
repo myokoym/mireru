@@ -11,7 +11,7 @@ en:
   next: "next"
   prev: "prev"
   reload: "reload"
-  expand_path: "expand/collpse"
+  expand_path: "expand/collapse"
   quit: "quit"
   extract_text: "extract text using ChupaText"
   Scroll: "Scroll"
