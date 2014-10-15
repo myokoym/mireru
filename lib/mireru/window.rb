@@ -85,21 +85,21 @@ module Mireru
 
     def action_from_keyval(keyval)
       case keyval
-      when Gdk::Keyval::GDK_KEY_n
+      when Gdk::Keyval::KEY_n
         @navigator.next
-      when Gdk::Keyval::GDK_KEY_p
+      when Gdk::Keyval::KEY_p
         @navigator.prev
-      when Gdk::Keyval::GDK_KEY_r
+      when Gdk::Keyval::KEY_r
         add_from_file(@file)  # reload
-      when Gdk::Keyval::GDK_KEY_e
+      when Gdk::Keyval::KEY_e
         @navigator.expand_toggle
-      when Gdk::Keyval::GDK_KEY_Return
+      when Gdk::Keyval::KEY_Return
         @navigator.expand_toggle
-      when Gdk::Keyval::GDK_KEY_space
+      when Gdk::Keyval::KEY_space
         if @widget.is_a?(Widget::Video)
           @widget.pause_or_play
         end
-      when Gdk::Keyval::GDK_KEY_f
+      when Gdk::Keyval::KEY_f
         if Mireru::Widget.image?(@file)
           width = @scroll.allocated_width - 10
           height = @scroll.allocated_height - 10
@@ -108,12 +108,12 @@ module Mireru
           font = @widget.pango_context.families.sample.name
           @widget.override_font(Pango::FontDescription.new(font))
         end
-      when Gdk::Keyval::GDK_KEY_o
+      when Gdk::Keyval::KEY_o
         if Mireru::Widget.image?(@file)
           pixbuf = Gdk::Pixbuf.new(@file)
           @widget.pixbuf = pixbuf
         end
-      when Gdk::Keyval::GDK_KEY_plus
+      when Gdk::Keyval::KEY_plus
         if Mireru::Widget.image?(@file)
           pixbuf = @widget.pixbuf
           scale = 1.1
@@ -125,7 +125,7 @@ module Mireru
           font = font.sub(/\d+\z/, (font_size + 1).to_s)
           @widget.override_font(Pango::FontDescription.new(font))
         end
-      when Gdk::Keyval::GDK_KEY_minus
+      when Gdk::Keyval::KEY_minus
         if Mireru::Widget.image?(@file)
           pixbuf = @widget.pixbuf
           scale = 0.9
@@ -137,35 +137,35 @@ module Mireru
           font = font.sub(/\d+\z/, (font_size - 1).to_s)
           @widget.override_font(Pango::FontDescription.new(font))
         end
-      when Gdk::Keyval::GDK_KEY_E
+      when Gdk::Keyval::KEY_E
         add_from_file(@file, true)
-      when Gdk::Keyval::GDK_KEY_h
+      when Gdk::Keyval::KEY_h
         @scroll.hadjustment.value -= 17
-      when Gdk::Keyval::GDK_KEY_j
+      when Gdk::Keyval::KEY_j
         if @widget.is_a?(Widget::PDF)
           @widget.next
         else
         @scroll.vadjustment.value += 17
         end
-      when Gdk::Keyval::GDK_KEY_k
+      when Gdk::Keyval::KEY_k
         if @widget.is_a?(Widget::PDF)
           @widget.prev
         else
         @scroll.vadjustment.value -= 17
         end
-      when Gdk::Keyval::GDK_KEY_l
+      when Gdk::Keyval::KEY_l
         @scroll.hadjustment.value += 17
-      when Gdk::Keyval::GDK_KEY_H
+      when Gdk::Keyval::KEY_H
         @scroll.hadjustment.value -= 17 * 100
-      when Gdk::Keyval::GDK_KEY_J
+      when Gdk::Keyval::KEY_J
         @scroll.vadjustment.value += 17 * 100
-      when Gdk::Keyval::GDK_KEY_G
+      when Gdk::Keyval::KEY_G
         @scroll.vadjustment.value = @scroll.vadjustment.upper
-      when Gdk::Keyval::GDK_KEY_K
+      when Gdk::Keyval::KEY_K
         @scroll.vadjustment.value -= 17 * 100
-      when Gdk::Keyval::GDK_KEY_L
+      when Gdk::Keyval::KEY_L
         @scroll.hadjustment.value += 17 * 100
-      when Gdk::Keyval::GDK_KEY_q
+      when Gdk::Keyval::KEY_q
         destroy
       else
         return false
@@ -175,17 +175,17 @@ module Mireru
 
     def action_from_keyval_with_control_mask(keyval)
       case keyval
-      when Gdk::Keyval::GDK_KEY_n
+      when Gdk::Keyval::KEY_n
         10.times { @navigator.next }
-      when Gdk::Keyval::GDK_KEY_p
+      when Gdk::Keyval::KEY_p
         10.times { @navigator.prev }
-      when Gdk::Keyval::GDK_KEY_e
+      when Gdk::Keyval::KEY_e
         @navigator.expand_toggle(true)
-      when Gdk::Keyval::GDK_KEY_h
+      when Gdk::Keyval::KEY_h
         @paned.position -= 2
-      when Gdk::Keyval::GDK_KEY_l
+      when Gdk::Keyval::KEY_l
         @paned.position += 2
-      when Gdk::Keyval::GDK_KEY_Return
+      when Gdk::Keyval::KEY_Return
         execute_selected_file
       else
         return false
