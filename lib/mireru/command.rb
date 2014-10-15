@@ -19,8 +19,7 @@ require "mireru/window"
 require "mireru/version"
 
 module Mireru
-  module Command
-    class Mireru
+  class Command
       USAGE = "Usage: mireru [OPTION]... [FILE_OR_DIRECTORY]..."
 
       class << self
@@ -30,7 +29,7 @@ module Mireru
       end
 
       def initialize
-        @logger = ::Mireru::Logger.new
+        @logger = Logger.new
       end
 
       def run(arguments)
@@ -46,7 +45,7 @@ module Mireru
 
         files = files_from_arguments(arguments)
 
-        window = ::Mireru::Window.new(files)
+        window = Window.new(files)
         window.font = font if font
 
         window.run
@@ -138,10 +137,9 @@ Key bindings:
 
       def write_version_message
         message = <<-EOM
-#{::Mireru::VERSION}
+#{VERSION}
         EOM
         @logger.info(message)
       end
-    end
   end
 end

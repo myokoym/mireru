@@ -15,7 +15,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 require "mireru/logger"
-require "mireru/command/mireru"
+require "mireru/command"
 require "stringio"
 
 class LoggerTest < Test::Unit::TestCase
@@ -30,7 +30,7 @@ class LoggerTest < Test::Unit::TestCase
     io = StringIO.new(s)
     $stdout = io
     message = <<-EOM
-#{Mireru::Command::Mireru::USAGE}
+#{Mireru::Command::USAGE}
   If no argument, then open the current directory.
 Keybind:
   n: next
@@ -48,7 +48,7 @@ Keybind:
     $stderr = io
     message = <<-EOM
 Warning: valid file not found.
-#{Mireru::Command::Mireru::USAGE}
+#{Mireru::Command::USAGE}
 Support file types: png, gif, jpeg(jpg). The others are...yet.
     EOM
     @logger.error(message)
