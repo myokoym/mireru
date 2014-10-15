@@ -1,5 +1,6 @@
 cache:
   - bundler
+  - apt
 env:
   global:
     - DISPLAY=":99.0"
