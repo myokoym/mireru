@@ -14,6 +14,7 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+require "optparse"
 require "mireru/logger"
 require "mireru/window"
 require "mireru/version"
@@ -33,25 +34,40 @@ module Mireru
     end
 
     def run(arguments)
-      if /\A(-h|--help)\z/ =~ arguments[0]
-        write_help_message
-        exit(true)
-      elsif /\A(-v|--version)\z/ =~ arguments[0]
-        write_version_message
-        exit(true)
-      end
-
-      font = purge_option(arguments, /\A(-f|--font)\z/, true)
+      options = parse_options(arguments)
 
       files = files_from_arguments(arguments)
 
       window = Window.new(files)
-      window.font = font if font
+      window.font = options[:font] if options[:font]
 
       window.run
     end
 
     private
+    def parse_options(arguments)
+      options = {}
+
+      parser = OptionParser.new
+      parser.on("-h", "--help",
+                "Show help message") do
+        write_help_message
+        exit(true)
+      end
+      parser.on("-v", "--version",
+                "Show version number") do
+        write_version_message
+        exit(true)
+      end
+      parser.on("-f", "--font=NAME",
+                "Set a font such as \"Monospace 16\"") do |name|
+        options[:font] = name
+      end
+      parser.parse!(arguments)
+
+      options
+    end
+
     def files_from_arguments(arguments)
       if arguments.empty?
         files = [Dir.pwd]
@@ -59,17 +75,6 @@ module Mireru
         files = arguments
       end
       files
-    end
-
-    def purge_option(arguments, regexp, has_value=false)
-      index = arguments.find_index {|arg| regexp =~ arg }
-      return false unless index
-      if has_value
-        arguments.delete_at(index) # flag
-        arguments.delete_at(index) # value
-      else
-        arguments.delete_at(index)
-      end
     end
 
     def write_help_message
