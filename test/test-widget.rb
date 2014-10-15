@@ -20,28 +20,28 @@ class WidgetTest < Test::Unit::TestCase
   include MireruTestUtils
 
   class ImageTest < self
-  def test_not_image
-    assert_nil(Mireru::Widget.image?(__FILE__))
-  end
+    def test_not_image
+      assert_nil(Mireru::Widget.image?(__FILE__))
+    end
 
-  def test_png
-    assert_not_nil(Mireru::Widget.image?("test/fixtures/nijip.png"))
-  end
+    def test_png
+      assert_not_nil(Mireru::Widget.image?("test/fixtures/nijip.png"))
+    end
 
-  def test_uppercase
-    assert_not_nil(Mireru::Widget.image?("hoge.PNG"))
-  end
+    def test_uppercase
+      assert_not_nil(Mireru::Widget.image?("hoge.PNG"))
+    end
 
-  def test_jpg
-    assert_not_nil(Mireru::Widget.image?("hoge.jpg"))
-  end
+    def test_jpg
+      assert_not_nil(Mireru::Widget.image?("hoge.jpg"))
+    end
 
-  def test_jpeg
-    assert_not_nil(Mireru::Widget.image?("hoge.jpeg"))
-  end
+    def test_jpeg
+      assert_not_nil(Mireru::Widget.image?("hoge.jpeg"))
+    end
 
-  def test_gif
-    assert_not_nil(Mireru::Widget.image?("hoge.gif"))
-  end
+    def test_gif
+      assert_not_nil(Mireru::Widget.image?("hoge.gif"))
+    end
   end
 end
