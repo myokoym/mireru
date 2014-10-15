@@ -1,4 +1,4 @@
-# Mireru [![Build Status](https://secure.travis-ci.org/myokoym/mireru.png?branch=master)](http://travis-ci.org/myokoym/mireru)
+# Mireru [![Gem Version](https://badge.fury.io/rb/mireru.svg)](http://badge.fury.io/rb/mireru) [![Build Status](https://secure.travis-ci.org/myokoym/mireru.png?branch=master)](http://travis-ci.org/myokoym/mireru)
 
 Mireru is a keyboard friendly file viewer by Ruby/GTK3.
 
