@@ -60,11 +60,4 @@ class CommandTest < Test::Unit::TestCase
     files = @command.__send__(:files_from_arguments, arguments)
     assert_equal(files, expected)
   end
-
-  def test_purge_option
-    arguments = %w(-f ubuntu dir1 file1 dir2)
-    value = @command.__send__(:purge_option, arguments, /\A-f\z/, true)
-    assert_equal("ubuntu", value)
-    assert_equal(%w(dir1 file1 dir2), arguments)
-  end
 end
