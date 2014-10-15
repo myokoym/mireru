@@ -20,60 +20,60 @@ require "mireru/version"
 
 module Mireru
   class Command
-      USAGE = "Usage: mireru [OPTION]... [FILE_OR_DIRECTORY]..."
+    USAGE = "Usage: mireru [OPTION]... [FILE_OR_DIRECTORY]..."
 
-      class << self
-        def run(*arguments)
-          new.run(arguments)
-        end
+    class << self
+      def run(*arguments)
+        new.run(arguments)
+      end
+    end
+
+    def initialize
+      @logger = Logger.new
+    end
+
+    def run(arguments)
+      if /\A(-h|--help)\z/ =~ arguments[0]
+        write_help_message
+        exit(true)
+      elsif /\A(-v|--version)\z/ =~ arguments[0]
+        write_version_message
+        exit(true)
       end
 
-      def initialize
-        @logger = Logger.new
+      font = purge_option(arguments, /\A(-f|--font)\z/, true)
+
+      files = files_from_arguments(arguments)
+
+      window = Window.new(files)
+      window.font = font if font
+
+      window.run
+    end
+
+    private
+    def files_from_arguments(arguments)
+      if arguments.empty?
+        files = [Dir.pwd]
+      else
+        files = arguments
       end
+      files
+    end
 
-      def run(arguments)
-        if /\A(-h|--help)\z/ =~ arguments[0]
-          write_help_message
-          exit(true)
-        elsif /\A(-v|--version)\z/ =~ arguments[0]
-          write_version_message
-          exit(true)
-        end
-
-        font = purge_option(arguments, /\A(-f|--font)\z/, true)
-
-        files = files_from_arguments(arguments)
-
-        window = Window.new(files)
-        window.font = font if font
-
-        window.run
+    def purge_option(arguments, regexp, has_value=false)
+      index = arguments.find_index {|arg| regexp =~ arg }
+      return false unless index
+      if has_value
+        arguments.delete_at(index) # flag
+        arguments.delete_at(index) # value
+      else
+        arguments.delete_at(index)
       end
+    end
 
-      private
-      def files_from_arguments(arguments)
-        if arguments.empty?
-          files = [Dir.pwd]
-        else
-          files = arguments
-        end
-        files
-      end
-
-      def purge_option(arguments, regexp, has_value=false)
-        index = arguments.find_index {|arg| regexp =~ arg }
-        return false unless index
-        if has_value
-          arguments.delete_at(index) # flag
-          arguments.delete_at(index) # value
-        else
-          arguments.delete_at(index)
-        end
-      end
-
-      def write_help_message
-        message = <<-EOM
+    def write_help_message
+      message = <<-EOM
 #{USAGE}
   If no argument, then open the current directory.
 
@@ -131,15 +131,15 @@ Key bindings:
   PDF:
     j: next page
     k: prev page
-        EOM
-        @logger.info(message)
-      end
+      EOM
+      @logger.info(message)
+    end
 
-      def write_version_message
-        message = <<-EOM
+    def write_version_message
+      message = <<-EOM
 #{VERSION}
-        EOM
-        @logger.info(message)
-      end
+      EOM
+      @logger.info(message)
+    end
   end
 end
