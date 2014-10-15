@@ -1,3 +1,5 @@
+cache:
+  - bundler
 env:
   global:
     - DISPLAY=":99.0"
