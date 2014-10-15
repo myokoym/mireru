@@ -19,12 +19,27 @@ require "mireru/widget"
 class WidgetTest < Test::Unit::TestCase
   include MireruTestUtils
 
-  def test_image?
+  def test_image_not_image
     assert_nil(Mireru::Widget.image?(__FILE__))
+  end
+
+  def test_image_png
     assert_not_nil(Mireru::Widget.image?("test/fixtures/nijip.png"))
+  end
+
+  def test_image_uppercase
     assert_not_nil(Mireru::Widget.image?("hoge.PNG"))
+  end
+
+  def test_image_jpg
     assert_not_nil(Mireru::Widget.image?("hoge.jpg"))
+  end
+
+  def test_image_jpeg
     assert_not_nil(Mireru::Widget.image?("hoge.jpeg"))
+  end
+
+  def test_image_gif
     assert_not_nil(Mireru::Widget.image?("hoge.gif"))
   end
 end
