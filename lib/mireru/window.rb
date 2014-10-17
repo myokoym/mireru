@@ -209,7 +209,7 @@ Only supports Windows (use `start` command) and OS X (use `open` command).
         return
       end
 
-      spawn(command, @file.encode("locale")
+      spawn(command, @file.encode("locale"))
     end
   end
 end
