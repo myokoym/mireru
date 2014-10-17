@@ -20,11 +20,11 @@ require "mireru/navigator"
 
 module Mireru
   class Window < Gtk::Window
-    attr_accessor :font
     attr_accessor :file
-    def initialize(files)
+    def initialize(files, options={})
       super()
       @files = files
+      @font = options[:font]
 
       @paned = Gtk::Paned.new(:horizontal)
       add(@paned)

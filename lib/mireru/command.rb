@@ -38,8 +38,7 @@ module Mireru
 
       files = files_from_arguments(arguments)
 
-      window = Window.new(files)
-      window.font = options[:font] if options[:font]
+      window = Window.new(files, options)
 
       window.run
     end
