@@ -39,6 +39,9 @@ If no argument, then open the current directory.
 * `--regexp "PATTERN"`
   * select file name by regular expression
 
+* `--compact`
+  * hide empty directory
+
 ### Key bindings
 
 #### Common

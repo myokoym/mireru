@@ -99,6 +99,9 @@ Options:
   --regexp "PATTERN"
       select file name by regular expression
 
+  --compact
+      hide empty directory
+
 Key bindings:
   n: next
   p: prev
