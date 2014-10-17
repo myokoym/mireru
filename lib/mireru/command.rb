@@ -66,6 +66,10 @@ module Mireru
                 "Select file name by regular expression pattern") do |pattern|
         options[:regexp] = pattern
       end
+      parser.on("--compact",
+                "Hide empty directory") do |boolean|
+        options[:compact] = boolean
+      end
       parser.parse!(arguments)
 
       options

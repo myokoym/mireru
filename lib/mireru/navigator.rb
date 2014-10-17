@@ -14,6 +14,7 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
+require "find"
 require "gtk3"
 require "gio2"
 
@@ -26,6 +27,7 @@ module Mireru
       @window = window
       @files = files
       @regexp = options[:regexp]
+      @compact = options[:compact]
       @dir_iters = {}
       @icons = {}
       set_policy(:automatic, :automatic)
@@ -153,6 +155,7 @@ module Mireru
 
     def load_file(model, file, parent=nil, recursive=false)
       return if File.file?(file) and @regexp and /#{@regexp}/ !~ file
+      return if @compact and empty_dir?(file)
       iter = model.append(parent)
       iter.set_value(PATH_COLUMN, file)
       iter.set_value(FILENAME_COLUMN, File.basename(file))
@@ -203,6 +206,14 @@ module Mireru
     def guess_content_type(file)
       content_type, _uncertain = Gio::ContentType.guess(file)
       content_type
+    end
+
+    def empty_dir?(dir)
+      return false unless File.directory?(dir)
+      Find.find(*Dir.glob("#{dir}/*")) do |path|
+        return false if /#{@regexp}/ =~ File.basename(path)
+      end
+      true
     end
   end
 end
