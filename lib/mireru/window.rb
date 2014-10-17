@@ -209,9 +209,7 @@ Only supports Windows (use `start` command) and OS X (use `open` command).
         return
       end
 
-      Thread.new do
-        system(command, @file.encode("locale"))
-      end
+      spawn(command, @file.encode("locale")
     end
   end
 end
