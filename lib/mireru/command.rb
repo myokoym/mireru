@@ -92,6 +92,9 @@ Options:
   -f, --font NAME
       set a font such as "Monospace 16"
 
+  --regexp "PATTERN"
+      select file name by regular expression
+
 Key bindings:
   n: next
   p: prev
