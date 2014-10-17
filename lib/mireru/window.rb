@@ -29,7 +29,7 @@ module Mireru
       @paned = Gtk::Paned.new(:horizontal)
       add(@paned)
 
-      @navigator = Navigator.new(self, files)
+      @navigator = Navigator.new(self, files, options)
       @paned.add(@navigator)
 
       @scroll = Gtk::ScrolledWindow.new

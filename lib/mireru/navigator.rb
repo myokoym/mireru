@@ -21,10 +21,11 @@ module Mireru
   class Navigator < Gtk::ScrolledWindow
     PATH_COLUMN, FILENAME_COLUMN, ICON_COLUMN = 0, 1, 2
 
-    def initialize(window, files)
+    def initialize(window, files, options={})
       super()
       @window = window
       @files = files
+      @regexp = options[:regexp]
       @dir_iters = {}
       @icons = {}
       set_policy(:automatic, :automatic)
@@ -151,6 +152,7 @@ module Mireru
     end
 
     def load_file(model, file, parent=nil, recursive=false)
+      return if File.file?(file) and @regexp and /#{@regexp}/ !~ file
       iter = model.append(parent)
       iter.set_value(PATH_COLUMN, file)
       iter.set_value(FILENAME_COLUMN, File.basename(file))

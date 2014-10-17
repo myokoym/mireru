@@ -62,6 +62,10 @@ module Mireru
                 "Set a font such as \"Monospace 16\"") do |name|
         options[:font] = name
       end
+      parser.on("--regexp=PATTERN",
+                "Select file name by regular expression pattern") do |pattern|
+        options[:regexp] = pattern
+      end
       parser.parse!(arguments)
 
       options
