@@ -1,5 +1,15 @@
 # NEWS
 
+## 0.9.2: 2014-10-19
+
+### Changes
+
+  * Improvements
+    * Use Ruby-GNOME2 2.2.2.
+    * Added --regexp option for selecting for file name by
+      regular expression.
+    * Added --compact option for hiding for empty directory.
+
 ## 0.9.1: 2014-07-29
 
 Introduce ChupaText!
