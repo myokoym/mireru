@@ -70,6 +70,14 @@ module Mireru
                 "Hide empty directory") do |boolean|
         options[:compact] = boolean
       end
+      parser.on("--width=WIDTH",
+                "Set window width", Integer) do |width|
+        options[:width] = width
+      end
+      parser.on("--height=HEIGHT",
+                "Set window height", Integer) do |height|
+        options[:height] = height
+      end
       parser.parse!(arguments)
 
       options

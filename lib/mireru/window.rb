@@ -36,7 +36,9 @@ module Mireru
       @scroll.set_policy(:automatic, :automatic)
       @paned.add(@scroll)
 
-      set_default_size(800, 600)
+      @default_width = options[:width] || 800
+      @default_height = options[:height] || 600
+      set_default_size(@default_width, @default_height)
       signal_connect("destroy") do
         Gtk.main_quit
       end
