@@ -17,6 +17,7 @@
 require "gtk3"
 require "mireru/widget"
 require "mireru/navigator"
+require "mireru/status_bar"
 
 module Mireru
   class Window < Gtk::Window
@@ -32,9 +33,19 @@ module Mireru
       @navigator = Navigator.new(self, files, options)
       @paned.add(@navigator)
 
+      @main_vbox = Gtk::Box.new(:vertical)
+      @paned.add(@main_vbox)
+
       @scroll = Gtk::ScrolledWindow.new
       @scroll.set_policy(:automatic, :automatic)
-      @paned.add(@scroll)
+      @main_vbox.pack_start(@scroll, :expand  => true,
+                                     :fill    => true,
+                                     :padding => 0)
+
+      @status_bar = StatusBar.new
+      @main_vbox.pack_end(@status_bar, :expand  => false,
+                                       :fill    => false,
+                                       :padding => 0)
 
       @default_width = options[:width] || 800
       @default_height = options[:height] || 600
@@ -62,6 +73,7 @@ module Mireru
       else
         @scroll.add_with_viewport(@widget)
       end
+      @status_bar.set_file(file)
       show_all
     end
 
