@@ -15,10 +15,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 require "mireru/widget/image"
-require "mireru/widget/video"
-require "mireru/widget/pdf"
-require "mireru/widget/svg"
-require "mireru/widget/extracted_text"
 require "mireru/widget/text"
 require "mireru/widget/binary"
 
@@ -27,21 +23,51 @@ module Mireru
     module_function
     def create(file, width, height, chupa=false)
       if chupa
-        widget = Widget::ExtractedText.new(file)
-      elsif image?(file)
-        widget = Widget::Image.new(file, width, height)
-      elsif video?(file) or music?(file)
-        widget = Widget::Video.new(file)
-      elsif pdf?(file)
-        widget = Widget::PDF.new(file)
-      elsif svg?(file)
-        widget = Widget::SVG.new(file)
-      elsif text?(file)
-        widget = Widget::Text.new(file)
-      else
-        widget = Widget::Binary.new(file)
+        check do
+          require "mireru/widget/extracted_text"
+          return Widget::ExtractedText.new(file)
+        end
       end
-      widget
+
+      if image?(file)
+        return Widget::Image.new(file, width, height)
+      end
+
+      if video?(file) or music?(file)
+        check do
+          require "mireru/widget/video"
+          return Widget::Video.new(file)
+        end
+      end
+
+      if pdf?(file)
+        check do
+          require "mireru/widget/pdf"
+          return Widget::PDF.new(file)
+        end
+      end
+
+      if svg?(file)
+        check do
+          require "mireru/widget/svg"
+          return Widget::SVG.new(file)
+        end
+      end
+
+      if text?(file)
+        return Widget::Text.new(file)
+      end
+
+      return Widget::Binary.new(file)
+    end
+
+    # TODO: improve
+    def check
+      begin
+        yield
+      rescue LoadError
+        $stderr.puts("Warning: #{$!.message}")
+      end
     end
 
     def image?(file)

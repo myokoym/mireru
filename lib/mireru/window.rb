@@ -156,13 +156,13 @@ module Mireru
       when Gdk::Keyval::KEY_h
         @scroll.hadjustment.value -= 17
       when Gdk::Keyval::KEY_j
-        if @widget.is_a?(Widget::PDF)
+        if @widget.class.name == "PDF"  # TODO: improve
           @widget.next
         else
         @scroll.vadjustment.value += 17
         end
       when Gdk::Keyval::KEY_k
-        if @widget.is_a?(Widget::PDF)
+        if @widget.class.name == "PDF"  # TODO: improve
           @widget.prev
         else
         @scroll.vadjustment.value -= 17
