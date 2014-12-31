@@ -23,7 +23,7 @@ class WindowTest < Test::Unit::TestCase
     @window = Mireru::Window.new([])
   end
 
-  class AddFromFileTest
+  class AddFromFileTest < self
     def test_scrollable
       file = __FILE__
       mock(Mireru::Widget).new(file, *@window.size) do
