@@ -24,27 +24,32 @@ class WindowTest < Test::Unit::TestCase
   end
 
   class AddFromFileTest < self
-    def test_scrollable
+    def test_textview
       file = __FILE__
-      mock(Mireru::Widget).new(file, *@window.size) do
+      stub(Mireru::Widget).create do
         Gtk::TextView.new
       end
-      mock(@window).show_all
+      stub(@window).show_all
       @window.add_from_file(file)
-      assert_equal(Gtk::ScrolledWindow, @window.child.class)
-      assert_equal(Gtk::TextView, @window.child.child.class)
+      pane = @window.child
+      scrolled_window = pane.child2
+      widget = scrolled_window.child
+      assert_kind_of(Gtk::TextView, widget)
     end
 
-    def test_no_scrollable
+    def test_viewport
       file = File.join(fixtures_dir, "nijip.png")
-      mock(Mireru::Widget).new(file, *@window.size) do
+      stub(Mireru::Widget).create do
         Gtk::Image.new
       end
-      mock(@window).show_all
+      stub(@window).show_all
       @window.add_from_file(file)
-      assert_equal(Gtk::ScrolledWindow, @window.child.class)
-      assert_equal(Gtk::Viewport, @window.child.child.class)
-      assert_equal(Gtk::Image, @window.child.child.child.class)
+      pane = @window.child
+      scrolled_window = pane.child2
+      view_port = scrolled_window.child
+      assert_kind_of(Gtk::Viewport, view_port)
+      widget = view_port.child
+      assert_kind_of(Gtk::Image, widget)
     end
   end
 end
