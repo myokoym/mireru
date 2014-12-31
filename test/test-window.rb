@@ -32,7 +32,8 @@ class WindowTest < Test::Unit::TestCase
       stub(@window).show_all
       @window.add_from_file(file)
       pane = @window.child
-      scrolled_window = pane.child2
+      vbox = pane.child2
+      scrolled_window = vbox.children[0]
       widget = scrolled_window.child
       assert_kind_of(Gtk::TextView, widget)
     end
@@ -45,7 +46,8 @@ class WindowTest < Test::Unit::TestCase
       stub(@window).show_all
       @window.add_from_file(file)
       pane = @window.child
-      scrolled_window = pane.child2
+      vbox = pane.child2
+      scrolled_window = vbox.children[0]
       view_port = scrolled_window.child
       assert_kind_of(Gtk::Viewport, view_port)
       widget = view_port.child
