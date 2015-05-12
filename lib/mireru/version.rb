@@ -15,5 +15,5 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 module Mireru
-  VERSION = "0.9.3"
+  VERSION = "0.9.4"
 end
