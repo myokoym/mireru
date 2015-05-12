@@ -1,5 +1,14 @@
 # NEWS
 
+## 0.9.3: 2015-05-12
+
+### Improvements
+
+* Use Ruby-GNOME2 2.2.4 or later.
+* Added status bar.
+* Added --width and --height option.
+* Rescue LoadError for extended file types.
+
 ## 0.9.2: 2014-10-19
 
 ### Changes
