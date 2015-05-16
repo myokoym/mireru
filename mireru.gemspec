@@ -19,11 +19,11 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency("gtksourceview3", ">= 2.2.4")
-  spec.add_runtime_dependency("clutter-gtk", ">= 2.2.4")
-  spec.add_runtime_dependency("clutter-gstreamer", ">= 2.2.4")
-  spec.add_runtime_dependency("poppler", ">= 2.2.4")
-  spec.add_runtime_dependency("rsvg2", ">= 2.2.4")
+  spec.add_runtime_dependency("gtksourceview3", ">= 2.2.0")
+  spec.add_runtime_dependency("clutter-gtk", ">= 2.2.0")
+  spec.add_runtime_dependency("clutter-gstreamer", ">= 2.2.0")
+  spec.add_runtime_dependency("poppler", ">= 2.2.0")
+  spec.add_runtime_dependency("rsvg2", ">= 2.2.0")
   spec.add_runtime_dependency("hexdump")
   spec.add_runtime_dependency("chupa-text")
   spec.add_runtime_dependency("chupa-text-decomposer-html")
