@@ -21,12 +21,15 @@ require "mireru/widget/binary"
 module Mireru
   module Widget
     module_function
-    def create(file, width, height, chupa=false)
+    def create(file, width, height, chupa=false, binary=false)
       if chupa
         check do
           require "mireru/widget/extracted_text"
           return Widget::ExtractedText.new(file)
         end
+      end
+      if binary
+        return Widget::Binary.new(file)
       end
 
       if image?(file)
