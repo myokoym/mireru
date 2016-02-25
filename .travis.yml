@@ -6,7 +6,6 @@ env:
     - DISPLAY=":99.0"
 language: ruby
 rvm:
-  - 2.0.0
   - 2.1
   - 2.2
 #  - rbx-2
